@@ -1,0 +1,50 @@
+/* Style for the container div */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Makes the container take the full viewport height */
+  }
+  
+  /* Style for the form */
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+    max-width: 300px; /* Adjust the maximum width as needed */
+  }
+  
+  /* Style for labels */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for inputs */
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style for the submit button */
+  button[type="submit"] {
+    background-color: #007bff; /* Adjust the color as needed */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3; /* Adjust the hover color as needed */
+  }
+  
+  /* Optional: Add additional styles as needed */
+  

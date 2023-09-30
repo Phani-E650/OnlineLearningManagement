@@ -1,0 +1,28 @@
+<!-- <div style="height: 500px; width: 100%;" class="ag-theme-alpine">
+    <ag-grid-angular
+      [gridOptions]="gridOptions"
+      [rowData]="rowData"
+      [paginationPageSize]="pageSize"
+    ></ag-grid-angular>
+  </div>
+   -->
+   <!-- <div class="table-container">
+    <ag-grid-angular
+    style="width: 100%; height: 400px"
+      [gridOptions]="gridOptions"
+      [rowData]="rowData"
+      [paginationPageSize]="pageSize"
+      class="ag-theme-bootstrap parrots-grid"
+    ></ag-grid-angular>
+  </div> -->
+  <ag-grid-angular
+  style="width: 100%; height: 500px;"
+  class="ag-theme-alpine"
+  [rowData]="rowData"
+  [columnDefs]="columnDefs"
+  [pagination]="true"
+  [paginationPageSize]="pageSize"
+  (gridReady)="onGridReady($event)"
+>
+</ag-grid-angular>
+  
