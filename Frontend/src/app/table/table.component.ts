@@ -45,7 +45,7 @@ export class TableComponent {
     {
       headerName: 'Username',
       field: 'email',
-      cellRenderer: UsernameLinkRendererComponent,
+      // cellRenderer: UsernameLinkRendererComponent,
       // cellRendererParams: {
       //   innerRenderer: (params: { value: any; }) => {
       //     return `<a href="${params.value}">${params.value}</a>`;
@@ -67,14 +67,21 @@ export class TableComponent {
       enableDisableCallback: this.enableDisableCallback.bind(this),
       label: 'Delete',
     },
-  },
+   },
     {
       headerName: 'Action',
-      cellRenderer: ButtonRendererComponent,
+      cellRenderer: UsernameLinkRendererComponent,
       cellRendererParams: {
-        onClick: this.deleteRow.bind(this),
-        label: 'Delete',
+        label: 'view',
       },
+    }
+  //   {
+  //     headerName: 'Action',
+  //     cellRenderer: ButtonRendererComponent,
+  //     cellRendererParams: {
+  //       onClick: this.deleteRow.bind(this),
+  //       label: 'Delete',
+  //     },
     //   cellRendererFramework  : ButtonRendererComponent, // Use your custom cell renderer component here
     //   cellRendererParams: {
     //    onClick: this.deleteRow.bind(this), // Add any custom parameters or event handlers here
@@ -84,7 +91,7 @@ export class TableComponent {
       //   enableDisableCallback: this.enableDisable.bind(this),
       //   deleteCallback: this.deleteRow.bind(this),
       // },
-    },
+    // },
   ];
 
   pageSize = 10;
@@ -247,41 +254,30 @@ export class TableComponent {
     console.log('Enable/Disable:', data);
   }
 
-  deleteRow(data: any) {
-    // Implement row deletion logic based on data
-    // const selectedNode = this.gridApi.getSelectedNodes()[0];
-    // // console.log(data.);
-    // if (selectedNode) {
-    //   const selectedData = selectedNode.data;
-    //   console.log(selectedData);
-    //   const selectedIndex = this.rowData.indexOf(selectedData);
-    //   if (selectedIndex !== -1) {
-    //     this.rowData.splice(selectedIndex, 1);
-    //     this.gridApi.setRowData(this.rowData);
-    //   }
-    // }
-    const id=data.id;
-    const url=`http://localhost:8080/table/delete/${id}`;
-    this.http.delete(url).subscribe((response)=>{
-      console.log('Delete:',response);},
-    (error: HttpErrorResponse) => {
-      // Handle errors here
-      if (error.status === 200) {
-        console.log('DELETE request was successful with status 200');
-        this.loadData();
-      } else {
-        console.error('DELETE request failed with status code:', error.status);
-      }
+  // deleteRow(data: any) {
+  //   // Implement row deletion logic based on data
+  //   const id=data.id;
+  //   const url=`http://localhost:8080/table/delete/${id}`;
+  //   this.http.delete(url).subscribe((response)=>{
+  //     console.log('Delete:',response);},
+  //   (error: HttpErrorResponse) => {
+  //     // Handle errors here
+  //     if (error.status === 200) {
+  //       console.log('DELETE request was successful with status 200');
+  //       this.loadData();
+  //     } else {
+  //       console.error('DELETE request failed with status code:', error.status);
+  //     }
 
-      // You can access error.error to get the error response data if needed
-      const errorData = error.error;
+  //     // You can access error.error to get the error response data if needed
+  //     const errorData = error.error;
 
-      // Handle errors as needed
-    }
-      )
+  //     // Handle errors as needed
+  //   }
+  //     )
   
-    console.log('Delete:', data);
-  }
+  //   console.log('Delete:', data);
+  // }
 }
 
 // import { Component } from '@angular/core';

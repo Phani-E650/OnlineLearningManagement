@@ -25,29 +25,16 @@ public class UserFullDetails {
     private String name;
 
     @Column(nullable = false)
-    private String deptName;
+    private String dept;
     
     private String password;
     
     
+    @Column(nullable = false)
+    private String phoneno;
 
-    public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public UserFullDetails() {
-    }
-
-    public UserFullDetails(String email, String name, String deptName, String password) {
-        this.email = email;
-        this.name = name;
-        this.deptName = deptName;
-        this.password= password;
-    }
+    @Column(nullable = false)
+    private String dob;
 
 	public Long getId() {
 		return id;
@@ -73,14 +60,39 @@ public class UserFullDetails {
 		this.name = name;
 	}
 
-	public String getDeptName() {
-		return deptName;
+	public String getDept() {
+		return dept;
 	}
 
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
+	public void setDept(String dept) {
+		this.dept = dept;
 	}
 
-    // Getters and setters
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPhoneno() {
+		return phoneno;
+	}
+
+	public void setPhoneno(String phoneno) {
+		this.phoneno = phoneno;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	
+   
 }
 

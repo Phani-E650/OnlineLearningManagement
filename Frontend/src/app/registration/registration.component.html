@@ -1,6 +1,68 @@
 <div class="container">
   <h2>Student Registration</h2>
-  <form (ngSubmit)="submitRegistrationForm()">
+  <form [formGroup]="myForm"  (ngSubmit)="submitRegistrationForm()">
+
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control" [disabled]="true" >
+      <!-- <mat-error class="error" *ngIf="myForm.get('email')?.errors?.['required']">Email is required.</mat-error>
+      <mat-error *ngIf="myForm.get('email')?.errors?.['email']">Invalid email format.</mat-error> -->
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" class="form-control">
+      <mat-error class="error" *ngIf="myForm.get('password')?.errors?.['required']">Password is required.</mat-error>
+        <mat-error class="error" *ngIf="myForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</mat-error>
+    </div>
+    <div class="form-group">
+      <label for="email">Name:</label>
+      <input type="name" id="name" formControlName="name" class="form-control">
+      <mat-error class="error" *ngIf="myForm.get('name')?.errors?.['required']">Name is required.</mat-error>
+      <!-- <div *ngIf="myForm.get('name')?.errors?.['name']">Invalid email format.</div> -->
+    </div>
+    <div class="form-group">
+      <label for="email">Department:</label>
+      <input type="dept" id="dept" formControlName="dept" class="form-control">
+      <!-- <div class="error" *ngIf="myForm.get('dept')?.errors?.['required']">Dept Name is required.</div> -->
+      <mat-error *ngIf="myForm.get('dept')?.errors?.['required']">Dept Name is required.</mat-error>
+      <!-- <div *ngIf="myForm.get('dept')?.errors?.['name']">Invalid email format.</div> -->
+    </div>
+    <div class="form-group">
+      <label for="phoneno">Phone Number:</label>
+      <input type="phoneno" id="phoneno" formControlName="phoneno" class="form-control">
+      <mat-error class="error" *ngIf="myForm.get('phoneno')?.errors?.['required']">Phone Number is required.</mat-error>
+      <mat-error class="error" *ngIf="myForm.get('phoneno')?.errors?.['pattern']">Phone Number is not valid.</mat-error>
+      <!-- <div *ngIf="myForm.get('name')?.errors?.['name']">Invalid email format.</div> -->
+    </div>
+    <div class="form-group">
+    <mat-form-field>
+      <label>DOB</label>
+      <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-error *ngIf="myForm.get('dob')?.errors?.['required']">Date is required</mat-error>
+    </div>
+
+
+    <!-- <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" class="form-control">
+      <div class="error" *ngIf="myForm.get('password')?.errors?.['required']">Password is required.</div>
+      <div class="error" *ngIf="myForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control">
+      <div class="error" *ngIf="myForm.get('email')?.errors?.['required']">Email is required.</div>
+      <div *ngIf="myForm.get('email')?.errors?.['email']">Invalid email format.</div>
+    </div> -->
+
+
+
+
+<!-- 
     <div class="form-group">
       
         <label>Email</label>
@@ -28,7 +90,27 @@
       <label>Password</label>
       <input type="text" id="password" name="password" [(ngModel)]="password" required>
    
+    </div> -->
+    <!-- <div class="form-group">
+     
+      <label>Phone Number</label>
+      <input type="text" id="password" name="password" [(ngModel)]="password" required>
+   
     </div>
+    <div class="form-group">
+     
+      <label>DOB</label>
+      <input type="text" id="password" name="password" [(ngModel)]="password" required>
+   
+    </div>
+    <mat-form-field>
+      <label>DOB</label>
+      <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="myForm.get('date').hasError('required')">Date is required</mat-error>
+    </mat-form-field> -->
+    
    
 
     <button type="submit" mat-button color="primary">Register</button>

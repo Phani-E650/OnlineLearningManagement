@@ -43,7 +43,7 @@ public class UserController {
         	System.out.println(userTempDto.getRole());
         	System.out.println(userTempDto.getEmail());
         	System.out.println(userTempDto.getId());
-        	userTempDto.setStatus("active");
+        	userTempDto.setStatus("Req Sent");
             userTempRepository.save(userTempDto);
             String registrationToken = UUID.randomUUID().toString();
 
@@ -92,7 +92,8 @@ public class UserController {
             if (userTemp == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
             }
-            
+            userTemp.setStatus("active");
+            userTempRepository.save(userTemp);
             // Save the complete user details in the user_full_details table
             userFullDetailsRepository.save(userFullDetails);
 
