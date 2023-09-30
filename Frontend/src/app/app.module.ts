@@ -21,6 +21,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { TableComponent } from './table/table.component';
 import { MatCardModule } from '@angular/material/card';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,7 @@ import { MatCardModule } from '@angular/material/card';
     ButtonRendererComponent,
     UserDetailsComponent,
     TableComponent
+  
   ],
 
   
