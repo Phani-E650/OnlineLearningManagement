@@ -24,13 +24,15 @@ export class LoginComponent {
     };
 
     // Make an HTTP POST request to authenticate the user
-    this.http.post<any>(authUrl, credentials).subscribe(
-      (response) => {
-        const role = response.message;
+    this.http.post(authUrl, credentials, { responseType: 'text' }).subscribe(
+      (response: any) => {
+        const role = response;
         if (role === 'IT') {
           this.router.navigate(['/upload-excel']); // Redirect to admin page
         } else if (role === 'student') {
           this.router.navigate(['/upload-excel']); // Redirect to student page
+        } else {
+          console.error('Invalid role:', role);
         }
       },
       (error) => {
