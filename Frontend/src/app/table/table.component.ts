@@ -220,14 +220,14 @@ export class TableComponent {
   }
 
   loadData() {
-    // Load data from your backend or any data source
+    
     this.http.get<any[]>('http://localhost:8080/table/getdata').subscribe((data) => {
       this.rowData = data;
     });
   }
 
   enableDisableCallback(data: any) {
-    // Implement enabling/disabling logic based on data
+    
     const id=data.id;
     const url=`http://localhost:8080/table/update/${id}`;
     this.http.put(url,null).subscribe((response)=>{
@@ -235,7 +235,7 @@ export class TableComponent {
       this.loadData();
     },
     (error: HttpErrorResponse) => {
-      // Handle errors here
+      
       if (error.status === 200) {
         console.log('UPDATE request was successful with status 200');
         this.loadData();
@@ -243,10 +243,10 @@ export class TableComponent {
         console.error('UPDATE request failed with status code:', error.status);
       }
 
-      // You can access error.error to get the error response data if needed
+     
       const errorData = error.error;
 
-      // Handle errors as needed
+      
     }
       )
 

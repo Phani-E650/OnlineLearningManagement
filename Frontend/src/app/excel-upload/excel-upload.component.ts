@@ -31,16 +31,15 @@ export class ExcelUploadComponent {
     
     if (this.data) {
 
-      // Assuming you have an API endpoint to send data to the backend
+      
       this.data.forEach((row) => {
         const adminData = { email: row.email, role: row.role };
-        // Make a POST request to your backend API with 'row' data
+        
         
   this.http.post('http://localhost:8080/api/admin/create-student', adminData).subscribe(
     (response: any) => {
       if (response.message === 'Student registration initiated successfully.') {
-        // Send an email to the admin with the registration link
-        // this.sendRegistrationEmail(this.email);
+       
         console.log('Registration email sent to successful');
       } else {
         console.error('Admin creation failed.');
@@ -50,7 +49,7 @@ export class ExcelUploadComponent {
       console.error('An error occurred while creating the admin:', error);
     }
   );
-        // Example: this.http.post('your-backend-api-url', row).subscribe(...)
+        
       });
     }
   }

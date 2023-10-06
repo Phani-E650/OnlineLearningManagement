@@ -13,11 +13,11 @@ import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   { path: 'admin', component: AdminComponent,canActivate: [AuthGuard] },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'upload-excel', component:ExcelUploadComponent }, 
+  { path: 'upload-excel', component:ExcelUploadComponent,canActivate: [AuthGuard] }, 
   { path: 'create', component: CreateAdminComponent,canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'table', component: TableComponent },
-  { path: 'user-details/:id', component: UserDetailsComponent },
+  { path: 'user-details/:id', component: UserDetailsComponent ,canActivate: [AuthGuard]},
   {path: '', redirectTo: '/create', pathMatch: 'full'}
 ];
 

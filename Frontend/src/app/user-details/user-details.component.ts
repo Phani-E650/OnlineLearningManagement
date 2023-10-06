@@ -16,7 +16,7 @@ export class UserDetailsComponent {
     this.route.params.subscribe((data1) => {
       console.log(data1);
       const email = data1['id']; // Access the id parameter here
-      // Use the id parameter as needed in your component
+      
       console.log(email);
       this.http.get<any[]>(`http://localhost:8080/table/getuserdetails/${email}`).subscribe((data) => {
         this.cardData = data;

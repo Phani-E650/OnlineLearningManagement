@@ -33,26 +33,22 @@ export class LoginComponent {
   }
 
   login() {
-    // Define the authentication URL
+    
     const authUrl = 'http://localhost:8080/login';
 
-    // Create an object to hold the user's credentials
-    // const credentials = {
-    //   email: this.email,
-    //   password: this.password,
-    // };
+    
     if (this.myForm.valid) {
       const formData = this.myForm.value;
 
 
-    // Make an HTTP POST request to authenticate the user
+    
     this.http.post(authUrl, formData, { responseType: 'text' }).subscribe(
       (response: any) => {
         const role = response;
         this.authService.setAuthenticated(true);
 
-    // Redirect to the desired page (e.g., /admin or /student
-        if (role === 'IT') {
+    
+        if (role === '') {
           this.router.navigate(['/admin']); // Redirect to admin page
         } else if (role === 'student') {
           this.router.navigate(['/upload-excel']); // Redirect to student page

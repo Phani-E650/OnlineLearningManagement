@@ -69,7 +69,7 @@ export class RegistrationComponent implements OnInit {
       //  this.myForm.value.email = params['email'];
        this.myForm?.get('email')?.setValue(params['email']);
        this.myForm.get('email')?.disable();
-      // You can also retrieve and use the token if needed
+     
     });
   }
 
