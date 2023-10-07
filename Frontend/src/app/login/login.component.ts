@@ -42,13 +42,19 @@ export class LoginComponent {
 
 
     
-    this.http.post(authUrl, formData, { responseType: 'text' }).subscribe(
+    this.http.post(authUrl, formData).subscribe(
       (response: any) => {
-        const role = response;
+        let role = response.role;
+        let email = response.email;
+        let status = response.status;
+        sessionStorage.setItem('loggedUser', email);
+        sessionStorage.setItem('ROLE', role);
+        sessionStorage.setItem('name', email);
+        sessionStorage.setItem('gender', "male");
         this.authService.setAuthenticated(true);
 
     
-        if (role === '') {
+        if (role === 'admin') {
           this.router.navigate(['/admin']); // Redirect to admin page
         } else if (role === 'student') {
           this.router.navigate(['/upload-excel']); // Redirect to student page

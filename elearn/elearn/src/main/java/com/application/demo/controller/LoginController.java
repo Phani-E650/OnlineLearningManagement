@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.application.demo.Dto.LoginDto;
 import com.application.demo.entity.UserFullDetails;
+import com.application.demo.entity.UserTemp;
 import com.application.demo.repository.LoginRepository;
+import com.application.demo.repository.UserTempRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -17,17 +19,24 @@ public class LoginController {
 
     @Autowired
     private LoginRepository userDetailsRepository;
+    @Autowired
+    private UserTempRepository userTempRepository;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginDto request) {
+    public ResponseEntity<UserTemp> login(@RequestBody LoginDto request) {
         UserFullDetails user = userDetailsRepository.findByEmail(request.getEmail());
-
+        UserTemp userdetails=null;
         if (user != null && user.getPassword().equals(request.getPassword())) {
+        	userdetails = userTempRepository.findByEmail(request.getEmail());
             
-            return ResponseEntity.ok(user.getDept());
-        } else {
-            //System.out.print("login failed");
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+            return ResponseEntity.ok(userdetails);
+        } 
+        else {
+        	return null;
         }
+            //System.out.print("login failed");
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+//            throw new Exception("User does not exists!!! Please enter valid credentials...");
+//        }
     }
 }
