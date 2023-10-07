@@ -10,3 +10,5 @@ import com.application.demo.entity.UserTemp;
 public interface UserTempRepository extends JpaRepository<UserTemp, Long> {
     UserTemp findByEmail(String email);
 }
+
+
