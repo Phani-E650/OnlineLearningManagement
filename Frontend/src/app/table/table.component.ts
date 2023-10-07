@@ -1,23 +1,9 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-table',
-//   templateUrl: './table.component.html',
-//   styleUrls: ['./table.component.css']
-// })
-// export class TableComponent {
-
-// }
-
 
 import { Component, NgModule } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ColDef, IGroupCellRendererParams } from 'ag-grid-community';
-// import { ActionCellRendererComponent } from '../action-cell-renderer/action-cell-renderer.component';
  import { UsernameLinkRendererComponent } from '../username-link-renderer/username-link-renderer.component';
 import { AgGridAngular } from 'ag-grid-angular';
-// @import '~ag-grid-community/styles/ag-grid.scss';
-// @import '~ag-grid-community/styles/ag-theme-alpine.scss';
 import { ButtonRendererComponent } from '../button-renderer/button-renderer.component';
 import { ActionCellRendererComponent } from '../action-cell-renderer/action-cell-renderer.component';
 
@@ -27,24 +13,13 @@ import { ActionCellRendererComponent } from '../action-cell-renderer/action-cell
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
-  // template: `
-  //   <ag-grid-angular
-  //     style="width: 100%; height: 500px;"
-  //     class="ag-theme-alpine"
-  //     [rowData]="rowData"
-  //     [columnDefs]="columnDefs"
-  //     [pagination]="true"
-  //     [paginationPageSize]="pageSize"
-  //     (gridReady)="onGridReady($event)"
-  //   >
-  //   </ag-grid-angular>
-  // `
 })
 export class TableComponent {
   public columnDefs: ColDef[]= [
     {
       headerName: 'Username',
       field: 'email',
+      cellStyle: { textAlign: 'left' }
       // cellRenderer: UsernameLinkRendererComponent,
       // cellRendererParams: {
       //   innerRenderer: (params: { value: any; }) => {
@@ -58,10 +33,8 @@ export class TableComponent {
       //   suppressCount: true,
       // }as IGroupCellRendererParams,
     },
-    { headerName: 'Role', field: 'role' },
-    // { headerName: 'Dept', field: 'dept', filter: true },
-    // { headerName: 'Status', field: 'status1' },
-    { headerName: 'Status', field: 'status' ,
+    { headerName: 'Role', field: 'role', cellStyle: { textAlign: 'left' } },
+    { headerName: 'Status', field: 'status' , cellStyle: { textAlign: 'left' },
     cellRenderer: ActionCellRendererComponent,
     cellRendererParams: {
       enableDisableCallback: this.enableDisableCallback.bind(this),
@@ -69,7 +42,7 @@ export class TableComponent {
     },
    },
     {
-      headerName: 'Action',
+      headerName: 'Action', cellStyle: { textAlign: 'left' },
       cellRenderer: UsernameLinkRendererComponent,
       cellRendererParams: {
         label: 'view',
@@ -96,8 +69,6 @@ export class TableComponent {
 
   pageSize = 10;
   gridApi: any;
-  // rowData: any[];
-  // rowData1
  
   rowData1 = [
     {
@@ -279,82 +250,3 @@ export class TableComponent {
   //   console.log('Delete:', data);
   // }
 }
-
-// import { Component } from '@angular/core';
-// import { ColDef, GridOptions } from 'ag-grid-community';
-
-// @Component({
-//   selector: 'app-table',
-//   templateUrl: './table.component.html',
-//   styleUrls: ['./table.component.css']
-// })
-// export class TableComponent {
-//   public gridOptions: GridOptions;
-//   columnDefs: ColDef[] = [
-//     {
-//       headerName: 'Username',
-//       field: 'username',
-//       cellRenderer: 'agGroupCellRenderer',
-//       cellRendererParams: {
-//         innerRenderer: 'usernameLinkRenderer',
-//         suppressCount: true,
-//       },
-//     },
-//     { headerName: 'Role', field: 'role' },
-//     { headerName: 'Dept', field: 'dept' },
-//     { headerName: 'Status', field: 'status' },
-//     {
-//       headerName: 'Action',
-//       cellRenderer: 'actionCellRenderer',
-//       cellRendererParams: {
-//         enableDisableCallback: this.enableDisable.bind(this),
-//         deleteCallback: this.deleteRow.bind(this),
-//       },
-//     },
-//   ];
-
-//   pageSize = 10;
-
-//   rowData: any[] = [
-//     {
-//       id: 1,
-//       username: 'User1',
-//       role: 'Admin',
-//       dept: 'IT',
-//       status: 'Active'
-//     },
-//     {
-//       id: 2,
-//       username: 'User2',
-//       role: 'User',
-//       dept: 'HR',
-//       status: 'Inactive'
-//     },
-//     {
-//       id: 3,
-//       username: 'User3',
-//       role: 'User',
-//       dept: 'Finance',
-//       status: 'Active'
-//     },
-//     // Add more rows as needed
-//   ];
-
-//   constructor() {
-//     this.gridOptions = <GridOptions>{
-//       columnDefs: this.columnDefs,
-//       pagination: true,
-//       paginationPageSize: this.pageSize,
-//     };
-//   }
-
-//   enableDisable(data: any) {
-//     // Implement enabling/disabling logic based on data
-//     console.log('Enable/Disable:', data);
-//   }
-
-//   deleteRow(data: any) {
-//     // Implement row deletion logic based on data
-//     console.log('Delete:', data);
-//   }
-// }
