@@ -11,6 +11,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -51,8 +52,8 @@ export class HeaderComponent implements OnInit {
 
   navigateHome()
   {
-    if(this.loggedUser === "admin@gmail.com"){
-      this._router.navigate(['/admindashboard']);
+    if(this.currRole === "admin"){
+      this._router.navigate(['/admin']);
     }
     else if(this.currRole === "professor"){
       this._router.navigate(['/professordashboard']);

@@ -1,11 +1,12 @@
 
-import { Component, NgModule } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ColDef, IGroupCellRendererParams } from 'ag-grid-community';
  import { UsernameLinkRendererComponent } from '../username-link-renderer/username-link-renderer.component';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ButtonRendererComponent } from '../button-renderer/button-renderer.component';
 import { ActionCellRendererComponent } from '../action-cell-renderer/action-cell-renderer.component';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -15,6 +16,9 @@ import { ActionCellRendererComponent } from '../action-cell-renderer/action-cell
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
+
+  @Input()
+  RowDataUser!: string;
   public columnDefs: ColDef[]= [
     {
       headerName: 'Username',
@@ -177,13 +181,28 @@ export class TableComponent {
     },
     // Add more rows as needed
   ];
+  contentId: any;
   
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private route: ActivatedRoute) {
+    // this.route.params.subscribe(params => {
+    //   this.contentId = params['contentId'];
+    // });
+    // if(this.contentId==""){
+    //   this.contentId="admin";
+    // }
+  }
+  ngOnChanges(): void {
+    console.log('myInputData received:', this.RowDataUser);
+  }
 
   rowData!: any[];
-  ngOninit(){
+  studentrowData!: any[];
+  teacherrowData!: any[];
+
+  ngOnInit(){
     this.loadData();
+    console.log(this.RowDataUser);
   }
   onGridReady(params: any) {
     this.gridApi = params.api;
@@ -195,6 +214,8 @@ export class TableComponent {
     this.http.get<any[]>('http://localhost:8080/table/getdata').subscribe((data) => {
       this.rowData = data;
     });
+    this.studentrowData = this.rowData.filter(item => item.role =="student");
+    this.teacherrowData = this.rowData.filter(item => item.role =="teacher");
   }
 
   enableDisableCallback(data: any) {

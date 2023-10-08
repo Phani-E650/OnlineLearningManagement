@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-button-renderer',
   template: `
-    <button (click)="onClick()">{{ label }}</button>
+    <button (click)="onClick()" class="btn btn-primary">{{ label }}</button>
   `,
 })
 export class ButtonRendererComponent {

@@ -4,4 +4,14 @@
 @import 'ag-grid-community/styles/ag-theme-alpine.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.ag-theme-alpine {
+    --ag-foreground-color: rgb(126, 46, 132);
+    --ag-background-color: rgb(239, 237, 244);
+    --ag-header-foreground-color: rgb(204, 245, 172);
+    --ag-header-background-color: rgb(209, 64, 129);
+    --ag-odd-row-background-color: rgb(0, 0, 0, 0.03);
+    --ag-header-column-resize-handle-color: rgb(110, 87, 203);
 
+    --ag-font-size: 17px;
+    --ag-font-family: monospace;
+}

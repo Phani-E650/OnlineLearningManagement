@@ -1,6 +1,54 @@
 
 <app-header></app-header>
-<app-admin-nav-header></app-admin-nav-header>
-<app-table></app-table>
+<!-- <app-admin-nav-header></app-admin-nav-header> -->
+<div class="sidebar-container">
+    <ul class="sidebar-navigation">
       
+        <div class="card" style="width:235px; background-color: #cc4f4f;">
+            <div id="userimg" style="width:150px;">
+            <img [src]="'assets/img/admin.png'" alt="Card image" style="width:100%">
+            </div>
+            <div style="margin-left: auto; margin-right: auto;"  class="card-body">
+              <h4 style="font-weight: bolder;" class="card-title"><b>{{title}}</b></h4>
+            </div>
+          </div>
+      
+      <li>
+         <i class="fa fa-plus" aria-hidden="true"></i> <label [routerLink]="['/create']" style="cursor: pointer;">Add User</label>
+      </li>
+      <li>
+        <i class="fa fa-plus" aria-hidden="true"></i> <label [routerLink]="['/upload-excel']" style="cursor: pointer;">Add Users</label>
+     </li>
+     <li>
+      <i class="fa fa-book" aria-hidden="true"></i> <label [routerLink]="['/addchapter']" style="cursor: pointer;">Add Category</label>
+     </li>
+      <li>
+        <i class="fa fa-check-square" aria-hidden="true"></i> <label [routerLink]="['/approveprofessor']" style="cursor: pointer;">Approve Courses</label>
+      </li>
+      <li>
+        <i class="fa fa-list" aria-hidden="true"></i> <label [routerLink]="['/courselist']" style="cursor: pointer;">Course List</label>
+      </li>
+      <li>
+        <i class="fa fa-user" aria-hidden="true"></i> <label (click)="studentTable()" style="cursor: pointer;">Students</label>
+      </li>
+      <li>
+        <i class="fa fa-user-o" aria-hidden="true"></i> <label (click)="teacherTable()" style="cursor: pointer;">Professors</label> 
+      </li>
+      <li>
+        <i class="fa fa-user" aria-hidden="true"></i> <label (click)="UsesTable()" style="cursor: pointer;">Users</label>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="row">
+        <div class="container">
+            <div class="text-right"> <!-- Align content to the right -->
+              <button class="btn btn-sm btn-primary"(click)="sentmail()">Sent Mail</button>
+            </div>
+          </div>
+        <!-- <div class>  <button (click)="sentmail()">Sent Mail</button> </div> -->
+         <app-table [RowDataUser]="rowDataUsers"></app-table>
+    </div>
+   </div>
+
 

@@ -13,7 +13,12 @@ import { ColDef } from 'ag-grid-community';
 })
 export class AdminComponent {
     gridApi: any;
+  rowDataUsers: string="";
     constructor(private router: Router,private logoutService: LogoutService,private http: HttpClient) {}
+    loggedUser = '';
+  currRole = '';
+  title = '';
+  //UsersTable
     
      public columncouseDefs: ColDef[] = [
         { headerName: 'ID', field: 'id', cellStyle: { textAlign: 'left' } },
@@ -33,6 +38,14 @@ export class AdminComponent {
         this.gridApi = params.api;
         params.api.autoSizeAllColumns();
       }
+      // loadData() {
+      //   this.http.get<any[]>('http://localhost:8080/table/getdata').subscribe((data) => {
+      //     this.rowDataUsers = data;
+      //   });
+      //   console.log("hiiihihih");
+      // }
+      
+    
 
     showCreateUserForm() {
         this.router.navigate(['/create']);
@@ -59,5 +72,34 @@ export class AdminComponent {
 
     logout() {
         this.logoutService.logout();
+      }
+    UsesTable(){
+      this.rowDataUsers="user";
+      }
+      studentTable(){
+        this.rowDataUsers="student";
+      }
+      teacherTable(){
+        this.rowDataUsers="teacher";
+      }
+  ngOnInit(){
+        // console.log("ggh")
+        //  this.loadData();
+        this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+        this.loggedUser = this.loggedUser.replace(/"/g, '');
+    
+        this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
+        this.currRole = this.currRole.replace(/"/g, '');
+    
+        if(this.currRole === "admin"){
+          this.title = "Admin Dashboard";
+        }
+        else if(this.currRole === "professor"){
+          this.title = "";
+        }
+        else if(this.currRole === "user"){
+          this.title = "";
+        }
+       
       }
 }

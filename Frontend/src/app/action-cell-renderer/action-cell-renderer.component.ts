@@ -19,11 +19,11 @@ import { Component } from '@angular/core';
   <!-- Content to display when the condition is true -->
 </div>
 <div *ngIf="params.data.status==='active'">
-   <button (click)="enableDisable()">inactive</button>
+   <button (click)="enableDisable()" class="btn btn-primary">inactive</button>
 <!-- Content to display when the condition is true -->
 </div>
 <div *ngIf="params.data.status==='inactive'">
-   <button (click)="enableDisable()">active</button>
+   <button (click)="enableDisable()" class="btn btn-primary">active</button>
 <!-- Content to display when the condition is true -->
 </div>
 
