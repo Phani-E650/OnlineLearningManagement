@@ -21,9 +21,15 @@ export class CreateAdminComponent {
   role: string = '';
 
   constructor(private http: HttpClient) {}
+  dropdownOptions = [
+    { value: 'Admin', label: 'Admin' },
+    { value: 'Student', label: 'Student' },
+    { value: 'Teacher', label: 'teacher' },
+  ];
 
   submitAdminCreationForm(): void {
     // Send a POST request to your backend API to create the admin
+    console.log(this.role);
     const adminData = { email: this.email, role: this.role };
 
     this.http.post('http://localhost:8080/api/admin/create-student', adminData).subscribe(
