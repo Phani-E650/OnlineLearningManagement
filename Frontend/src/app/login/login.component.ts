@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthGuardService } from '../auth-guard.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,7 +17,7 @@ export class LoginComponent {
 
   // constructor(private http: HttpClient, private router: Router, private authService: AuthGuardService) {}
   // constructor(private http: HttpClient, private router: Router) {}
-  constructor(private http: HttpClient, private router: Router,private formBuilder: FormBuilder, private authService: AuthGuardService) {
+  constructor(private http: HttpClient, private router: Router,private formBuilder: FormBuilder, private authService: AuthGuardService, private toastr: ToastrService) {
     this.myForm = this.formBuilder.group({
       // name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -58,6 +59,18 @@ export class LoginComponent {
           this.router.navigate(['/admin']); // Redirect to admin page
         } else if (role === 'student') {
           this.router.navigate(['/upload-excel']); // Redirect to student page
+          //this.toastr.success('User details updated successfully', 'Success');
+
+          this.toastr.success('User details updated successfully', '', {
+            timeOut: 3000, // Adjust the duration as needed
+            progressBar: false,
+            closeButton: false,
+            positionClass: 'toastr-success', // Apply the custom CSS class
+            tapToDismiss: false, // Disable click to dismiss
+          });
+
+
+
         } else {
           console.error('Invalid role:', role);
         }

@@ -69,13 +69,60 @@ public class UserTableController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+//    @GetMapping("/getuserdetails/{email}")
+//    public UserFullDetails getUserEntities(@PathVariable String email) {
+//        Optional<UserFullDetails> entityOptional = userFullDetailsRepository.findByEmail(email);
+//        UserFullDetails response=entityOptional.get();
+//        return response;
+//        
+//    }
+	
+	
+    
     @GetMapping("/getuserdetails/{email}")
-    public UserFullDetails getUserEntities(@PathVariable String email) {
+    public ResponseEntity<UserFullDetails> getUserEntities(@PathVariable String email) {
         Optional<UserFullDetails> entityOptional = userFullDetailsRepository.findByEmail(email);
-        UserFullDetails response=entityOptional.get();
-        return response;
         
+        if (entityOptional.isPresent()) {
+            UserFullDetails response = entityOptional.get();
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
-	
-	
+
+    @PostMapping("/updateuserdetails/{email}")
+    public ResponseEntity<UserFullDetails> updateUserDetails(@PathVariable String email, @RequestBody UserFullDetails updatedDetails) {
+        Optional<UserFullDetails> entityOptional = userFullDetailsRepository.findByEmail(email);
+        
+        if (entityOptional.isPresent()) {
+            UserFullDetails existingDetails = entityOptional.get();
+            
+            // Update the existing user details with the new details
+            existingDetails.setName(updatedDetails.getName());
+            existingDetails.setDept(updatedDetails.getDept());
+            existingDetails.setPhoneno(updatedDetails.getPhoneno());
+            existingDetails.setDob(updatedDetails.getDob());
+            
+            // Save the updated details to the database
+            userFullDetailsRepository.save(existingDetails);
+            
+            return ResponseEntity.ok(existingDetails);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -25,6 +25,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AdminNavHeaderComponent } from './admin-nav-header/admin-nav-header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -40,6 +41,7 @@ import { HeaderComponent } from './header/header.component';
     ActionCellRendererComponent,
     UsernameLinkRendererComponent,
     ButtonRendererComponent,
+    
     UserDetailsComponent,
     TableComponent,
     AdminNavHeaderComponent,
@@ -61,6 +63,7 @@ import { HeaderComponent } from './header/header.component';
     MatFormFieldModule,
     AgGridModule,
     MatCardModule,
+    ToastrModule.forRoot(),
     MatDatepickerModule,
     MatNativeDateModule,
     NgbModule,

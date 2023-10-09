@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Makes the container take the full viewport height */
+    height: 100vh; 
   }
   
   /* Style for the form */
@@ -48,3 +48,41 @@
   
   /* Optional: Add additional styles as needed */
   
+
+ /* styles.css (or styles.scss) */
+
+/* Customize Toastr success message */
+.toastr-success {
+  background-color: #4CAF50; /* Green background color */
+  color: white; /* Text color */
+  font-size: 18px; /* Adjust font size as needed */
+  padding: 15px; /* Adjust padding as needed */
+  margin: 10px; /* Add margin for spacing */
+  border-radius: 5px; /* Create a button shape */
+  cursor: pointer; /* Add cursor pointer for hover effect */
+  position: fixed; /* Position at the top left corner */
+  top: 0;
+  left: 0;
+  display: flex; /* Make the message container a flex container */
+  align-items: center; /* Center text vertically */
+  justify-content: space-between; /* Create space between text and button */
+  width: auto; /* Automatically adjust width based on content */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: transform 0.3s; /* Add a hover effect */
+}
+
+/* Customize the button shape inside the success message */
+.toastr-success button {
+  background-color: white;
+  color: #4CAF50;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-right: 10px; /* Adjust spacing between text and button */
+  cursor: pointer;
+}
+
+/* Add a hover effect for the button */
+.toastr-success button:hover {
+  background-color: #f2f2f2;
+}
