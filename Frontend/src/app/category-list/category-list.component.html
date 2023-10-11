@@ -1,0 +1,34 @@
+<!-- <ul>
+    <li *ngFor="let category of categories">
+      {{ category.name }}
+      <button (click)="onAddCategory(category.name)">+</button>
+      <app-category-list [categories]="category.subcategories" (addCategory)="onAddCategory($event)"></app-category-list>
+    </li>
+  </ul> -->
+
+  <!-- <ul>
+    <li *ngFor="let category of categories">
+      {{ category.name }}
+      <button (click)="onAddCategory(category.name)">+</button>
+      <app-category-list [categories]="category.subcategories" (addCategory)="onAddCategory($event)"></app-category-list>
+    </li>
+    <li *ngIf="isAddingSubcategory">
+      <input [(ngModel)]="newSubcategoryName" placeholder="Enter subcategory name" />
+      <button (click)="onSaveSubcategory(newSubcategoryName)">Save</button>
+    </li>
+  </ul> -->
+  <ul>
+    <li *ngFor="let category of categories">
+      {{ category.name }}
+      <button (click)="onAddCategory(category.name)">+</button>
+      <app-category-list
+        [categories]="category.subcategories"
+        (addCategory)="onAddCategoryInChild($event)" 
+      ></app-category-list>
+    </li>
+    <li *ngIf="isAddingSubcategory">
+      <input [(ngModel)]="newSubcategoryName" placeholder="Enter subcategory name" />
+      <button (click)="onSaveSubcategory(newSubcategoryName)">Save</button>
+    </li>
+  </ul>
+  

@@ -246,6 +246,23 @@ export class TableComponent {
     console.log('Enable/Disable:', data);
   }
 
+
+  sentmail(){
+    console.log("hi");
+    this.http.post('http://localhost:8080/api/admin/sentmail',null).subscribe(
+        (response: any) => {
+            console.log("hiiiiii");
+            if (response.message === 'Mails sent successfully.') {
+                console.log('Registration email sent to successful');
+              } else {
+                console.error('Admin creation failed.');
+              }
+        },
+        (error: any) => {
+            console.error('An error occurred while creating the admin:', error);
+          })
+}
+
   // deleteRow(data: any) {
   //   // Implement row deletion logic based on data
   //   const id=data.id;

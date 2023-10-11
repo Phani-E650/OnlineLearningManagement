@@ -1,4 +1,6 @@
+
 <div *ngIf="RowDataUser === 'user' || RowDataUser === ''">
+  <div class="mail"><button class="btn btn-primary" (click)="sentmail()">Sent Mail</button></div>
   <ag-grid-angular
   style="width: 75%; height: 500px;"
   class="ag-theme-alpine"

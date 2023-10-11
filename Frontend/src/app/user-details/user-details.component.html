@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container">
   <mat-card>
     <mat-card-header>
@@ -9,6 +10,7 @@
       <p><strong>Department:</strong> {{ cardData.dept }}</p>
       <p><strong>Phone Number:</strong> {{ cardData.phoneno }}</p>
       <p><strong>DOB:</strong> {{ cardData.dob }}</p>
+
       <button class="btn btn-primary" (click)="startEditing()">Update</button>
     </mat-card-content>
     <mat-card-content *ngIf="isEditing">
@@ -32,4 +34,4 @@
       <button type="submit" class="btn btn-primary" (click)="updateUser()">Submit</button>
     </mat-card-content>
   </mat-card>
-</div>
+  </div>

@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { TableComponent } from './table/table.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { AuthGuard } from './auth.guard';
+import { CategoryCreateComponent } from './category-create/category-create.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'table', component: TableComponent },
   { path: 'user-details/:id', component: UserDetailsComponent ,canActivate: [AuthGuard]},
-  {path: '', redirectTo: '/login', pathMatch: 'full'}
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: 'createcategory', component: CategoryCreateComponent },
 ];
 
 @NgModule({

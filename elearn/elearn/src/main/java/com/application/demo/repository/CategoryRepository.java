@@ -22,4 +22,6 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> 
             ")" +
             "SELECT * FROM CategoryHierarchy", nativeQuery = true)
     List<CategoryEntity> getAllCategoriesWithSubcategories();
+
+	 CategoryEntity findByName(String parentCategoryId);
 }
