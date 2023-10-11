@@ -87,6 +87,7 @@ export class RegistrationComponent implements OnInit {
         if (response.message === 'Student registration initiated successfully.') {
           // Send an email to the admin with the registration link
           // this.sendRegistrationEmail(this.email);
+          this.router.navigate(['/admin']);
           console.log('Registration email sent to successful');
         } else {
           console.error('Admin creation failed.');

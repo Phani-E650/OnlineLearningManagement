@@ -58,10 +58,10 @@ export class LoginComponent {
         if (role === 'admin') {
           this.router.navigate(['/admin']); // Redirect to admin page
         } else if (role === 'student') {
-          this.router.navigate(['/upload-excel']); // Redirect to student page
+          this.router.navigate(['/admin']); // Redirect to student page
           //this.toastr.success('User details updated successfully', 'Success');
 
-          this.toastr.success('User details updated successfully', '', {
+          this.toastr.success('Login SuccessFul', '', {
             timeOut: 3000, // Adjust the duration as needed
             progressBar: false,
             closeButton: false,
