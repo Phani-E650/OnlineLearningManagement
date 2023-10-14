@@ -17,6 +17,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
+
+
 export class HeaderComponent implements OnInit {
 
   loggedUser = '';
@@ -56,6 +59,7 @@ export class HeaderComponent implements OnInit {
   navigateHome()
   {
     if(this.currRole === "admin"){
+      console.log("admin")
       this.router.navigate(['/admin']);
     }
     else if(this.currRole === "professor"){
@@ -64,6 +68,11 @@ export class HeaderComponent implements OnInit {
     else if(this.currRole === "user"){
       this.router.navigate(['/userdashboard']);
     }
+  }
+
+  viewDetails()
+  {
+
   }
 
 

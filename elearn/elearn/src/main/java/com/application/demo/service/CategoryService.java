@@ -2,6 +2,7 @@ package com.application.demo.service;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +65,24 @@ public class CategoryService {
     
     
     
+    public List<CategoryEntity> getAllLeafCategories() {
+        List<CategoryEntity> topCategories = categoryRepository.findByParentCategoryIsNull();
+        List<CategoryEntity> leafCategories = new ArrayList<>();
+        collectLeafCategories(topCategories, leafCategories);
+        return leafCategories;
+    }
     
+    private void collectLeafCategories(List<CategoryEntity> categories, List<CategoryEntity> leafCategories) {
+        for (CategoryEntity category : categories) {
+            List<CategoryEntity> subcategories = category.getSubcategories();
+            if (subcategories == null || subcategories.isEmpty()) {
+                leafCategories.add(category);
+            } else {
+                collectLeafCategories(subcategories, leafCategories);
+            }
+        }
+    }
+
     
     
 }

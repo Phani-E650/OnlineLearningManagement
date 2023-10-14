@@ -40,6 +40,7 @@ export class ActionCellRendererComponent {
   enableDisable(): void {
     if (this.params.enableDisableCallback) {
       // console.log(this.params.data);
+      
       this.params.enableDisableCallback(this.params.data);
       
     }

@@ -1,0 +1,64 @@
+<app-header></app-header>
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3  class="register-heading"><i class="fa fa-sticky-note-o"></i> New Course</h3>
+                    <small class="text-danger"><b>{{msg}}</b></small>
+                    <form #courseform="ngForm" (ngSubmit)="addCourse()">
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Course Name : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="enter course name" name="coursename" [(ngModel)]="course.courseName" required 
+                                #coursename="ngModel"
+                                [class.is-invalid]="coursename.invalid && coursename.touched">
+                               <small class="text-danger" [class.d-none]="coursename.valid || coursename.untouched"><b>required field</b></small>
+                            </div>
+                            <div class="form-group">
+                                <label>Instructor Name : <b style="color:red;">*</b></label>
+                                <input type="text" class="form-control" placeholder="enter instructor name" name="coursename" [(ngModel)]="course.instructorname" required 
+                                #instructorname="ngModel"
+                                [class.is-invalid]="instructorname.invalid && instructorname.touched">
+                               <small class="text-danger" [class.d-none]="instructorname.valid || instructorname.untouched"><b>required field</b></small>
+                            </div>
+                           
+                            
+                            <div class="form-group">
+                                <label>Category : <b style="color:red;">*</b></label>
+                                <select class="form-control" id="sel1" name="language" [(ngModel)]="course.categoryName" #language="ngModel">
+                                  <option *ngFor="let option of categories" [value]="option">{{ option.name }}</option>
+                                </select>
+                              </div>
+                              
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Enrolled Date : <b style="color:red;">*</b></label>
+                                <input type="date" class="form-control" placeholder="select enrolled date" name="enrolleddate" [(ngModel)]="course.startDate" required
+                                #enrolleddate="ngModel"
+                                [class.is-invalid]="enrolleddate.invalid && enrolleddate.touched">
+                                <small class="text-danger" [class.d-none]="enrolleddate.valid || enrolleddate.untouched"><b>required field</b></small>                          
+                            </div>
+                            
+                            
+                            <div class="form-group">
+                                <label for="description">Course Description : <b style="color:red;">*</b></label>
+                                <textarea type="text" rows = "4" class="form-control" placeholder="enter course description here" name="prescription" [(ngModel)]="course.description" required 
+                                #description="ngModel"
+                                [class.is-invalid]="description.invalid && description.touched"></textarea>
+                               <small class="text-danger" [class.d-none]="description.valid || description.untouched"><b>required field</b></small>
+                            </div>
+                        </div>
+                    </div>
+                    <button [disabled]="courseform.form.invalid" type="submit" class="btnRegister"><i class="fa fa-plus"></i> Add Course</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>		
+
+
