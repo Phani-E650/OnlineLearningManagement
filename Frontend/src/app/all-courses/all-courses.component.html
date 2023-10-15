@@ -1,0 +1,18 @@
+<app-header></app-header>
+<br>
+<div class="row">
+    <div  *ngFor="let course of courses | async" class="col-3 card card-item" id="bloodCards">
+        <br>
+        <div class="card-block">
+            <div class="text"><b style="color: darkred; font-size: large;">Course :</b> {{course.courseName}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Course Description :</b> {{course.courseDescription}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Course ID :</b> <small style=" margin-left: 3%; padding: 3px 8px 3px 8px; background-color: rgb(87, 64, 8); border-radius: 10px; font-weight: bold; width: 55%; color: white;">{{course.id}}</small></div>
+            <div class="text"><b style="color: darkred; font-size: large;">Instructor :</b> {{course.professorName}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Course Status :</b> {{course.courseStatus}}</div>
+    
+    
+            <a  (click)="visitCourse(course.courseName)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary">Visit Course</a>
+            
+        </div>
+    </div>
+  </div>

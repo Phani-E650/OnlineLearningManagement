@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ExcelUploadComponent } from './excel-upload/excel-upload.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { ActionCellRendererComponent } from './action-cell-renderer/action-cell-renderer.component';
@@ -34,6 +35,8 @@ import { AddcourseComponent } from './addcourse/addcourse.component';
 import { CoursestableComponent } from './coursestable/coursestable.component';
 import { ApprovecourseComponent } from './approvecourse/approvecourse.component';
 import { CourseListComponent } from './course-list/course-list.component';
+import { AllCoursesComponent } from './all-courses/all-courses.component';
+import { CourseModulesComponent } from './course-modules/course-modules.component';
 
 
 
@@ -61,7 +64,9 @@ import { CourseListComponent } from './course-list/course-list.component';
     AddcourseComponent,
     CoursestableComponent,
     ApprovecourseComponent,
-    CourseListComponent
+    CourseListComponent,
+    AllCoursesComponent,
+    CourseModulesComponent
   
   ],
 
@@ -79,6 +84,7 @@ import { CourseListComponent } from './course-list/course-list.component';
     MatFormFieldModule,
     AgGridModule,
     MatCardModule,
+    CarouselModule,
     ToastrModule.forRoot({
       timeOut: 15000,
       extendedTimeOut: 3000,

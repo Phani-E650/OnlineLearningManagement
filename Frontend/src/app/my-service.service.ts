@@ -40,5 +40,11 @@ export class MyServiceService {
   addcategory(category:any):Observable<any>{
       return this.http.post<any>(`${this.baseUrl}/category/addcategory`,category);
   }
+
+  getCoursesByEmail(loggedUser : string) : Observable<any>
+  {
+    return this.http.get<any>(`${this.baseUrl}/getcoursebyemail/`+loggedUser);
+  }
+  
   
 }
