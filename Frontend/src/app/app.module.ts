@@ -28,10 +28,9 @@ import { HeaderComponent } from './header/header.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
 import { ToastrModule } from 'ngx-toastr';
-import { timeout } from 'rxjs';
+import { TeacherdashboardComponent } from './teacherdashboard/teacherdashboard.component';
+import { AdduserComponent } from './adduser/adduser.component';
 import { AddcourseComponent } from './addcourse/addcourse.component';
-
-
 
 
 
@@ -54,6 +53,8 @@ import { AddcourseComponent } from './addcourse/addcourse.component';
     HeaderComponent,
     CategoryListComponent,
     CategoryCreateComponent,
+    TeacherdashboardComponent,
+    AdduserComponent,
     AddcourseComponent
   
   ],

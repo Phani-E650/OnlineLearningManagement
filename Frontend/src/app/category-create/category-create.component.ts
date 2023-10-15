@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { LogoutService } from '../logout.service';
 import { HttpClient } from '@angular/common/http';
 import { MyServiceService } from '../my-service.service';
@@ -10,7 +10,7 @@ import { MyServiceService } from '../my-service.service';
   styleUrls: ['./category-create.component.css']
 })
 export class CategoryCreateComponent {
-  constructor(private myService: MyServiceService,private http: HttpClient){};
+  constructor(private myService: MyServiceService,private http: HttpClient,private cdr: ChangeDetectorRef){};
   categoriesWithSubcategories: any[] = [];
   categories = [
     {
@@ -44,6 +44,7 @@ export class CategoryCreateComponent {
   {
     console.log("hiiiiii");
     this.fetchCategoriesWithSubcategories();
+    this.cdr.detectChanges();
     if (response.message === 'successfully created.') {
         console.log('Registration email sent to successful');
       } else {
@@ -74,6 +75,7 @@ export class CategoryCreateComponent {
         // Handle error
       }
     );
+    this.cdr.detectChanges();
   }
   ngOnInit(){
 

@@ -174,32 +174,12 @@ h2 {
   margin-top: 5%;
   margin-right: auto;
 }
-@media (max-width: 768px) {
 .container
-{
-    margin-left: 40%;
-    margin-top: -75%;
-    overflow-x: hidden;
-    width: 30%;
-}
-}
-@media (min-width: 769px) and (max-width: 992px) {
-  .container
-  {
-      margin-left: 30%;
-      margin-top: -65%;
-      overflow-x: hidden;
-      width: 50%;
-  }
-}
-@media (min-width: 993px) {
-  .container
 {
     margin-left: 23%;
     margin-top: -55%;
     overflow-x: hidden;
     width: 75%;
-}
 }
 .dashboard-card
 {
