@@ -33,6 +33,7 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { AddcourseComponent } from './addcourse/addcourse.component';
 import { CoursestableComponent } from './coursestable/coursestable.component';
 import { ApprovecourseComponent } from './approvecourse/approvecourse.component';
+import { CourseListComponent } from './course-list/course-list.component';
 
 
 
@@ -59,7 +60,8 @@ import { ApprovecourseComponent } from './approvecourse/approvecourse.component'
     AdduserComponent,
     AddcourseComponent,
     CoursestableComponent,
-    ApprovecourseComponent
+    ApprovecourseComponent,
+    CourseListComponent
   
   ],
 

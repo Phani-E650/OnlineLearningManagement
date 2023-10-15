@@ -7,11 +7,12 @@ export class Course {
     numberOfWeeks: string = '';
     userId: string = '';
     department: string = '';
-    courseStatus: string = '';
+    courseStatus: string = 'inactive';
     categoryId: string = ''; 
     instructorname: string ='';
     categoryName: string ='';
-    description: string='';
+    professorName:any;
+    courseDescription: string='';
     constructor() {}
   }
   

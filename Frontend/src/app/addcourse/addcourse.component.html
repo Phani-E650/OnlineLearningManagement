@@ -18,11 +18,14 @@
                                <small class="text-danger" [class.d-none]="coursename.valid || coursename.untouched"><b>required field</b></small>
                             </div>
                             <div class="form-group">
-                                <label>Instructor Name : <b style="color:red;">*</b></label>
-                                <input type="text" class="form-control" placeholder="enter instructor name" name="coursename" [(ngModel)]="course.instructorname" required 
-                                #instructorname="ngModel"
-                                [class.is-invalid]="instructorname.invalid && instructorname.touched">
-                               <small class="text-danger" [class.d-none]="instructorname.valid || instructorname.untouched"><b>required field</b></small>
+                                <label>department : <b style="color:red;">*</b></label>
+                                <select class="form-control" id="sel1" name="language" [(ngModel)]="course.department"
+                                #language="ngModel">
+                                    <option>IT</option>
+                                    <option>ECE</option>
+                                    <option>CSE</option>
+                                    <option>CIVIL</option>
+                                </select>
                             </div>
                            
                             
@@ -46,7 +49,7 @@
                             
                             <div class="form-group">
                                 <label for="description">Course Description : <b style="color:red;">*</b></label>
-                                <textarea type="text" rows = "4" class="form-control" placeholder="enter course description here" name="prescription" [(ngModel)]="course.description" required 
+                                <textarea type="text" rows = "4" class="form-control" placeholder="enter course description here" name="prescription" [(ngModel)]="course.courseDescription" required 
                                 #description="ngModel"
                                 [class.is-invalid]="description.invalid && description.touched"></textarea>
                                <small class="text-danger" [class.d-none]="description.valid || description.untouched"><b>required field</b></small>

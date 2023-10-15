@@ -28,7 +28,8 @@ export class AddcourseComponent implements OnInit {
     });
     $("#websitelink, #youtubelink").css("display","none");
     $("#websitelink").hide();
-    
+    const p=sessionStorage.getItem('loggedUser');
+    this.course.professorName=p;
     $("select").on('change', function() {
       $(this).find("option:selected").each(function() {
           var option = $(this).attr("value");
