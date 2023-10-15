@@ -14,6 +14,7 @@ import { AddcourseComponent } from './addcourse/addcourse.component';
 import { CoursestableComponent } from './coursestable/coursestable.component';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
+import { CourseContentComponent } from './course-content/course-content.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'teacherdashboard', component: TeacherdashboardComponent },
   { path: 'cousetable', component: CoursestableComponent },
   { path: 'allcourses', component: AllCoursesComponent },
-  {path:'allcourses/:coursename',component:CourseModulesComponent}
+  {path:'allcourses/:coursename',component:CourseModulesComponent},
+  { path: 'course-content', component: CourseContentComponent },
 ];
 
 @NgModule({
