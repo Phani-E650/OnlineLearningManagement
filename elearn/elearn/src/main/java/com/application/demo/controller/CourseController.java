@@ -2,17 +2,22 @@ package com.application.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.application.demo.entity.CourseEntity;
+import com.application.demo.entity.UserTemp;
+import com.application.demo.repository.CourseRepository;
 import com.application.demo.service.CourseService;
 
 
@@ -25,6 +30,8 @@ public class CourseController {
 	
 	@Autowired
 	private CourseService courseService;
+	@Autowired
+	private CourseRepository courseRepo;
 	
 	
 	@PostMapping("/addCourse")
@@ -51,6 +58,35 @@ public class CourseController {
         }
         return sb.toString();
 	}
+	
+	@GetMapping("/getcourses")
+	public List<CourseEntity> getcourses(){
+		return courseService.getAllCourses();
+	}
+	
+	 @PutMapping("/enablecourse/{id}")
+	    public ResponseEntity<CourseEntity> updateEntity(@PathVariable Long id) {
+	    	
+	        Optional<CourseEntity> entityOptional = courseRepo.findById(id);
+
+	        if (entityOptional.isPresent()) {
+	        	CourseEntity existingEntity = entityOptional.get();
+	        	System.out.println(existingEntity.getCourseStatus());
+	        	if(existingEntity.getCourseStatus().equals("inactive")) {
+	        		 existingEntity.setCourseStatus("active");
+	        	}
+	        	else {
+	        		System.out.println(existingEntity.getCourseStatus());
+	        		 existingEntity.setCourseStatus("inactive");
+	        	}
+//	            existingEntity.setDescription(updatedEntity.getDescription());
+	        	System.out.println(existingEntity.getCourseStatus());
+	        	CourseEntity savedEntity = courseRepo.save(existingEntity);
+	            return new ResponseEntity<>(savedEntity, HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	        }
+	    }
 	
 	
 	

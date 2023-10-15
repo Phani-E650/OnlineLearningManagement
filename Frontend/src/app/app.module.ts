@@ -31,6 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { TeacherdashboardComponent } from './teacherdashboard/teacherdashboard.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { AddcourseComponent } from './addcourse/addcourse.component';
+import { CoursestableComponent } from './coursestable/coursestable.component';
+import { ApprovecourseComponent } from './approvecourse/approvecourse.component';
 
 
 
@@ -55,7 +57,9 @@ import { AddcourseComponent } from './addcourse/addcourse.component';
     CategoryCreateComponent,
     TeacherdashboardComponent,
     AdduserComponent,
-    AddcourseComponent
+    AddcourseComponent,
+    CoursestableComponent,
+    ApprovecourseComponent
   
   ],
 

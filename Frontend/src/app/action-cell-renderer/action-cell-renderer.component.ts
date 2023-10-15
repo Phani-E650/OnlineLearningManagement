@@ -1,13 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-action-cell-renderer',
-//   templateUrl: './action-cell-renderer.component.html',
-//   styleUrls: ['./action-cell-renderer.component.css']
-// })
-// export class ActionCellRendererComponent {
-
-// }
 import { Component } from '@angular/core';
 
 @Component({
