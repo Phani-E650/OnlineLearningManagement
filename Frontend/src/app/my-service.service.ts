@@ -37,5 +37,8 @@ export class MyServiceService {
   enablecourse(id:any):Observable<any>{
     return this.http.put((`${this.baseUrl}/enablecourse/${id}`),null);
   }
+  addcategory(category:any):Observable<any>{
+      return this.http.post<any>(`${this.baseUrl}/category/addcategory`,category);
+  }
   
 }

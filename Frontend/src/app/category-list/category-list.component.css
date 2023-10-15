@@ -1,0 +1,8 @@
+.category-name {
+    /* Add your custom styles here */
+    font-weight: bold; /* Example: Make the category name bold */
+    margin-right: 10px; /* Add space to the right of the category name */
+    /* Add other styles as needed */
+    color: #8B0000; 
+  }
+  

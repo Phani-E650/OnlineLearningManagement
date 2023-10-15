@@ -12,6 +12,8 @@ import { MyServiceService } from '../my-service.service';
 export class CategoryCreateComponent {
   constructor(private myService: MyServiceService,private http: HttpClient,private cdr: ChangeDetectorRef){};
   categoriesWithSubcategories: any[] = [];
+  showInputBox = false;  // To control the visibility of the input box
+  newCategory: string = ''; 
   categories = [
     {
       name: 'Category 1',
@@ -53,6 +55,7 @@ export class CategoryCreateComponent {
 },
 (error: any) => {
     console.error('An error occurred while creating the admin:', error);
+    this.fetchCategoriesWithSubcategories();
   }
   )
     // this.categoriesWithSubcategories.push({
@@ -80,6 +83,28 @@ export class CategoryCreateComponent {
   ngOnInit(){
 
  this.fetchCategoriesWithSubcategories();
+  }
+  saveCategory() {
+    // Handle the saving logic here, e.g., add the new category to an array
+    // For demonstration purposes, let's just log the new category.
+    const category={
+      "name":this.newCategory
+    }
+    this.myService.addcategory(category).subscribe((response)=>
+    {
+         console.log("successfully added");
+         this.fetchCategoriesWithSubcategories();
+    },
+    (error: any) => {
+      console.error('An error occurred while creating the admin:', error);
+    });
+    console.log('New category:', this.newCategory);
+    
+    // You can save this category to your TypeScript file or perform any other desired actions.
+    
+    // Reset the input box and hide it
+    this.newCategory = '';
+    this.showInputBox = false;
   }
 
 }
