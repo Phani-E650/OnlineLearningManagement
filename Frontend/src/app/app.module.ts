@@ -37,6 +37,7 @@ import { ApprovecourseComponent } from './approvecourse/approvecourse.component'
 import { CourseListComponent } from './course-list/course-list.component';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
+import { CourseContentComponent } from './course-content/course-content.component';
 
 
 
@@ -66,7 +67,8 @@ import { CourseModulesComponent } from './course-modules/course-modules.componen
     ApprovecourseComponent,
     CourseListComponent,
     AllCoursesComponent,
-    CourseModulesComponent
+    CourseModulesComponent,
+    CourseContentComponent
   
   ],
 
