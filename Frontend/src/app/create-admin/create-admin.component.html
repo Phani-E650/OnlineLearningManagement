@@ -11,12 +11,12 @@
         <input type="text" id="role" name="role" [(ngModel)]="role" class="form-control" required>
       </div> -->
       <div class="form-group">
-        <label for="role">Role:</label>
-    
-      <select [(ngModel)]="role">
-        <option *ngFor="let option of dropdownOptions" [value]="option.value">{{ option.label }}</option>
-      </select>
-     </div>
+        <label for="roleSelect">Role:</label>
+        <select id="roleSelect" [(ngModel)]="role" name="role">
+          <option *ngFor="let option of dropdownOptions" [value]="option.value">{{ option.label }}</option>
+        </select>
+      </div>
+      
       <button type="submit" class="btn btn-primary">Create Admin</button>
     </form>
   </div>

@@ -1,13 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-create-admin',
-//   templateUrl: './create-admin.component.html',
-//   styleUrls: ['./create-admin.component.css']
-// })
-// export class CreateAdminComponent {
-
-// }
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -25,9 +15,9 @@ export class CreateAdminComponent {
 
   constructor(private http: HttpClient,private toastr: ToastrService,private router:Router) {}
   dropdownOptions = [
-    { value: 'Admin', label: 'Admin' },
-    { value: 'Student', label: 'Student' },
-    { value: 'Teacher', label: 'teacher' },
+    { value: 'admin', label: 'Admin' },
+    { value: 'student', label: 'Student' },
+    { value: 'teacher', label: 'teacher' },
   ];
 
   submitAdminCreationForm(): void {
