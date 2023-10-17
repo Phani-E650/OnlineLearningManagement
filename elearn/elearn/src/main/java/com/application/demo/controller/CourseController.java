@@ -54,7 +54,18 @@ public class CourseController {
         }
         return new ResponseEntity<>(courses, HttpStatus.OK);
     }
-	
+	@GetMapping("/getcoursebycousename/{email}/{coursename}")
+    public ResponseEntity<CourseEntity> getCoursesByEmailandcoursename(@PathVariable String email,@PathVariable String coursename) {
+        List<CourseEntity> courses = courseService.getCoursesByProfessorName(email);
+        List<CourseEntity> filteredCourses = courses.stream()
+                .filter(course -> course.getCourseName().equals(coursename))
+                .toList();
+        CourseEntity course=filteredCourses.get(0);
+        if (courses.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(course, HttpStatus.OK);
+    }
 	public String getNewID()
 	{
 		String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"+"0123456789"+"abcdefghijklmnopqrstuvxyz";
