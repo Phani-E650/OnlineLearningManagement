@@ -38,6 +38,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
 import { CourseContentComponent } from './course-content/course-content.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 
 
@@ -87,6 +88,7 @@ import { CourseContentComponent } from './course-content/course-content.componen
     AgGridModule,
     MatCardModule,
     CarouselModule,
+    YouTubePlayerModule,
     ToastrModule.forRoot({
       timeOut: 15000,
       extendedTimeOut: 3000,
