@@ -11,7 +11,7 @@ import { MyServiceService } from '../my-service.service';
 })
 export class CourseModulesComponent {
   moduleNames: string[] = ['Home', 'News', 'Contact', 'About'];
-  video = 'P2wNzig_SLA';
+  video = 'jpvZXcGkUMY';
   courseName = 'springboot';
   // chapterlist : Observable<Chapter[]> | undefined;
   chapter : any | undefined;
@@ -78,26 +78,6 @@ export class CourseModulesComponent {
     chapter8name: 'chapter8',
     chapter8id: 'jpvZXcGkUMY',
  }
-//  {
-//   coursename   : 'maths',
-//   chapter1name  : 'chapter1',
-//   chapter1id : 'jpvZXcGkUMY',
-//   chapter2name : 'chapter2',
-//   chapter2id: "jpvZXcGkUMY",
-//   chapter3name: 'chapter3',
-//   chapter3id: 'jpvZXcGkUMY',
-//   chapter4name: 'chapter4',
-//   chapter4id: 'jpvZXcGkUMY',
-//   chapter5name: 'chapter5',
-//   chapter5id: 'jpvZXcGkUMY',
-//   chapter6name: 'chapter6',
-//   chapter6id: 'jpvZXcGkUMY',
-//   chapter7name: 'chapter7',
-//   chapter7id: 'jpvZXcGkUMY',
-//   chapter8name: 'chapter8',
-//   chapter8id: 'jpvZXcGkUMY',
-//  }
-// ]
     // this.chapterlist = this._service.getChappterListByCourseName(this.courseName);
     // this.courselist = this._service.getCourseListByName(this.courseName);
 
