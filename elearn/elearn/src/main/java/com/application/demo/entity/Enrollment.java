@@ -11,20 +11,11 @@ public class Enrollment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long enrollid;
 	private String coursename;
-//	private String courseid;
-//	private String enrolleddate;
+
 	private String enrolledusername;
-//	private String enrolleduserid;
-//	private String enrolledusertype;
+
 	private String instructorname;
-//	private String instructorinstitution;
-//	private String enrolledcount;
-//	private String youtubeurl;
-//	private String websiteurl;
-//	private String coursetype;
-//	private String skilllevel;
-//	private String language;
-//	private String description;
+
 	public Long getEnrollid() {
 		return enrollid;
 	}

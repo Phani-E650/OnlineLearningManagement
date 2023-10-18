@@ -16,6 +16,7 @@ import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
 import { CourseContentComponent } from './course-content/course-content.component';
 import { AdduserComponent } from './adduser/adduser.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'table', component: TableComponent },
   { path: 'user-details/:id', component: UserDetailsComponent ,canActivate: [AuthGuard]},
+  { path: 'update-details/:id', component: UpdateProfileComponent ,canActivate: [AuthGuard]},
   {path:'add-course',component:AddcourseComponent,canActivate:[AuthGuard]},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'createcategory', component: CategoryCreateComponent },

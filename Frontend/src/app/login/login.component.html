@@ -41,23 +41,34 @@
 
   <div class="container">
     <h2>Login</h2>
-  <form [formGroup]="myForm" (ngSubmit)="login()">
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" formControlName="email" class="form-control">
-      <div class="error" *ngIf="myForm.get('email')?.errors?.['required']">Email is required.</div>
-      <div *ngIf="myForm.get('email')?.errors?.['email']">Invalid email format.</div>
+    <form [formGroup]="myForm" (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" class="form-control">
+        <div class="error" *ngIf="myForm.get('email')?.errors?.['required']">Email is required.</div>
+        <div *ngIf="myForm.get('email')?.errors?.['email']">Invalid email format.</div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" class="form-control">
+        <div class="error" *ngIf="myForm.get('password')?.errors?.['required']">Password is required.</div>
+        <div class="error" *ngIf="myForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</div>
+      </div>
+      <!-- ... Other form fields and validation messages ... -->
+      <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+    </form>
+  
+    <!-- Success message -->
+    <div *ngIf="showSuccessMessage" class="alert alert-success">
+      {{ showSuccessMessage }}
     </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" id="password" formControlName="password" class="form-control">
-      <div class="error" *ngIf="myForm.get('password')?.errors?.['required']">Password is required.</div>
-      <div class="error" *ngIf="myForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</div>
+    
+    <!-- Error message -->
+    <div *ngIf="showErrorMessage" >
+      {{ errorMessage }}
     </div>
-    <!-- ... Other form fields and validation messages ... -->
-    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
-  </form>
-</div>
+  </div>
+  
   
   
 

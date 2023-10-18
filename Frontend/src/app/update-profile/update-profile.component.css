@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Makes the container take the full viewport height */
+  }
+   /* user-details.component.css */
+
+.large-card {
+  width: 400px; /* Adjust the width to your desired size */
+  height: auto; /* Adjust the height as needed */
+  padding: 20px; /* Adjust the padding as needed */
+  /* Add any other styles you want for the card */
+}

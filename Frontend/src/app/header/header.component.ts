@@ -47,6 +47,18 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  // params: any;
+
+  // agInit(params: any): void {
+  //   this.params = params;
+  // }
+  onClick(): void {
+    // if (this.params.onClick) {
+      console.log("hii");
+      this.router.navigate(['update-details', this.loggedUser]);
+     // this.params.onClick(this.params.data);
+    // }
+  }
   logout()
   {
     // sessionStorage.clear();

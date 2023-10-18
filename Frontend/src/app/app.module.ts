@@ -42,6 +42,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { ModuleheaderComponent } from './moduleheader/moduleheader.component';
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 
 
@@ -74,7 +75,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CourseModulesComponent,
     CourseContentComponent,
     ModuleheaderComponent,
-    InputDialogComponent
+    InputDialogComponent,
+    UpdateProfileComponent
   
   ],
 
