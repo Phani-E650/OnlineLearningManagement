@@ -1,0 +1,14 @@
+<!-- <div class="sidebar-logo">
+    <div class="welcometxt" ><b style="color: white;">Enrolled Users</b></div>
+    <button class="logoutbtn" style="margin-right: 1%;" > Assignments</button>
+    <b class="sidebar-text" style="color: whitesmoke;"> Modules</b>
+     <button class="logoutbtn" ><i class="fa fa-sign-out"></i> Logout</button> -->
+<!-- </div> --> 
+<div class="sidebar-logo">
+    <button class="logoutbtn" [routerLink]="['/userenroll',coursename]" style="color: whitesmoke;">Enrolled Users</button>
+    <button class="logoutbtn" style="color: whitesmoke;">Assignments</button>
+    <button class="logoutbtn"  [routerLink]="['/allcourses', coursename]" style="color: whitesmoke;">Modules</button>
+    <!-- <b class="sidebar-text" style="color: whitesmoke;" > Assignments</b>
+    <b class="sidebar-text"  style="color: whitesmoke;"> Modules</b> -->
+    <!-- <button class="logoutbtn" ><i class="fa fa-sign-out"></i> Logout</button> -->
+</div>

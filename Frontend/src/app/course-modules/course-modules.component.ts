@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Course } from '../models/course';
 import { MyServiceService } from '../my-service.service';
+import { Module } from '../models/module';
 
 @Component({
   selector: 'app-course-modules',
@@ -10,7 +11,7 @@ import { MyServiceService } from '../my-service.service';
   styleUrls: ['./course-modules.component.css']
 })
 export class CourseModulesComponent {
-  moduleNames: string[] = ['Home', 'News', 'Contact', 'About'];
+  moduleNames: Module[]| undefined;
   video = 'jpvZXcGkUMY';
   courseName = 'springboot';
   // chapterlist : Observable<Chapter[]> | undefined;
@@ -19,6 +20,7 @@ export class CourseModulesComponent {
   loggedUser = '';
   currRole = '';
   coursedetails : Observable<Course> | undefined;
+  createmodule: Module = new Module();
 
   constructor(private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService) { }
 
@@ -48,6 +50,7 @@ export class CourseModulesComponent {
       this.coursedetails = data;
       console.log(this.coursedetails);
     });
+    this.getmodulename();
   
 
     const target = 'https://www.youtube.com/iframe_api'
@@ -81,6 +84,29 @@ export class CourseModulesComponent {
     // this.chapterlist = this._service.getChappterListByCourseName(this.courseName);
     // this.courselist = this._service.getCourseListByName(this.courseName);
 
+  }
+  addmodule() {
+    let moduleName = prompt('Enter a new module name:');
+    this.createmodule.coursename=this.courseName;
+    if(moduleName!==null){
+         this.createmodule.modulename=moduleName;
+    }
+    this.createmodule.instructorname=this.loggedUser;
+
+    if (moduleName) {
+      this.courseService.addmodule(this.createmodule).subscribe((data)=>
+      {
+        this.getmodulename();
+        console.log(data);
+      });
+      // this.users = this.userService.getUsers();
+    }
+  }
+  getmodulename(){
+    this.courseService.getmoduleByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
+      this.moduleNames = data;
+      console.log(this.moduleNames);
+    });
   }
 
   openOverview()

@@ -39,6 +39,7 @@ import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { CourseModulesComponent } from './course-modules/course-modules.component';
 import { CourseContentComponent } from './course-content/course-content.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { ModuleheaderComponent } from './moduleheader/moduleheader.component';
 
 
 
@@ -69,7 +70,8 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     CourseListComponent,
     AllCoursesComponent,
     CourseModulesComponent,
-    CourseContentComponent
+    CourseContentComponent,
+    ModuleheaderComponent
   
   ],
 
