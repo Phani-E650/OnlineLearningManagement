@@ -40,6 +40,8 @@ import { CourseModulesComponent } from './course-modules/course-modules.componen
 import { CourseContentComponent } from './course-content/course-content.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { ModuleheaderComponent } from './moduleheader/moduleheader.component';
+import { InputDialogComponent } from './input-dialog/input-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -71,7 +73,8 @@ import { ModuleheaderComponent } from './moduleheader/moduleheader.component';
     AllCoursesComponent,
     CourseModulesComponent,
     CourseContentComponent,
-    ModuleheaderComponent
+    ModuleheaderComponent,
+    InputDialogComponent
   
   ],
 
@@ -105,6 +108,7 @@ import { ModuleheaderComponent } from './moduleheader/moduleheader.component';
     MatDatepickerModule,
     MatNativeDateModule,
     NgbModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

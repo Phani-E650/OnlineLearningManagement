@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Course } from '../models/course';
 import { MyServiceService } from '../my-service.service';
 import { Module } from '../models/module';
+import { MatDialog } from '@angular/material/dialog';
+import { InputDialogComponent } from '../input-dialog/input-dialog.component';
 
 @Component({
   selector: 'app-course-modules',
@@ -22,7 +24,7 @@ export class CourseModulesComponent {
   coursedetails : Observable<Course> | undefined;
   createmodule: Module = new Module();
 
-  constructor(private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService) { }
+  constructor(private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
@@ -106,6 +108,33 @@ export class CourseModulesComponent {
     this.courseService.getmoduleByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
       this.moduleNames = data;
       console.log(this.moduleNames);
+    });
+  }
+  openInputDialog(): void {
+    const dialogRef = this.dialog.open(InputDialogComponent, {
+      width: '400px', // Set the width as per your design
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe((moduleName) => {
+      if (moduleName) {
+        // Do something with the result (input value) received from the dialog
+        console.log('You entered: ' + moduleName);
+        this.createmodule.coursename=this.courseName;
+        if(moduleName!==null){
+             this.createmodule.modulename=moduleName;
+        }
+        this.createmodule.instructorname=this.loggedUser;
+    
+        if (moduleName) {
+          this.courseService.addmodule(this.createmodule).subscribe((data)=>
+          {
+            this.getmodulename();
+            console.log(data);
+          });
+          // this.users = this.userService.getUsers();
+        }
+      }
     });
   }
 
