@@ -1,3 +1,7 @@
+.app-container {
+  display: flex;
+  height: 100vh; /* Ensure the container takes the full viewport height */
+}
 .continer
 {
     background-color: white;
@@ -5,10 +9,11 @@
     box-shadow: 4px 4px 35px 8px darkgray;
     margin: 3% 5% 3% 5%;
     padding: 3%;
+    display: flex;
 }
 .chapter-list
 {
-    margin-top: -0%;
+    margin-top: 25px;
     float: right;
     overflow-y: scroll;
     padding: 2%;
@@ -16,6 +21,7 @@
     background-color: white;
     width: 36%;
     height: 380px;
+    flex: 1;
 }
 .chapter-list::-webkit-scrollbar {
     width: 8px;
@@ -150,8 +156,6 @@ body {
     padding: 0;
     width: 200px;
     background-color: #f1f1f1;
-    position: fixed;
-    height: 100%;
     overflow: auto;
   }
   .sidebar li:hover::before {
@@ -177,9 +181,11 @@ body {
   }
   
   div.content {
-    margin-left: 200px;
+    margin-left: 0px;
     padding: 1px 16px;
     height: 80%;
+    margin-bottom:200px;
+    flex: 1;
   }
   .sidebar ul {
     list-style-type: none;
