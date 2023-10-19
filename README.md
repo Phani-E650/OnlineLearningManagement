@@ -20,7 +20,9 @@ Before you can run the application, you need to have the following software inst
 cd OnlineLearningManagement/backend
 
 spring.datasource.url=jdbc:mysql://localhost:3306/your_db_name
+
 spring.datasource.username=your_db_username
+
 spring.datasource.password=your_db_password
 
 
