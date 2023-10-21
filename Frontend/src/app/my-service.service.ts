@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Course } from './models/course';
 import { Enrollment } from './models/enroll';
 import { Module } from './models/module';
+import { VideoContent } from './models/videocontent';
 
 @Injectable({
   providedIn: 'root'
@@ -65,5 +66,17 @@ export class MyServiceService {
  {
    return this.http.get<any>(`${this.baseUrl}/modules/getmodules/${loggedUser}/${cousename}`);
  }
+ 
+ getvideocontent(loggedUser : string,cousename:string,modulename:string) : Observable<any>
+ {
+  const params = new HttpParams()
+  .set('instructorName', loggedUser)
+  .set('courseName', cousename)
+  .set('moduleName',modulename);
+  return this.http.get<any>(`${this.baseUrl}/video-content/getcoursecontent`,{params:params});
+ }
+ addvideo(video:VideoContent){
+  return this.http.post<any>(`${this.baseUrl}/video-content/add`,video);
+}
   
 }

@@ -15,7 +15,7 @@
         <a [routerLink]="['/modules', module]">{{ module }}</a>
       </li> -->
       <li *ngFor="let module of moduleNames ">
-        <label [routerLink]="['/modules', module.modulename]" style="cursor: pointer;">{{ module.modulename }}</label>
+        <label [routerLink]="['/modules', module.modulename]" (click)="getvideocourse(module.modulename)" style="cursor: pointer;">{{ module.modulename }}</label>
        </li>
       <li>
        <button (click)="openInputDialog()">Add Module</button>
@@ -35,13 +35,15 @@
         <div style="font-weight: bold; font-size: large; align-items: center; color: darkred;"><i class="fa fa-list"></i> Course Contents</div>
         <div style="color: gray; font-weight: 400; font-size: small; margin-bottom: 5%;">(click on chapter name to get into the videos)</div>
         <div style="color: red; font-size: medium; font-weight: bolder; margin-top: 30%; margin-left: 5%; margin-right: 5%;" *ngIf="chapter.chapter1name === ''">Currently No Chapters available for this Course. Please wait, the Instructor will be adding the chapters soon here</div>
-
-        <div style="cursor: pointer;" (click)="set1()" class="chapter1" *ngIf="chapter.chapter1name !== ''">
-            <div class="box1" id="select-box"><i class="fa fa-check"></i></div>
-            <div class="name" (click)="openChapter(chapter.chapter1id)"> 1) {{chapter.chapter1name}}</div>
+        <div *ngFor="let video of videocontent ">
+        <div style="cursor: pointer;" (click)="set1()" class="chapter1" *ngIf="video.contentname !== ''">
+            <!-- <div class="box1" id="select-box"><i class="fa fa-check"></i></div> -->
+            <div class="name" (click)="openChapter(video.videourl)"> 1) {{video.contentname}}</div>
             <div style="color: gray; font-weight: 600; font-size: small; margin-left: 12%;">subcontents (1/1)</div>
         </div>
-        <hr *ngIf="chapter.chapter1name !== ''">
+        </div>
+        <button (click)="videoadd()">Add Video</button>
+        <!-- <hr *ngIf="chapter.chapter1name !== ''">
 
         <div style="cursor: pointer;" (click)="set2()" class="chapter2" *ngIf="chapter.chapter2name !== ''">
             <div class="box2" id="select-box"><i class="fa fa-check"></i></div>
@@ -90,7 +92,7 @@
             <div class="name" (click)="openChapter(chapter.chapter8id)"> 8) {{chapter.chapter8name}}</div>
             <div style="color: gray; font-weight: 600; font-size: small; margin-left: 12%;">subcontents (1/1)</div>
         </div>
-        <hr *ngIf="chapter.chapter8name !== ''">
+        <hr *ngIf="chapter.chapter8name !== ''"> -->
 </div>
 </div>
 </div>
