@@ -1,6 +1,7 @@
 package com.application.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,4 +23,8 @@ public class ModuleService {
 		// TODO Auto-generated method stub
 		return modulerepo.findAll();
 	}
+	public ModuleEntity findModule(String moduleName, String courseName, String instructorName) {
+        Optional<ModuleEntity> moduleOptional = modulerepo.findByModulenameAndCoursenameAndInstructorname(moduleName, courseName, instructorName);
+        return moduleOptional.get();
+    }
 }
