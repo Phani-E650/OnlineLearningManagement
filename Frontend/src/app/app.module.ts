@@ -43,6 +43,7 @@ import { ModuleheaderComponent } from './moduleheader/moduleheader.component';
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { AnnouncementsComponent } from './announcements/announcements.component';
 
 
 
@@ -76,7 +77,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     CourseContentComponent,
     ModuleheaderComponent,
     InputDialogComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    AnnouncementsComponent
   
   ],
 

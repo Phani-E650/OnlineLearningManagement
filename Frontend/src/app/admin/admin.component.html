@@ -17,7 +17,7 @@
          <i class="fa fa-plus" aria-hidden="true"></i> <label [routerLink]="['/create']" style="cursor: pointer;">Add User</label>
       </li>
       <li>
-        <i class="fa fa-plus" aria-hidden="true"></i> <label [routerLink]="['/upload-excel']" style="cursor: pointer;">Add Users</label>
+        <i class="fa fa-plus" aria-hidden="true"></i> <label (click)="openExcelDialog()" style="cursor: pointer;">Add Users</label>
      </li>
      <li>
       <i class="fa fa-book" aria-hidden="true"></i> <label [routerLink]="['/createcategory']" style="cursor: pointer;">Add Category</label>

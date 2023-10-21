@@ -1,0 +1,24 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+    <form (ngSubmit)="submitForm()" #announcementForm="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="announcement.title" required>
+      </div>
+      <div class="form-group mt-4">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="announcement.description" required></textarea>
+      </div>
+      <div class="mt-4">
+        <button  (click)="closeDialog()" class="btn btn-primary ">Cancel</button>
+      <button type="submit" class="btn btn-primary ms-2" >Submit</button>
+    </div>
+    </form>
+    </div>
+    </div>
+
+  </div>
+  
+
+  

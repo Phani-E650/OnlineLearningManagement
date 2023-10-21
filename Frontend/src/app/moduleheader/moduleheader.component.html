@@ -6,6 +6,7 @@
 <!-- </div> --> 
 <div class="sidebar-logo">
     <button class="logoutbtn" [routerLink]="['/userenroll',coursename]" style="color: whitesmoke;">Enrolled Users</button>
+    <button class="logoutbtn" (click)="openAnnouncements()" style="color: whitesmoke;">Announcements</button>
     <button class="logoutbtn" style="color: whitesmoke;">Assignments</button>
     <button class="logoutbtn"  [routerLink]="['/allcourses', coursename]" style="color: whitesmoke;">Modules</button>
     <!-- <b class="sidebar-text" style="color: whitesmoke;" > Assignments</b>
