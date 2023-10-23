@@ -53,6 +53,7 @@ export class CourseModulesComponent {
     $("#qa, #notes, #announcements, #questions, #notestxt, #downloads").hide();
     $("#downloadalert").css("display","none");
     this.courseName = this.activatedRoute.snapshot.params['coursename'];
+    sessionStorage.setItem('course',this.courseName);
     this.courseService.getCoursesByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
       this.coursedetails = data;
       console.log(this.coursedetails);

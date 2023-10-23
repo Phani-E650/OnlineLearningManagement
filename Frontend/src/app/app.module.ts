@@ -45,6 +45,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { VideoaddComponent } from './videoadd/videoadd.component';
+import { AssignmentsComponent } from './assignments/assignments.component';
 
 
 
@@ -80,7 +81,8 @@ import { VideoaddComponent } from './videoadd/videoadd.component';
     InputDialogComponent,
     UpdateProfileComponent,
     AnnouncementsComponent,
-    VideoaddComponent
+    VideoaddComponent,
+    AssignmentsComponent
   
   ],
 

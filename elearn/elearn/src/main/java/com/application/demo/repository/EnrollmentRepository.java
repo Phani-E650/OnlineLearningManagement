@@ -17,3 +17,5 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long>{
 	@Query("SELECT e.enrolledusername FROM Enrollment e")
     List<String> findAllEmails();
 }
+
+

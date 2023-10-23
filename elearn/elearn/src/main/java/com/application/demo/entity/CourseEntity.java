@@ -1,9 +1,13 @@
 package com.application.demo.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,13 +35,23 @@ public class CourseEntity {
     private String professorName;
     
     
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    @JsonIgnore
+    public List<AnnouncementEntity> announcements= new ArrayList<>();
+    
 
 	
 
 
+
+	
+
+
+
+
 	public CourseEntity(Long id, String courseName, String courseId, String courseDescription, Date startDate,
 			int numberOfWeeks, Long userId, String department, String courseStatus, Date endDate, String category,
-			String modules, String professorName) {
+			String modules, String professorName, List<AnnouncementEntity> announcements) {
 		super();
 		this.id = id;
 		this.courseName = courseName;
@@ -52,7 +66,11 @@ public class CourseEntity {
 		this.category = category;
 		this.modules = modules;
 		this.professorName = professorName;
+		this.announcements = announcements;
 	}
+
+
+
 
 	public CourseEntity() {
 		super();
@@ -167,7 +185,25 @@ public class CourseEntity {
 		this.professorName = professorName;
 	}
 
-    // getters and setters
+
+
+
+	public List<AnnouncementEntity> getAnnouncements() {
+		return announcements;
+	}
+
+
+
+
+	public void setAnnouncements(List<AnnouncementEntity> announcements) {
+		this.announcements = announcements;
+	}
+
+
+
+
+	
+    
     
     
     

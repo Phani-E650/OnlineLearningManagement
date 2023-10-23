@@ -78,5 +78,10 @@ export class MyServiceService {
  addvideo(video:VideoContent){
   return this.http.post<any>(`${this.baseUrl}/video-content/add`,video);
 }
+
+
+createAssignmentWithFileUpload(formData: FormData): Observable<any> {
+  return this.http.post(`${this.baseUrl}/assignments/upload`, formData);
+}
   
 }

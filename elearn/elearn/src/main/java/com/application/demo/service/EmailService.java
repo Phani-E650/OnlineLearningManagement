@@ -38,7 +38,9 @@ public class EmailService {
             message.setTo(email);
             message.setSubject("Announcement: " + title);
             message.setText("Dear User,\n\n" + description + "\n\nBest regards,\n Illinois state university");
+            
 
+            
             javaMailSender.send(message);
         }
     }

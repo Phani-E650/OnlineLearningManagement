@@ -1,0 +1,24 @@
+<div class="container mt-4">
+<div  class="card">
+    <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #assignmentForm="ngForm" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required [(ngModel)]="assignment.title">
+      </div>
+      <div class="form-group mt-4">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="4" required [(ngModel)]="assignment.description"></textarea>
+      </div>
+      <div class="form-group" class="mt-4">
+        <label for="pdfFile">PDF File</label>
+        <input type="file" class="form-control-file" id="pdfFile" name="pdfFile" (change)="onFileSelected($event)" required>
+      </div>
+      <div class="form-group" class="mt-4">
+      <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+  </div>
+</div>
+</div>
+  
