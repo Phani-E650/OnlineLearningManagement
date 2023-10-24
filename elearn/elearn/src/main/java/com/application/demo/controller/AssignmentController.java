@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import jakarta.persistence.criteria.Path;
 
 @RestController
 @RequestMapping("assignments")
+@CrossOrigin("*")
 public class AssignmentController {
     @Autowired
     private AssignmentService assignmentService;
@@ -47,11 +49,14 @@ public class AssignmentController {
         List<AssignmentEntity> assignments = assignmentService.getAllAssignments();
         
         return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_PDF)
+                .contentType(MediaType.APPLICATION_JSON)
                 .body(assignments);
-        //return ResponseEntity.ok(assignments);
     }
 
+    
+    
+    
+    
     
     
     

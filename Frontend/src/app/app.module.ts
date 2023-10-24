@@ -46,6 +46,7 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { VideoaddComponent } from './videoadd/videoadd.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
+import { AssignmentListComponent } from './assignment-list/assignment-list.component';
 
 
 
@@ -82,7 +83,8 @@ import { AssignmentsComponent } from './assignments/assignments.component';
     UpdateProfileComponent,
     AnnouncementsComponent,
     VideoaddComponent,
-    AssignmentsComponent
+    AssignmentsComponent,
+    AssignmentListComponent
   
   ],
 

@@ -6,6 +6,7 @@ import { Course } from './models/course';
 import { Enrollment } from './models/enroll';
 import { Module } from './models/module';
 import { VideoContent } from './models/videocontent';
+import { Assignment } from './models/assignment';
 
 @Injectable({
   providedIn: 'root'
@@ -83,5 +84,12 @@ export class MyServiceService {
 createAssignmentWithFileUpload(formData: FormData): Observable<any> {
   return this.http.post(`${this.baseUrl}/assignments/upload`, formData);
 }
+
+// assignment.service.ts
+
+getAllAssignments(): Observable<Assignment[]> {
+  return this.http.get<Assignment[]>(`${this.baseUrl}/assignments/assignments`);
+}
+
   
 }

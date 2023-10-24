@@ -24,9 +24,13 @@ export class AssignmentsComponent {
       this.assignmentService.createAssignmentWithFileUpload(formData)
         .subscribe((result) => {
           // Handle the result, e.g., show a success message
+          if(!result){
+            console.log("success")
+          }
         });
     }
   }
+
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];

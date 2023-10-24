@@ -19,6 +19,7 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
+import { AssignmentListComponent } from './assignment-list/assignment-list.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'userenroll/:coursename', component: AdduserComponent },
   { path: 'announcements', component: AnnouncementsComponent },
   { path: 'assignments', component: AssignmentsComponent },
+  { path: 'assignments-list', component: AssignmentListComponent },
 ];
 
 @NgModule({
