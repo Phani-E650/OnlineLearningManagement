@@ -1,3 +1,7 @@
+.custom-video-style{
+  color: blue; 
+  padding: 10px;
+}
 .app-container {
   display: flex;
   height: 100vh; /* Ensure the container takes the full viewport height */

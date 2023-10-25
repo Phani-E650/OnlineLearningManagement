@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { InputDialogComponent } from '../input-dialog/input-dialog.component';
 import { VideoContent } from '../models/videocontent';
 import { VideoaddComponent } from '../videoadd/videoadd.component';
+import { UpdatevideocontentComponent } from '../updatevideocontent/updatevideocontent.component';
+import { UpdatemoduleComponent } from '../updatemodule/updatemodule.component';
 
 @Component({
   selector: 'app-course-modules',
@@ -28,6 +30,7 @@ export class CourseModulesComponent {
   createmodule: Module = new Module();
   videocontent:any;
   createvideo:VideoContent=new VideoContent();
+  updatevideoreq:VideoContent=new VideoContent();
 
   constructor(private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService,public dialog: MatDialog) { }
 
@@ -117,6 +120,41 @@ export class CourseModulesComponent {
       // this.users = this.userService.getUsers();
     }
   }
+  deletemodule(id:any){
+    this.courseService.deletemodule(id).subscribe((id)=>
+    {
+      console.log(id+"deleted");
+      this.getmodulename();
+    })
+  }
+  updatemodule(id:any,modulename:any){
+    const dialogRef = this.dialog.open(UpdatemoduleComponent, {
+      width: '400px', // Set the width as per your design
+      data: { content: modulename },
+    });
+
+    dialogRef.afterClosed().subscribe((moduleName) => {
+      if (moduleName) {
+        // Do something with the result (input value) received from the dialog
+        console.log('You entered: ' + moduleName);
+        // this.createmodule.coursename=this.courseName;
+        // if(moduleName!==null){
+        //      this.createmodule.modulename=moduleName;
+        // }
+        // this.createmodule.instructorname=this.loggedUser;
+    
+        if (moduleName) {
+          this.courseService.updatemodule(id,moduleName).subscribe((data)=>
+          {
+            this.getmodulename();
+            console.log(data);
+          });
+          // this.users = this.userService.getUsers();
+        }
+      }
+    });
+
+  }
   getmodulename(){
     this.courseService.getmoduleByEmailandcoursename(this.loggedUser,this.courseName)
     //  .pipe(
@@ -194,6 +232,44 @@ export class CourseModulesComponent {
         }
       }
     });
+  }
+  deletevideo(id:any){
+    this.courseService.deletevideo(id).subscribe((id)=>
+    {
+      console.log(id+"deleted");
+      this.getmodulename();
+    })
+  }
+  updatevideo(videoname:any,url:any,id:any){
+    let content={
+      videoname:videoname,
+      videourl:url
+    }
+    const dialogRef = this.dialog.open(UpdatevideocontentComponent, {
+      width: '400px',
+      data: { content: { ...content } }, // Pass a copy of the data to the dialog
+    });
+  
+    dialogRef.afterClosed().subscribe((updatedData) => {
+      if (updatedData) {
+        // Handle the updated data here
+        this.updatevideoreq.contentName=updatedData.videoname;
+        this.updatevideoreq.videoUrl=updatedData.videourl;
+
+        console.log('Updated Video Name:', updatedData.videoname);
+        console.log('Updated Video URL:', updatedData.videourl);
+        // You can update your main component's data with the updatedData
+        if (updatedData) {
+          this.courseService.updatevideo(id,this.updatevideoreq).subscribe((data)=>
+          {
+            this.getmodulename();
+            console.log(data);
+          });
+          // this.users = this.userService.getUsers();
+        }
+      }
+    });
+      
   }
 
   openOverview()

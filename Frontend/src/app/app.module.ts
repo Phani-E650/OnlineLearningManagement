@@ -47,6 +47,8 @@ import { AnnouncementsComponent } from './announcements/announcements.component'
 import { VideoaddComponent } from './videoadd/videoadd.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentListComponent } from './assignment-list/assignment-list.component';
+import { UpdatevideocontentComponent } from './updatevideocontent/updatevideocontent.component';
+import { UpdatemoduleComponent } from './updatemodule/updatemodule.component';
 
 
 
@@ -84,7 +86,9 @@ import { AssignmentListComponent } from './assignment-list/assignment-list.compo
     AnnouncementsComponent,
     VideoaddComponent,
     AssignmentsComponent,
-    AssignmentListComponent
+    AssignmentListComponent,
+    UpdatevideocontentComponent,
+    UpdatemoduleComponent
   
   ],
 

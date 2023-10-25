@@ -16,6 +16,8 @@
       </li> -->
       <li *ngFor="let module of moduleNames ">
         <label [routerLink]="['/modules', module.modulename]" (click)="getvideocourse(module.modulename)" style="cursor: pointer;">{{ module.modulename }}</label>
+        <i class="fa fa-edit" (click)="updatemodule(module.id,module.modulename)" style="font-size:24px"></i>
+        <i class="material-icons" (click)="deletemodule(module.id)" style="font-size:24px" >delete</i>
        </li>
       <li>
        <button (click)="openInputDialog()">Add Module</button>
@@ -38,8 +40,12 @@
         <div *ngFor="let video of videocontent ">
         <div style="cursor: pointer;" (click)="set1()" class="chapter1" *ngIf="video.contentname !== ''">
             <!-- <div class="box1" id="select-box"><i class="fa fa-check"></i></div> -->
-            <div class="name" (click)="openChapter(video.videourl)"> 1) {{video.contentname}}</div>
-            <div style="color: gray; font-weight: 600; font-size: small; margin-left: 12%;">subcontents (1/1)</div>
+            <div class="custom-video-style">
+             <span class="name" (click)="openChapter(video.videourl)">  {{video.contentname}}</span>
+              <i class="fa fa-edit" (click)="updatevideo(video.contentname,video.videourl,video.id)" style="font-size:24px"></i>
+              <i class="material-icons" (click)="deletevideo(video.id)" style="font-size:24px" >delete</i>
+            </div>
+            <!-- <div style="color: gray; font-weight: 600; font-size: small; margin-left: 12%;">subcontents (1/1)</div> -->
         </div>
         </div>
         <button (click)="videoadd()">Add Video</button>

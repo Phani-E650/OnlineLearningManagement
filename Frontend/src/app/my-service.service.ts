@@ -63,6 +63,12 @@ export class MyServiceService {
   addmodule(module:Module){
     return this.http.post<any>(`${this.baseUrl}/modules/add`,module);
  }
+ deletemodule(id:any){
+  return this.http.delete<any>(`${this.baseUrl}/modules/${id}`);
+}
+updatemodule(id:any,module:any){
+  return this.http.put<any>(`${this.baseUrl}/modules/${id}/${module}`,null);
+}
  getmoduleByEmailandcoursename(loggedUser : string,cousename:string) : Observable<any>
  {
    return this.http.get<any>(`${this.baseUrl}/modules/getmodules/${loggedUser}/${cousename}`);
@@ -79,7 +85,12 @@ export class MyServiceService {
  addvideo(video:VideoContent){
   return this.http.post<any>(`${this.baseUrl}/video-content/add`,video);
 }
-
+deletevideo(id:any){
+  return this.http.delete<any>(`${this.baseUrl}/video-content/delete/${id}`);
+}
+updatevideo(id:any,video:VideoContent){
+  return this.http.put<any>(`${this.baseUrl}/video-content/update/${id}`,video);
+}
 
 createAssignmentWithFileUpload(formData: FormData): Observable<any> {
   return this.http.post(`${this.baseUrl}/assignments/upload`, formData);
