@@ -56,22 +56,26 @@ public class VideoContentService {
         }
 
         VideoContent videoContent = optionalVideoContent.get();
-        ModuleEntity module = moduleService.findModule(videoContentDto.getModuleName(), videoContentDto.getCourseName(), videoContentDto.getInstructorName());
-
+        
+//        ModuleEntity module = moduleService.findModule(videoContentDto.getModuleName(), videoContentDto.getCourseName(), videoContentDto.getInstructorName());
+        ModuleEntity module= videoContent.getModule();
+        
         if (module == null) {
             // Handle the case when the module doesn't exist
             // You can return an error or handle it as needed
             return null;
         }
-
         videoContent.setContentname(videoContentDto.getContentName());
         videoContent.setVideourl(videoContentDto.getVideoUrl());
         videoContent.setModule(module);
-
         return videoContentRepository.save(videoContent);
     }
 
     public void deleteVideoContent(Long id) {
+        Optional<VideoContent> deletecontent = videoContentRepository.findById(id);
+    	ModuleEntity mm= deletecontent.get().getModule();
+    	mm.getVideoContents().remove(deletecontent.get());
+    	modulerepo.save(mm);
         videoContentRepository.deleteById(id);
     }
     public List<VideoContent> getVideoContentsByInstructorCourseModule(String instructorName, String courseName, String moduleName) {
