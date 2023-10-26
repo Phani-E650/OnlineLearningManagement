@@ -32,7 +32,10 @@ public class ModuleService {
 	}
 	public ModuleEntity findModule(String moduleName, String courseName, String instructorName) {
         Optional<ModuleEntity> moduleOptional = modulerepo.findByModulenameAndCoursenameAndInstructorname(moduleName, courseName, instructorName);
-        return moduleOptional.get();
+        if(moduleOptional.isPresent())
+        	return moduleOptional.get();
+        else
+        	return null;
     }
 	 public void deleteModuleAndContents(Long moduleId) {
 	        ModuleEntity module = modulerepo.findById(moduleId)

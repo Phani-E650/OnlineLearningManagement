@@ -1,6 +1,7 @@
 package com.application.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.application.demo.entity.ModuleEntity;
+import com.application.demo.entity.VideoContent;
+import com.application.demo.repository.ModuleRepository;
 import com.application.demo.service.ModuleService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -23,9 +26,16 @@ import com.application.demo.service.ModuleService;
 public class Modulescontroller {
 	@Autowired
 	ModuleService moduleService;
+	@Autowired
+	ModuleRepository modulerepo;
 	 @PostMapping("/add")
-    public ModuleEntity addModule(@RequestBody ModuleEntity module) {
-        return moduleService.savemodule(module);
+    public ResponseEntity<?> addModule(@RequestBody ModuleEntity module) {
+		 ModuleEntity exist=moduleService.findModule(module.getModulename(),module.getCoursename(),module.getInstructorname());
+	    	if(exist!=null) {
+	    		return ResponseEntity.status(HttpStatus.CONFLICT).body("Video content already exists");
+	    	}
+	    	
+	         return ResponseEntity.ok(moduleService.savemodule(module));
     }
 
     @GetMapping("/list")
@@ -46,8 +56,15 @@ public class Modulescontroller {
         return new ResponseEntity<>("Module and associated video contents deleted successfully", HttpStatus.OK);
     }
     @PutMapping("/{moduleId}/{updatedModule}")
-    public ResponseEntity<ModuleEntity> updateModule(@PathVariable Long moduleId, @PathVariable String  updatedModule) {
-        ModuleEntity updated = moduleService.updateModule(moduleId, updatedModule);
-        return new ResponseEntity<>(updated, HttpStatus.OK);
+    public ResponseEntity<?> updateModule(@PathVariable Long moduleId, @PathVariable String  updatedModule) {
+//        ModuleEntity updated = moduleService.updateModule(moduleId, updatedModule);
+//        return new ResponseEntity<>(updated, HttpStatus.OK);
+    	Optional<ModuleEntity> existingModule = modulerepo.findById(moduleId);
+        ModuleEntity exist=moduleService.findModule(updatedModule,existingModule.get().getCoursename(),existingModule.get().getInstructorname());
+    	if(exist!=null) {
+    		return ResponseEntity.status(HttpStatus.CONFLICT).body("Video content already exists");
+    	}
+    	
+         return ResponseEntity.ok(moduleService.updateModule(moduleId, updatedModule));
     }
 }

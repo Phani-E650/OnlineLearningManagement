@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.application.demo.entity.Enrollment;
 import com.application.demo.entity.ModuleEntity;
+import com.application.demo.entity.VideoContent;
 
 @Repository
 public interface ModuleRepository extends JpaRepository<ModuleEntity, Long> {
@@ -16,4 +17,5 @@ public interface ModuleRepository extends JpaRepository<ModuleEntity, Long> {
 	List<ModuleEntity> findByInstructornameAndCoursename(String value1, String value2);
 	 Optional<ModuleEntity> findByModulenameAndCoursenameAndInstructorname(String moduleName, String courseName, String instructorName);
     // You can add custom query methods if needed
+	ModuleEntity findByModulename(String modulename);
 }

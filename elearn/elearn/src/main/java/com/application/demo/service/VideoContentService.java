@@ -89,4 +89,16 @@ public class VideoContentService {
     	
 //        return videoContentRepository.findVideoContentsByInstructorCourseModule(instructorName, courseName, moduleName);
     }
+
+	public VideoContent findByContentname(VideoContentDto videoContentDto) {
+		// TODO Auto-generated method stub
+		List<VideoContent> exist=videoContentRepository.findByContentname(videoContentDto.getContentName());
+		VideoContent rt=null;
+		for (VideoContent i:exist) {
+			if(i.getModule().getModulename().equals(videoContentDto.getModuleName())&& i.getModule().getCoursename().equals(videoContentDto.getCourseName())) {
+				rt=i;
+			}
+		}
+		return rt;
+	}
 }
