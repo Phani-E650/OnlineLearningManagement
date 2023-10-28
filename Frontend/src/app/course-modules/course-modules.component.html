@@ -14,11 +14,19 @@
       <!-- <li *ngFor="let module of moduleNames">
         <a [routerLink]="['/modules', module]">{{ module }}</a>
       </li> -->
-      <li *ngFor="let module of moduleNames ">
-        <label [routerLink]="['/modules', module.modulename]" (click)="getvideocourse(module.modulename)" style="cursor: pointer;">{{ module.modulename }}</label>
-        <i class="fa fa-edit" (click)="updatemodule(module.id,module.modulename)" style="font-size:24px"></i>
-        <i class="material-icons" (click)="deletemodule(module.id)" style="font-size:24px" >delete</i>
-       </li>
+      <!-- <li *ngFor="let module of moduleNames ">
+        <label [routerLink]="['/modules', module.modulename]" (click)="getvideocourse(module.modulename)" (click)="selectmodule(module.id)" style="cursor: pointer;"
+        [ngClass]="{ 'selected-module': module.id === selectedModuleId }">{{ module.modulename }}</label>
+        <i class="fa fa-edit" (click)="updatemodule(module.id,module.modulename)" style="font-size:24px; cursor: pointer;"></i>
+        <i class="material-icons" (click)="deletemodule(module.id)" style="font-size:24px; cursor: pointer;">delete</i>
+       </li> -->
+       <li *ngFor="let module of moduleNames" [ngClass]="{ 'selected-module': module.id === selectedModuleId }">
+        <div class="navbar-item" >
+          <label [routerLink]="['/modules', module.modulename]" (click)="getvideocourse(module.modulename)" (click)="selectmodule(module.id)" style="cursor: pointer;">{{ module.modulename }}</label>
+          <i class="fa fa-edit" (click)="updatemodule(module.id, module.modulename)" style="font-size: 24px; cursor: pointer;"></i>
+          <i class="material-icons" (click)="deletemodule(module.id)" style="font-size: 24px; cursor: pointer;">delete</i>
+        </div>
+      </li>
       <li>
        <button (click)="openInputDialog()">Add Module</button>
        </li>
@@ -38,15 +46,15 @@
         <div style="color: gray; font-weight: 400; font-size: small; margin-bottom: 5%;">(click on chapter name to get into the videos)</div>
         <div style="color: red; font-size: medium; font-weight: bolder; margin-top: 30%; margin-left: 5%; margin-right: 5%;" *ngIf="chapter.chapter1name === ''">Currently No Chapters available for this Course. Please wait, the Instructor will be adding the chapters soon here</div>
         <div *ngFor="let video of videocontent ">
-        <div style="cursor: pointer;" (click)="set1()" class="chapter1" *ngIf="video.contentname !== ''">
+        <!-- <div style="cursor: pointer;" (click)="set1()" class="chapter1" *ngIf="video.contentname !== ''"> -->
             <!-- <div class="box1" id="select-box"><i class="fa fa-check"></i></div> -->
-            <div class="custom-video-style">
-             <span class="name" (click)="openChapter(video.videourl)">  {{video.contentname}}</span>
-              <i class="fa fa-edit" (click)="updatevideo(video.contentname,video.videourl,video.id)" style="font-size:24px"></i>
-              <i class="material-icons" (click)="deletevideo(video.id)" style="font-size:24px" >delete</i>
+            <div class="custom-video-style" [ngClass]="{ 'selected-video': video.id === selectedvideoId }">
+             <span class="name" (click)="openChapter(video.videourl)"(click)="selectvideo(video.id)">  {{video.contentname}}</span>
+              <i class="fa fa-edit" (click)="updatevideo(video.contentname,video.videourl,video.id)" style="font-size:24px; cursor: pointer;"></i>
+              <i class="material-icons" (click)="deletevideo(video.id)" style="font-size:24px;cursor : pointer;">delete</i>
             </div>
             <!-- <div style="color: gray; font-weight: 600; font-size: small; margin-left: 12%;">subcontents (1/1)</div> -->
-        </div>
+        <!-- </div> -->
         </div>
         <button (click)="videoadd()">Add Video</button>
         <!-- <hr *ngIf="chapter.chapter1name !== ''">

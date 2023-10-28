@@ -41,6 +41,13 @@ export class AdduserComponent {
       // this.users = this.userService.getUsers();
     }
   }
+  deleteuser(id:any){
+    this.courseService.deleteenrollment(id).subscribe((data)=>
+    {
+      this.getusers();
+      console.log(data);
+    });
+  }
   ngOnInit(): void {
     this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
     this.loggedUser = this.loggedUser.replace(/"/g, '');

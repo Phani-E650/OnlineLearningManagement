@@ -17,6 +17,8 @@ import { UpdatemoduleComponent } from '../updatemodule/updatemodule.component';
   styleUrls: ['./course-modules.component.css']
 })
 export class CourseModulesComponent {
+  selectedModuleId: any | null = null;
+  selectedvideoId: any | null = null;
   moduleNames: Module[]=[];
   video = 'jpvZXcGkUMY';
   courseName = 'springboot';
@@ -95,6 +97,12 @@ export class CourseModulesComponent {
     // this.chapterlist = this._service.getChappterListByCourseName(this.courseName);
     // this.courselist = this._service.getCourseListByName(this.courseName);
 
+  }
+  selectmodule(moduleid:any){
+    this.selectedModuleId =moduleid;
+  }
+  selectvideo(videoid:any){
+    this.selectedvideoId =videoid;
   }
   getvideocourse(module:any){
     this.currentmodule=module;

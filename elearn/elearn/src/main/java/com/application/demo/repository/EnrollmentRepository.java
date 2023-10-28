@@ -16,6 +16,9 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long>{
 	
 	@Query("SELECT e.enrolledusername FROM Enrollment e")
     List<String> findAllEmails();
+
+	List<Enrollment> findByEnrolledusernameAndCoursenameAndInstructorname(String enrolledusername, String coursename,
+			String instructorname);
 }
 
 

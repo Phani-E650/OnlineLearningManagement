@@ -56,6 +56,9 @@ export class MyServiceService {
   addenrollment(enroll:Enrollment){
      return this.http.post<any>(`${this.baseUrl}/addenrollment`,enroll);
   }
+  deleteenrollment(id:any){
+    return this.http.delete<any>(`${this.baseUrl}/deleteenroll/${id}`);
+  }
   getUsersByEmailandcoursename(loggedUser : string,cousename:string) : Observable<any>
   {
     return this.http.get<any>(`${this.baseUrl}/getenrolledusers/${loggedUser}/${cousename}`);

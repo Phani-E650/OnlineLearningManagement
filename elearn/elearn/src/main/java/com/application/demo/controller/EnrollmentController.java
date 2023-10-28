@@ -1,9 +1,13 @@
 package com.application.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.application.demo.entity.CourseEntity;
 import com.application.demo.entity.Enrollment;
+import com.application.demo.entity.ModuleEntity;
+import com.application.demo.entity.UserFullDetails;
+import com.application.demo.repository.EnrollmentRepository;
+import com.application.demo.repository.UserFullDetailsRepository;
 import com.application.demo.service.CourseService;
 import com.application.demo.service.EnrollmentService;
 
@@ -20,16 +28,28 @@ import com.application.demo.service.EnrollmentService;
 public class EnrollmentController {
 	@Autowired
 	private EnrollmentService enrollService;
+	@Autowired
+	private UserFullDetailsRepository userfull;
+	 @Autowired
+	 private EnrollmentRepository enrollRepo;
 	
 	@PostMapping("/addenrollment")
-	public Enrollment addNewCourse(@RequestBody Enrollment enrollment) throws Exception
+	public ResponseEntity<?> addNewCourse(@RequestBody Enrollment enrollment) throws Exception
 	{
 		Enrollment courseObj = null;
 //		String newID = getNewID();
 //		enrollment.setEnrollid(newID);
+		List<Enrollment> existenroll=enrollRepo.findByEnrolledusernameAndCoursenameAndInstructorname(enrollment.getEnrolledusername(),enrollment.getCoursename(),enrollment.getInstructorname());
+		Optional<UserFullDetails> existingusers= userfull.findByEmail(enrollment.getEnrolledusername());
+		if(existingusers.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not exists");
+		}
+		if(existenroll.size()>0) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists");
+		}
 		
 		courseObj = enrollService.addNewCourse(enrollment);
-		return courseObj;
+		return ResponseEntity.ok(courseObj);
 	}
 	public String getNewID()
 	{
@@ -46,4 +66,8 @@ public class EnrollmentController {
 	public List<Enrollment> getusers(@PathVariable String email,@PathVariable String coursename){
 		return enrollService.getAllEnrollUsers(email,coursename);
 	}
+	 @DeleteMapping("/deleteenroll/{id}")
+	    public void deleteVideoContent(@PathVariable Long id) {
+		 enrollService.deleteenroll(id);
+	    }
 }

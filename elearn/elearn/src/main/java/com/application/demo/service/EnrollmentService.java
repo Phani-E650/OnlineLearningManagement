@@ -21,5 +21,9 @@ public class EnrollmentService {
 		
 		return enrollers;
 	}
+	public void deleteenroll(Long id) {
+		
+		enrollRepo.deleteById(id);
+	}
 
 }

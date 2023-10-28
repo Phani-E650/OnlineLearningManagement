@@ -4,8 +4,12 @@
 <div class="user-list">
     <h1>User List</h1>
     <ul>
-      <li *ngFor="let user of enrollers ">{{ user.enrolledusername }}</li>
+      <li *ngFor="let user of enrollers" style="margin-bottom: 10px;">
+        <span style="margin-right: 10px; color: rgb(90, 145, 47);">{{ user.enrolledusername }}</span>
+        <i class="material-icons"  (click)="deleteuser(user.enrollid)" style="font-size: 24px; cursor: pointer; ">delete</i>
+      </li>
     </ul>
+    
     <button (click)="addUser()">Add User</button>
   </div>
 
