@@ -83,6 +83,9 @@ public class CourseController {
 		return courseService.getAllCourses();
 	}
 	
+	
+	
+	
 	 @PutMapping("/enablecourse/{id}")
 	    public ResponseEntity<CourseEntity> updateEntity(@PathVariable Long id) {
 	    	
@@ -106,6 +109,24 @@ public class CourseController {
 	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	        }
 	    }
+	 
+	 @CrossOrigin(origins = "http://localhost:4200")
+	 @PutMapping("updatecourse")
+	 public ResponseEntity<CourseEntity> updateCourse(@RequestBody CourseEntity updatedCourse) {
+	     Optional<CourseEntity> courseOptional = courseRepo.findById(updatedCourse.getId());
+
+	     if (courseOptional.isPresent()) {
+	         CourseEntity existingCourse = courseOptional.get();
+	         existingCourse.setCourseName(updatedCourse.getCourseName());
+	         existingCourse.setCourseDescription(updatedCourse.getCourseDescription());
+	         
+	         CourseEntity updatedEntity = courseRepo.save(existingCourse);
+	         return new ResponseEntity<>(updatedEntity, HttpStatus.OK);
+	     } else {
+	         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	     }
+	 }
+
 	
 	
 	

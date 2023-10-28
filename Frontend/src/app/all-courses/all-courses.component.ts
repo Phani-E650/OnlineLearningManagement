@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { AllCourses } from 'src/app/models/allcourses';
 import { Course } from '../models/course';
 import { MyServiceService } from '../my-service.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateCourseComponent } from '../update-course/update-course.component';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class AllCoursesComponent {
   loggedUser = '';
   currRole = '';
   courses : Observable<Course[]> | undefined;
-  constructor( private _router : Router,private courseService : MyServiceService) { }
+  constructor( private _router : Router,private courseService : MyServiceService, private dialog : MatDialog) { }
 
   ngOnInit(): void 
   {
@@ -39,6 +41,17 @@ export class AllCoursesComponent {
   }
   }
 
+
+  updateCourse(courseId : any): void {
+    this.dialog.open(UpdateCourseComponent, {
+      data: { courseId: courseId },
+      width: '500px',
+      height:'500px'
+    });
+  }
+
+
+
   isScriptLoaded(target: string): boolean
   {
     return document.querySelector('script[src="' + target + '"]') ? true : false
@@ -48,6 +61,8 @@ export class AllCoursesComponent {
   {
     this._router.navigate(['/allcourses', coursename]);
   }
+
+  
 
   owlDragging(e: any){
     console.log(e);

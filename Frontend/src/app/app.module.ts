@@ -49,6 +49,7 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentListComponent } from './assignment-list/assignment-list.component';
 import { UpdatevideocontentComponent } from './updatevideocontent/updatevideocontent.component';
 import { UpdatemoduleComponent } from './updatemodule/updatemodule.component';
+import { UpdateCourseComponent } from './update-course/update-course.component';
 
 
 
@@ -88,7 +89,8 @@ import { UpdatemoduleComponent } from './updatemodule/updatemodule.component';
     AssignmentsComponent,
     AssignmentListComponent,
     UpdatevideocontentComponent,
-    UpdatemoduleComponent
+    UpdatemoduleComponent,
+    UpdateCourseComponent
   
   ],
 
