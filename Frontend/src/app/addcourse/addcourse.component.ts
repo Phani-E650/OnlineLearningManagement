@@ -49,7 +49,7 @@ export class AddcourseComponent implements OnInit {
     this.courseService.addCourse(this.course).subscribe(
       data => {
         console.log("Course added Successfully !!!");
-        this._router.navigate(['/addchapter']);
+        this._router.navigate(['/addcourse']);
       },
       error => {
         console.log("Process Failed");

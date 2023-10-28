@@ -28,7 +28,10 @@ public class CourseService {
 	{
 		return (List<CourseEntity>)courseRepo.findAll();
 	}
-	
+	public CourseEntity findCourseByCourseNameAndProfessorNameAndCategoryName(String courseName, String professorName, String categoryName) {
+	    return courseRepo.findByCourseNameAndProfessorNameAndCategory(courseName, professorName, categoryName);
+	}
+
 	
 	
 
