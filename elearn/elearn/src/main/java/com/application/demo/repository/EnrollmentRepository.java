@@ -12,13 +12,13 @@ import com.application.demo.entity.Enrollment;
 @Repository
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long>{
 //	List<CourseEntity> findByProfessorName(String professorName);
-	List<Enrollment> findByInstructornameAndCoursename(String value1, String value2);
+//	List<Enrollment> findByInstructornameAndCoursename(String value1, String value2);
 	
 	@Query("SELECT e.enrolledusername FROM Enrollment e")
     List<String> findAllEmails();
 
-	List<Enrollment> findByEnrolledusernameAndCoursenameAndInstructorname(String enrolledusername, String coursename,
-			String instructorname);
+//	List<Enrollment> findByEnrolledusernameAndCoursenameAndInstructorname(String enrolledusername, String coursename,
+//			String instructorname);
 }
 
 

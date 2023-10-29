@@ -2,6 +2,7 @@ package com.application.demo.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import com.application.demo.entity.CourseEntity;
 import com.application.demo.entity.Enrollment;
 import com.application.demo.entity.ModuleEntity;
 import com.application.demo.entity.UserFullDetails;
+import com.application.demo.repository.CourseRepository;
 import com.application.demo.repository.EnrollmentRepository;
 import com.application.demo.repository.UserFullDetailsRepository;
 import com.application.demo.service.CourseService;
@@ -32,14 +34,19 @@ public class EnrollmentController {
 	private UserFullDetailsRepository userfull;
 	 @Autowired
 	 private EnrollmentRepository enrollRepo;
+	 @Autowired
+		private CourseRepository courseRepo;
 	
-	@PostMapping("/addenrollment")
-	public ResponseEntity<?> addNewCourse(@RequestBody Enrollment enrollment) throws Exception
+	@PostMapping("/addenrollment/{courseid}")
+	public ResponseEntity<?> addNewCourse(@RequestBody Enrollment enrollment,@PathVariable String courseid) throws Exception
 	{
 		Enrollment courseObj = null;
 //		String newID = getNewID();
 //		enrollment.setEnrollid(newID);
-		List<Enrollment> existenroll=enrollRepo.findByEnrolledusernameAndCoursenameAndInstructorname(enrollment.getEnrolledusername(),enrollment.getCoursename(),enrollment.getInstructorname());
+//		List<Enrollment> existenroll=enrollRepo.findByEnrolledusernameAndCoursenameAndInstructorname(enrollment.getEnrolledusername(),enrollment.getCoursename(),enrollment.getInstructorname());
+		List<Enrollment> existenroll= courseRepo.findById(Long.parseLong(courseid)).get().getEnrolllist().stream()
+                .filter(modu -> modu.getEnrolledusername().equals(enrollment.getEnrolledusername()))
+                .collect(Collectors.toList());
 		Optional<UserFullDetails> existingusers= userfull.findByEmail(enrollment.getEnrolledusername());
 		if(existingusers.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not exists");
@@ -48,7 +55,7 @@ public class EnrollmentController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists");
 		}
 		
-		courseObj = enrollService.addNewCourse(enrollment);
+		courseObj = enrollService.addNewCourse(enrollment,courseid);
 		return ResponseEntity.ok(courseObj);
 	}
 	public String getNewID()
@@ -62,9 +69,13 @@ public class EnrollmentController {
         }
         return sb.toString();
 	}
-	@GetMapping("/getenrolledusers/{email}/{coursename}")
-	public List<Enrollment> getusers(@PathVariable String email,@PathVariable String coursename){
-		return enrollService.getAllEnrollUsers(email,coursename);
+//	@GetMapping("/getenrolledusers/{email}/{coursename}")
+//	public List<Enrollment> getusers(@PathVariable String email,@PathVariable String coursename){
+//		return enrollService.getAllEnrollUsers(email,coursename);
+//	}
+	@GetMapping("/getenrolledusers/{id}")
+	public List<Enrollment> getusers(@PathVariable String id){
+		return enrollService.getAllEnrollUsers(id);
 	}
 	 @DeleteMapping("/deleteenroll/{id}")
 	    public void deleteVideoContent(@PathVariable Long id) {

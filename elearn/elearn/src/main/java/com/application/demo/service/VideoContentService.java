@@ -28,8 +28,8 @@ public class VideoContentService {
 
     public VideoContent addVideoContent(VideoContentDto videoContentDto) {
     	
-    	ModuleEntity module = moduleService.findModule(videoContentDto.getModuleName(), videoContentDto.getCourseName(), videoContentDto.getInstructorName());
-        
+//    	ModuleEntity module = moduleService.findModule(videoContentDto.getModuleName(), videoContentDto.getCourseName(), videoContentDto.getInstructorName());
+   	   ModuleEntity module=modulerepo.findById(Long.parseLong(videoContentDto.getModuleName())).get();
         if (module == null) {
             // Handle the case when the module doesn't exist
             // You can return an error or handle it as needed
@@ -78,27 +78,27 @@ public class VideoContentService {
     	modulerepo.save(mm);
         videoContentRepository.deleteById(id);
     }
-    public List<VideoContent> getVideoContentsByInstructorCourseModule(String instructorName, String courseName, String moduleName) {
-        ModuleEntity module = moduleService.findModule(moduleName,courseName,instructorName);
-          if (module != null) {
-              return module.getVideoContents();
-          } else {
-              return Collections.emptyList(); // Author not found
-          }
-    	
-    	
-//        return videoContentRepository.findVideoContentsByInstructorCourseModule(instructorName, courseName, moduleName);
-    }
+//    public List<VideoContent> getVideoContentsByInstructorCourseModule(String instructorName, String courseName, String moduleName) {
+//        ModuleEntity module = moduleService.findModule(moduleName,courseName,instructorName);
+//          if (module != null) {
+//              return module.getVideoContents();
+//          } else {
+//              return Collections.emptyList(); // Author not found
+//          }
+//    	
+//    	
+////        return videoContentRepository.findVideoContentsByInstructorCourseModule(instructorName, courseName, moduleName);
+//    }
 
-	public VideoContent findByContentname(VideoContentDto videoContentDto) {
-		// TODO Auto-generated method stub
-		List<VideoContent> exist=videoContentRepository.findByContentname(videoContentDto.getContentName());
-		VideoContent rt=null;
-		for (VideoContent i:exist) {
-			if(i.getModule().getModulename().equals(videoContentDto.getModuleName())&& i.getModule().getCoursename().equals(videoContentDto.getCourseName())) {
-				rt=i;
-			}
-		}
-		return rt;
-	}
+//	public VideoContent findByContentname(VideoContentDto videoContentDto) {
+//		// TODO Auto-generated method stub
+//		List<VideoContent> exist=videoContentRepository.findByContentname(videoContentDto.getContentName());
+//		VideoContent rt=null;
+//		for (VideoContent i:exist) {
+//			if(i.getModule().getModulename().equals(videoContentDto.getModuleName())&& i.getModule().getCoursename().equals(videoContentDto.getCourseName())) {
+//				rt=i;
+//			}
+//		}
+//		return rt;
+//	}
 }

@@ -22,7 +22,7 @@
        </li> -->
        <li *ngFor="let module of moduleNames" [ngClass]="{ 'selected-module': module.id === selectedModuleId }">
         <div class="navbar-item" >
-          <label [routerLink]="['/modules', module.modulename]" (click)="getvideocourse(module.modulename)" (click)="selectmodule(module.id)" style="cursor: pointer;">{{ module.modulename }}</label>
+          <label [routerLink]="['/modules', module.id]" (click)="getvideocourse(module.id)" (click)="selectmodule(module.id)" style="cursor: pointer;">{{ module.modulename }}</label>
           <i class="fa fa-edit" (click)="updatemodule(module.id, module.modulename)" style="font-size: 24px; cursor: pointer;"></i>
           <i class="material-icons" (click)="deletemodule(module.id)" style="font-size: 24px; cursor: pointer;">delete</i>
         </div>

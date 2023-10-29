@@ -59,10 +59,15 @@ export class CourseModulesComponent {
     $("#downloadalert").css("display","none");
     this.courseName = this.activatedRoute.snapshot.params['coursename'];
     sessionStorage.setItem('course',this.courseName);
-    this.courseService.getCoursesByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
+    // this.courseService.getCoursesByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
+    //   this.coursedetails = data;
+    //   console.log(this.coursedetails);
+    // });
+    this.courseService.getCourseDetailsbyid(this.courseName).subscribe((data) => {
       this.coursedetails = data;
       console.log(this.coursedetails);
     });
+
     this.getmodulename();
   
 
@@ -104,9 +109,13 @@ export class CourseModulesComponent {
   selectvideo(videoid:any){
     this.selectedvideoId =videoid;
   }
-  getvideocourse(module:any){
-    this.currentmodule=module;
-    this.courseService.getvideocontent(this.loggedUser,this.courseName,module).subscribe((data) => {
+  getvideocourse(moduleid:any){
+    this.currentmodule=moduleid;
+    // this.courseService.getvideocontent(this.loggedUser,this.courseName,module).subscribe((data) => {
+    //   this.videocontent = data;
+    //   console.log(this.videocontent);
+    // });
+    this.courseService.getvideocontentbyid(moduleid).subscribe((data) => {
       this.videocontent = data;
       console.log(this.videocontent);
     });
@@ -133,7 +142,7 @@ export class CourseModulesComponent {
     {
       console.log(id+"deleted");
       this.getmodulename();
-    })
+    });
   }
   updatemodule(id:any,modulename:any){
     const dialogRef = this.dialog.open(UpdatemoduleComponent, {
@@ -163,8 +172,28 @@ export class CourseModulesComponent {
     });
 
   }
+  // getmodulename(){
+  //   this.courseService.getmoduleByEmailandcoursename(this.loggedUser,this.courseName)
+  //   //  .pipe(
+  //   //   filter(data => !!data), // Ensure that data is available
+  //   //   distinctUntilChanged((prev, current) => this.getModuleName(prev) === this.getModuleName(current)), // Prevent redundant calls
+  //   //   take(1), // Ensure the API call is made only once
+  //   // )
+  //   // .subscribe((data) => {
+  //   //   this.moduleNames = data;
+  //   //   console.log(this.moduleNames);
+  //   //   console.log(this.moduleNames);
+  //   //   const moduleName = this.getModuleName(data);
+  //   //   this.getvideocourse(this.moduleNames[0].modulename);
+  //   // });
+  //   .subscribe((data) => {
+  //     this.moduleNames = data;
+  //     this.getvideocourse(this.moduleNames[0].modulename);
+  //     console.log(this.moduleNames);
+  //   });
+  // }
   getmodulename(){
-    this.courseService.getmoduleByEmailandcoursename(this.loggedUser,this.courseName)
+    this.courseService.getmoduleById(this.courseName)
     //  .pipe(
     //   filter(data => !!data), // Ensure that data is available
     //   distinctUntilChanged((prev, current) => this.getModuleName(prev) === this.getModuleName(current)), // Prevent redundant calls
@@ -179,10 +208,12 @@ export class CourseModulesComponent {
     // });
     .subscribe((data) => {
       this.moduleNames = data;
-      this.getvideocourse(this.moduleNames[0].modulename);
+      this.getvideocourse(this.moduleNames[0].id);
+      this.selectmodule(this.moduleNames[0].id)
       console.log(this.moduleNames);
     });
   }
+
   private getModuleName(data: any): string {
     return data ? data.map((module:any) => module.modulename).join('') : '';
   }
@@ -196,7 +227,7 @@ export class CourseModulesComponent {
       if (moduleName) {
         // Do something with the result (input value) received from the dialog
         console.log('You entered: ' + moduleName);
-        this.createmodule.coursename=this.courseName;
+        this.createmodule.id=this.courseName;
         if(moduleName!==null){
              this.createmodule.modulename=moduleName;
         }
@@ -220,7 +251,7 @@ export class CourseModulesComponent {
     });
 
     dialogRef.afterClosed().subscribe((videoName) => {
-      if (videoName) {
+      if (videoName.videoname) {
   
         // Do something with the result (input value) received from the dialog
         console.log('You entered: ' + videoName);

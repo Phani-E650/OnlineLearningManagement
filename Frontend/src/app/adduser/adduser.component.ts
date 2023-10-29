@@ -33,7 +33,7 @@ export class AdduserComponent {
     this.enroll.instructorname=this.loggedUser;
 
     if (userName) {
-      this.courseService.addenrollment(this.enroll).subscribe((data)=>
+      this.courseService.addenrollment(this.enroll,this.courseName).subscribe((data)=>
       {
         this.getusers();
         console.log(data);
@@ -55,14 +55,18 @@ export class AdduserComponent {
     this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
     this.currRole = this.currRole.replace(/"/g, '');
     this.courseName = this.activatedRoute.snapshot.params['coursename'];
-    this.courseService.getCoursesByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
+    // this.courseService.getCoursesByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
+    //   this.coursedetails = data;
+    //   console.log(this.coursedetails);
+    // });
+    this.courseService.getCourseDetailsbyid(this.courseName).subscribe((data) => {
       this.coursedetails = data;
       console.log(this.coursedetails);
     });
     this.getusers();
   }
   getusers(){
-    this.courseService.getUsersByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
+    this.courseService.getUsersBycourseid(this.courseName).subscribe((data) => {
       this.enrollers = data;
       console.log(this.coursedetails);
     });
@@ -96,9 +100,10 @@ export class AdduserComponent {
         this.enroll.instructorname=this.loggedUser;
         
         
-   this.courseService.addenrollment(this.enroll).subscribe(
+   this.courseService.addenrollment(this.enroll,this.courseName).subscribe(
     (response: any) => {
       this.getusers();
+      this.data=[];
       if (response.message === 'Student registration initiated successfully.') {
        
         console.log('Registration email sent to successful');

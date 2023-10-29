@@ -13,9 +13,9 @@ import com.application.demo.entity.VideoContent;
 @Repository
 public interface ModuleRepository extends JpaRepository<ModuleEntity, Long> {
 
-	List<ModuleEntity> findByCoursenameAndInstructorname(String courseName, String instructorName);
-	List<ModuleEntity> findByInstructornameAndCoursename(String value1, String value2);
-	 Optional<ModuleEntity> findByModulenameAndCoursenameAndInstructorname(String moduleName, String courseName, String instructorName);
+//	List<ModuleEntity> findByCoursenameAndInstructorname(String courseName, String instructorName);
+//	List<ModuleEntity> findByInstructornameAndCoursename(String value1, String value2);
+//	 Optional<ModuleEntity> findByModulenameAndCoursenameAndInstructorname(String moduleName, String courseName, String instructorName);
     // You can add custom query methods if needed
 	ModuleEntity findByModulename(String modulename);
 }
