@@ -21,28 +21,28 @@ public class AssignmentService {
     @Value("${file.upload.path}")
     private String fileUploadPath;
 
-    public AssignmentEntity saveAssignment(AssignmentEntity assignment) {
-        MultipartFile pdfFile = assignment.getPdfFile();
-        if (pdfFile != null) {
-            String originalFilename = pdfFile.getOriginalFilename();
-            String filePath = fileUploadPath + originalFilename; // Access path from the property file
-
-            // Save the file to the specified location
-            try {
-                pdfFile.transferTo(new File(filePath));
-                assignment.setPdfFilePath(filePath);
-            } catch (IOException e) {
-                // Handle the exception
-                e.printStackTrace();
-            }
-        }
-
-        return assignmentRepository.save(assignment);
-    }
-    
-    public List<AssignmentEntity> getAllAssignments() {
-        return assignmentRepository.findAll();
-    }
+//    public AssignmentEntity saveAssignment(AssignmentEntity assignment) {
+//        MultipartFile pdfFile = assignment.getPdfFile();
+//        if (pdfFile != null) {
+//            String originalFilename = pdfFile.getOriginalFilename();
+//            String filePath = fileUploadPath + originalFilename; // Access path from the property file
+//
+//            // Save the file to the specified location
+//            try {
+//                pdfFile.transferTo(new File(filePath));
+//                assignment.setPdfFilePath(filePath);
+//            } catch (IOException e) {
+//                // Handle the exception
+//                e.printStackTrace();
+//            }
+//        }
+//
+//        return assignmentRepository.save(assignment);
+//    }
+//    
+//    public List<AssignmentEntity> getAllAssignments() {
+//        return assignmentRepository.findAll();
+//    }
     
 
     

@@ -30,28 +30,28 @@ public class AssignmentController {
    
 
     // Create a new assignment with a file upload
-    @PostMapping("/upload")
-    public AssignmentEntity createAssignmentWithFileUpload(@RequestParam("title") String title,
-                                                    @RequestParam("description") String description,
-                                                    @RequestParam("pdfFile") MultipartFile pdfFile) {
-        AssignmentEntity assignment = new AssignmentEntity();
-        assignment.setTitle(title);
-        assignment.setDescription(description);
-        assignment.setPdfFile(pdfFile);
-        
-        
-
-        return assignmentService.saveAssignment(assignment);
-    }
-    
-    @GetMapping("/assignments")
-    public ResponseEntity<List<AssignmentEntity>> getAllAssignments() {
-        List<AssignmentEntity> assignments = assignmentService.getAllAssignments();
-        
-        return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(assignments);
-    }
+//    @PostMapping("/upload")
+//    public AssignmentEntity createAssignmentWithFileUpload(@RequestParam("title") String title,
+//                                                    @RequestParam("description") String description,
+//                                                    @RequestParam("pdfFile") MultipartFile pdfFile) {
+//        AssignmentEntity assignment = new AssignmentEntity();
+//        assignment.setTitle(title);
+//        assignment.setDescription(description);
+//        assignment.setPdfFile(pdfFile);
+//        
+//        
+//
+//        return assignmentService.saveAssignment(assignment);
+//    }
+//    
+//    @GetMapping("/assignments")
+//    public ResponseEntity<List<AssignmentEntity>> getAllAssignments() {
+//        List<AssignmentEntity> assignments = assignmentService.getAllAssignments();
+//        
+//        return ResponseEntity.ok()
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .body(assignments);
+//    }
 
     
     

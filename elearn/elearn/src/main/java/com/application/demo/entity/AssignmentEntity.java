@@ -1,11 +1,15 @@
 package com.application.demo.entity;
 
+import java.util.Optional;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -16,19 +20,32 @@ public class AssignmentEntity {
 
     private String title;
     private String description;
+    
+    private String fileUrl;
+    
+    private String fileName;
+    
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private CourseEntity course;
 
-    @Transient 
-    private MultipartFile pdfFile; 
+    
+    
+	
 
-    private String pdfFilePath;
+	
 
-	public AssignmentEntity(Long id, String title, String description, MultipartFile pdfFile, String pdfFilePath) {
+	
+
+	public AssignmentEntity(Long id, String title, String description, String fileUrl, String fileName,
+			CourseEntity course) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.pdfFile = pdfFile;
-		this.pdfFilePath = pdfFilePath;
+		this.fileUrl = fileUrl;
+		this.fileName = fileName;
+		this.course = course;
 	}
 
 	public AssignmentEntity() {
@@ -60,22 +77,33 @@ public class AssignmentEntity {
 		this.description = description;
 	}
 
-	public MultipartFile getPdfFile() {
-		return pdfFile;
+	public String getFileUrl() {
+		return fileUrl;
 	}
 
-	public void setPdfFile(MultipartFile pdfFile) {
-		this.pdfFile = pdfFile;
+	public void setFileUrl(String fileUrl) {
+		this.fileUrl = fileUrl;
 	}
 
-	public String getPdfFilePath() {
-		return pdfFilePath;
+	public CourseEntity getCourse() {
+		return course;
 	}
 
-	public void setPdfFilePath(String pdfFilePath) {
-		this.pdfFilePath = pdfFilePath;
-	} 
-    
+	public void setCourse(CourseEntity course) {
+		this.course = course;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	
+
+	
 	
     
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -45,7 +46,10 @@ public class CourseEntity {
     @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     @JsonIgnore
     public List<AnnouncementEntity> announcements= new ArrayList<>();
-
+    
+    
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<AssignmentEntity> assignments;
 
 	public Long getId() {
 		return id;
