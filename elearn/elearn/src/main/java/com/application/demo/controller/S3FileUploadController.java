@@ -87,7 +87,7 @@ public class S3FileUploadController {
   @GetMapping("/download-pdf")
   public ResponseEntity<byte[]> downloadPDF(@RequestParam String fileName) {
       try {
-          S3Object s3Object = s3Client.getObject("elearningsystem", "lms/" + fileName);
+          S3Object s3Object = s3Client.getObject("elearningsystem", "/lms//" + fileName);
           byte[] pdfBytes = s3Object.getObjectContent().readAllBytes();
 
           HttpHeaders headers = new HttpHeaders();

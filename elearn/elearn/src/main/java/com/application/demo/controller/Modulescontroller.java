@@ -34,15 +34,7 @@ public class Modulescontroller {
 	@Autowired
 	private CourseRepository courseRepo;
 	
-//	 @PostMapping("/add")
-//    public ResponseEntity<?> addModule(@RequestBody ModuleEntity module) {
-//		 ModuleEntity exist=moduleService.findModule(module.getModulename(),module.getCoursename(),module.getInstructorname());
-//	    	if(exist!=null) {
-//	    		return ResponseEntity.status(HttpStatus.CONFLICT).body("Video content already exists");
-//	    	}
-//	    	
-//	         return ResponseEntity.ok(moduleService.savemodule(module));
-//    }
+
 	 @PostMapping("/add")
 	    public ResponseEntity<?> addModule(@RequestBody ModuleEntity module) {
 		 Optional<CourseEntity> course=courseRepo.findById(module.getId());
@@ -63,13 +55,7 @@ public class Modulescontroller {
         return moduleService.getAllModules();
     }
 
-//    @GetMapping("/getmodules/{instructor}/{course}")
-//    public List<ModuleEntity> getModulesByCourseAndInstructor(
-//            @PathVariable String course,
-//            @PathVariable String instructor
-//    ) {
-//        return moduleService.getModulesByCourseAndInstructor(course, instructor);
-//    }
+
     @GetMapping("/getmodulesbyid/{id}")
     public List<ModuleEntity> getModulesById(
             @PathVariable Long id
@@ -83,15 +69,7 @@ public class Modulescontroller {
     }
     @PutMapping("/{moduleId}/{updatedModule}")
     public ResponseEntity<?> updateModule(@PathVariable Long moduleId, @PathVariable String  updatedModule) {
-//        ModuleEntity updated = moduleService.updateModule(moduleId, updatedModule);
-//        return new ResponseEntity<>(updated, HttpStatus.OK);
-//    	Optional<ModuleEntity> existingModule = modulerepo.findById(moduleId);
-//        ModuleEntity exist=moduleService.findModule(updatedModule,existingModule.get().getCoursename(),existingModule.get().getInstructorname());
-//    	if(exist!=null) {
-//    		return ResponseEntity.status(HttpStatus.CONFLICT).body("Video content already exists");
-//    	}
-//    	
-//         return ResponseEntity.ok(moduleService.updateModule(moduleId, updatedModule));
+
     	CourseEntity modi=modulerepo.findById(moduleId).get().getCourse();
 //         Optional<CourseEntity> course=courseRepo.findById(moduleId);
 		 List<ModuleEntity> moduleslist=modi.getModuleslist();

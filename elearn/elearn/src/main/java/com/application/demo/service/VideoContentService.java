@@ -78,27 +78,5 @@ public class VideoContentService {
     	modulerepo.save(mm);
         videoContentRepository.deleteById(id);
     }
-//    public List<VideoContent> getVideoContentsByInstructorCourseModule(String instructorName, String courseName, String moduleName) {
-//        ModuleEntity module = moduleService.findModule(moduleName,courseName,instructorName);
-//          if (module != null) {
-//              return module.getVideoContents();
-//          } else {
-//              return Collections.emptyList(); // Author not found
-//          }
-//    	
-//    	
-////        return videoContentRepository.findVideoContentsByInstructorCourseModule(instructorName, courseName, moduleName);
-//    }
 
-//	public VideoContent findByContentname(VideoContentDto videoContentDto) {
-//		// TODO Auto-generated method stub
-//		List<VideoContent> exist=videoContentRepository.findByContentname(videoContentDto.getContentName());
-//		VideoContent rt=null;
-//		for (VideoContent i:exist) {
-//			if(i.getModule().getModulename().equals(videoContentDto.getModuleName())&& i.getModule().getCoursename().equals(videoContentDto.getCourseName())) {
-//				rt=i;
-//			}
-//		}
-//		return rt;
-//	}
 }

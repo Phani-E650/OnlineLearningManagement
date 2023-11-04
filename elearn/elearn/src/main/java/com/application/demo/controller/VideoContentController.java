@@ -29,7 +29,7 @@ import com.application.demo.service.VideoContentService;
 @RestController
 @RequestMapping("/video-content")
 public class VideoContentController {
-
+	
     @Autowired
     private VideoContentService videoContentService;
     
@@ -73,30 +73,16 @@ public class VideoContentController {
 		         return ResponseEntity.ok(videoContentService.updateVideoContent(id, videoContentDto));
 		         
 		         
-//        Optional<VideoContent> exist1=videoContentRepository.findById(id);
-//        VideoContentDto sample=new VideoContentDto();
-//        sample.setCourseName(exist1.get().getModule().getCoursename());
-//        sample.setModuleName(exist1.get().getModule().getModulename());
-//        sample.setContentName(videoContentDto.getContentName());
-//        VideoContent exist=videoContentService.findByContentname(sample);
-//    	if(exist!=null && exist.getModule().getModulename().equals(exist1.get().getModule().getModulename())&& exist.getModule().getCoursename().equals(exist1.get().getModule().getCoursename())) {
-//    		return ResponseEntity.status(HttpStatus.CONFLICT).body("Video contentname already exists");
-//    	}
-//    	
-//         return ResponseEntity.ok( videoContentService.updateVideoContent(id, videoContentDto));
+
     }
 
+    
+    
     @DeleteMapping("/delete/{id}")
     public void deleteVideoContent(@PathVariable Long id) {
         videoContentService.deleteVideoContent(id);
     }
-//    @GetMapping("/getcoursecontent")
-//    public List<VideoContent> getVideoContentsByInstructorCourseModule(
-//            @RequestParam("instructorName") String instructorName,
-//            @RequestParam("courseName") String courseName,
-//            @RequestParam("moduleName") String moduleName) {
-//        return videoContentService.getVideoContentsByInstructorCourseModule(instructorName, courseName, moduleName);
-//    }
+
     @GetMapping("/getcoursecontentbyid/{moduleid}")
     public List<VideoContent> getVideoContentsByInstructorCourseModule(
     		@PathVariable String moduleid) {

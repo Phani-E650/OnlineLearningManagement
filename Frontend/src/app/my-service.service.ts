@@ -112,13 +112,13 @@ updatevideo(id:any,video:VideoContent){
 }
 
 createAssignmentWithFileUpload(formData: FormData): Observable<any> {
-  return this.http.post(`${this.baseUrl}/assignments/upload`, formData);
+  return this.http.post(`${this.baseUrl}/files/upload`, formData);
 }
 
 // assignment.service.ts
 
 getAllAssignments(): Observable<Assignment[]> {
-  return this.http.get<Assignment[]>(`${this.baseUrl}/assignments/assignments`);
+  return this.http.get<Assignment[]>(`${this.baseUrl}/files/upload`);
 }
 
   
