@@ -50,7 +50,7 @@ import { AssignmentListComponent } from './assignment-list/assignment-list.compo
 import { UpdatevideocontentComponent } from './updatevideocontent/updatevideocontent.component';
 import { UpdatemoduleComponent } from './updatemodule/updatemodule.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 
@@ -90,7 +90,8 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
     AssignmentListComponent,
     UpdatevideocontentComponent,
     UpdatemoduleComponent,
-    UpdateCourseComponent
+    UpdateCourseComponent,
+   
   
   ],
 
@@ -101,6 +102,7 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    PdfViewerModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -125,6 +127,7 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
     MatNativeDateModule,
     NgbModule,
     MatDialogModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

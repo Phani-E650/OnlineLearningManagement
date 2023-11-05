@@ -1,20 +1,74 @@
 <div class="container mt-4">
-    <div  class="card-body mt-4">
+  <div class="card-body mt-4">
     <h2>Assignment List</h2>
-    <ul>
-      <li *ngFor="let assignment of assignments">
-        <div  class="card mt-4">
-        <p><strong>Title:</strong> {{ assignment.title }}</p>
-        <p><strong>Description:</strong> {{ assignment.description }}</p>
-        <p><strong>PDF File:</strong></p>
-        <p *ngIf="assignment.pdfFilePath">
-          <a [href]="assignment.pdfFilePath" target="_blank">{{ assignment.pdfFilePath }}</a>
-          <button (click)="downloadFile(assignment.pdfFilePath)">Download</button>
-        </p>
-        <p *ngIf="!assignment.pdfFilePath">No PDF file available</p>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">ASE Assignment</h2>
+        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
+      </div>
     </div>
-      </li>
-    </ul>
   </div>
+  <div class="card-body mt-4">
+    <h2>Assignment List</h2>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">ASE Assignment</h2>
+        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
+      </div>
+    </div>
   </div>
-  
+  <div class="card-body mt-4">
+    <h2>Assignment List</h2>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">ASE Assignment</h2>
+        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
+      </div>
+    </div>
+  </div>
+  <div class="card-body mt-4">
+    <h2>Assignment List</h2>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">ASE Assignment</h2>
+        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
+      </div>
+    </div>
+  </div>
+  <div class="card-body mt-4">
+    <h2>Assignment List</h2>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">ASE Assignment</h2>
+        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
+      </div>
+    </div>
+  </div>
+  <div class="card-body mt-4">
+    <h2>Assignment List</h2>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">ASE Assignment</h2>
+        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
+      </div>
+    </div>
+  </div>
+  <div class="card-body mt-4">
+    <h2>Assignment List</h2>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">ASE Assignment</h2>
+        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
+      </div>
+    </div>
+  </div>
+  <div class="card-body mt-4">
+    <h2>Assignment List</h2>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">ASE Assignment</h2>
+        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
+      </div>
+    </div>
+  </div>
+</div>

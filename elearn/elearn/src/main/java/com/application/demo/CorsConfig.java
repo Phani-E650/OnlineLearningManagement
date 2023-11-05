@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 public class CorsConfig extends WebMvcConfigurationSupport {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**") // Define the URL patterns you want to allow CORS for
+        registry.addMapping("/**") // Define the URL patterns you want to allow CORS for
             .allowedOrigins("http://localhost:4200") // Allow requests from this origin
             .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow these HTTP methods
             .allowedHeaders("Origin", "X-Requested-With", "Content-Type", "Accept") // Allow these headers

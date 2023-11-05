@@ -117,8 +117,8 @@ createAssignmentWithFileUpload(formData: FormData): Observable<any> {
 
 // assignment.service.ts
 
-getAllAssignments(): Observable<Assignment[]> {
-  return this.http.get<Assignment[]>(`${this.baseUrl}/files/upload`);
+getAllAssignments(fileName : string): Observable<Assignment[]> {
+  return this.http.get<Assignment[]>(`${this.baseUrl}/files/download-pdf?fileName=${fileName}`);
 }
 
   

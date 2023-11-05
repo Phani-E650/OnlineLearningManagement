@@ -29,6 +29,7 @@
     "file-saver": "^2.0.5",
     "font-awesome": "^4.7.0",
     "jquery": "^3.7.1",
+    "ng2-pdf-viewer": "^10.0.0",
     "ngx-extended-pdf-viewer": "^18.1.4",
     "ngx-owl-carousel-o": "^16.0.0",
     "ngx-toastr": "^17.0.2",
