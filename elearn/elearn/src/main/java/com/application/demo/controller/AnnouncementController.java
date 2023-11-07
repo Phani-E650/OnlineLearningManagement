@@ -69,7 +69,7 @@ public class AnnouncementController {
             course.getAnnouncements().add(savedAnnouncement);
             courseRepository.save(course);
             // Send the announcement email
-            sendAnnouncement.sendAnnouncementEmail(savedAnnouncement.getTitle(), savedAnnouncement.getDescription());
+            sendAnnouncement.sendAnnouncementEmail(course.getCourseId(),savedAnnouncement.getTitle(), savedAnnouncement.getDescription());
             return savedAnnouncement;
         }
 		

@@ -44,7 +44,7 @@ public class UserController {
         	System.out.println(userTempDto.getRole());
         	System.out.println(userTempDto.getEmail());
         	System.out.println(userTempDto.getId());
-        	userTempDto.setStatus("Req Sent");
+        	userTempDto.setStatus("request sent");
             userTempRepository.save(userTempDto);
             String registrationToken = UUID.randomUUID().toString();
 

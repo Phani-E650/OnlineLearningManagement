@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,6 +48,12 @@ public class CategoryController {
     @PostMapping("/addcategory")
     public CategoryEntity addCategory(@RequestBody CategoryEntity category) {
         return categoryService.addCategory(category);
+    }
+    @PutMapping("/updatecategory/{id}/{name}")
+    public CategoryEntity updateCategory(@PathVariable String id,@PathVariable String name) {
+    	CategoryEntity updatecontent=categoryRepository.findById(Long.parseLong(id)).get();
+    	updatecontent.setName(name);
+    	return categoryRepository.save(updatecontent);
     }
 
     @PostMapping("/{parentCategoryId}/subcategories")

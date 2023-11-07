@@ -16,7 +16,9 @@ public class Enrollment {
 	 @JoinColumn(name = "course_id")
 	 private CourseEntity course;
 
-	private String enrolledusername;
+	 @ManyToOne
+	 @JoinColumn(name = "user_id")
+	 private UserFullDetails user;
 
 	public Long getEnrollid() {
 		return enrollid;
@@ -34,19 +36,19 @@ public class Enrollment {
 		this.course = course;
 	}
 
-	public String getEnrolledusername() {
-		return enrolledusername;
+	public UserFullDetails getUser() {
+		return user;
 	}
 
-	public void setEnrolledusername(String enrolledusername) {
-		this.enrolledusername = enrolledusername;
+	public void setUser(UserFullDetails user) {
+		this.user = user;
 	}
 
-	public Enrollment(Long enrollid, CourseEntity course, String enrolledusername) {
+	public Enrollment(Long enrollid, CourseEntity course, UserFullDetails user) {
 		super();
 		this.enrollid = enrollid;
 		this.course = course;
-		this.enrolledusername = enrolledusername;
+		this.user = user;
 	}
 
 	public Enrollment() {
@@ -54,6 +56,7 @@ public class Enrollment {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	
 	
 }

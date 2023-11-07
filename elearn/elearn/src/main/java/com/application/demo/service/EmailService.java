@@ -18,7 +18,7 @@ public class EmailService {
     private JavaMailSender javaMailSender;
     
     @Autowired
-    private EnrollmentRepository enrollmentRepository;
+    private EnrollmentService enrollmentService;
 
     public void sendRegistrationEmail(String recipientEmail, String registrationToken) {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -30,9 +30,9 @@ public class EmailService {
         javaMailSender.send(message);
     }
     
-    public void sendAnnouncementEmail(String title, String description) {
-        List<String> userEmails = enrollmentRepository.findAllEmails(); // Implement this method in your repository
-
+    public void sendAnnouncementEmail(String courseid,String title, String description) {
+        List<String> userEmails = enrollmentService.findAllEmails(Long.parseLong(courseid)); // Implement this method in your repository
+        
         for (String email : userEmails) {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(email);
