@@ -21,13 +21,19 @@
       <mat-error class="error" *ngIf="myForm.get('name')?.errors?.['required']">Name is required.</mat-error>
       <!-- <div *ngIf="myForm.get('name')?.errors?.['name']">Invalid email format.</div> -->
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="email">Department:</label>
       <input type="dept" id="dept" formControlName="dept" class="form-control">
-      <!-- <div class="error" *ngIf="myForm.get('dept')?.errors?.['required']">Dept Name is required.</div> -->
       <mat-error *ngIf="myForm.get('dept')?.errors?.['required']">Dept Name is required.</mat-error>
-      <!-- <div *ngIf="myForm.get('dept')?.errors?.['name']">Invalid email format.</div> -->
+    </div> -->
+    <div class="form-group">
+      <label for="dept">Department:</label>
+      <select id="dept" formControlName="dept" class="form-control">
+        <option *ngFor="let department of departmentList" [value]="department.name">{{ department.name }}</option>
+      </select>
+      <mat-error *ngIf="myForm.get('dept')?.errors?.['required']">Dept Name is required.</mat-error>
     </div>
+    
     <div class="form-group">
       <label for="phoneno">Phone Number:</label>
       <input type="phoneno" id="phoneno" formControlName="phoneno" class="form-control">

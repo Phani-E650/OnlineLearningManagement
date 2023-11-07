@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
-.container {
+/* .container {
     text-align: center;
     padding: 20px;
     max-width: 100%;
+} */
+.wholescreen{
+  display: flex; /* Use flexbox to create a flexible layout */
+  height: 100vh;
 }
-
+.container {
+  flex: 1; /* Allow the content to grow and fill the remaining space */
+  padding: 20px; /* Add padding for spacing inside the content */
+  text-align: center; /* Center content horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 50px;
+}
 h2 {
     margin-bottom: 20px;
     font-size: 24px;
@@ -51,6 +63,7 @@ h2 {
     overflow-y: hidden;
     background: #1a1a1a;
     color: #fff;
+    display:flex;
   }
   /* Custom CSS for 20% width column */
 .custom-col-20 {
@@ -144,9 +157,9 @@ h2 {
     background-color: transparent;
   }
   
-  .content-container {
+  /* .content-container {
     padding-left: 220px;
-  }
+  } */
   #userimg{
     width: 100px;
     height: 150px;
@@ -174,7 +187,7 @@ h2 {
   margin-top: 5%;
   margin-right: auto;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
 .container
 {
     margin-left: 40%;
@@ -182,8 +195,8 @@ h2 {
     overflow-x: hidden;
     width: 30%;
 }
-}
-@media (min-width: 769px) and (max-width: 992px) {
+} */
+/* @media (min-width: 769px) and (max-width: 992px) {
   .container
   {
       margin-left: 30%;
@@ -200,7 +213,7 @@ h2 {
     overflow-x: hidden;
     width: 75%;
 }
-}
+} */
 .dashboard-card
 {
 background-color: white;

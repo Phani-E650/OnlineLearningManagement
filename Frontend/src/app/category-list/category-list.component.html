@@ -44,16 +44,22 @@
           <ng-container *ngFor="let category of categories">
             <li class="list-group-item">
               <span class="category-name">{{ category.name }}</span>
+              <i class="fa fa-edit" (click)="updatecategory(category.id, category.name)" style="font-size: 24px; cursor: pointer;"></i>
               <button (click)="onAddCategory(category.name)" class="btn btn-primary">+</button>
               <app-category-list
         [categories]="category.subcategories"
-        (addCategory)="onAddCategoryInChild($event)" 
+        (addCategory)="onAddCategoryInChild($event)"
+        (updateCategory)="onUpdateCategorySubcategory($event)" 
       ></app-category-list>
             </li> 
           </ng-container>
           <li *ngIf="isAddingSubcategory">
             <input [(ngModel)]="newSubcategoryName" placeholder="Enter subcategory name" />
             <button (click)="onSaveSubcategory(newSubcategoryName)" class="btn btn-primary">Save</button>
+          </li>
+          <li *ngIf="isupdateSubcategory">
+            <input [(ngModel)]="updateName" placeholder="Enter subcategory name" />
+            <button (click)="onUpdateCategory(updateName)" class="btn btn-primary">Save</button>
           </li>
         </ul>
       </div>

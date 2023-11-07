@@ -2,7 +2,7 @@
 <div *ngIf="RowDataUser === 'user' || RowDataUser === ''">
   <div class="mail"><button class="btn btn-primary" (click)="sentmail()">ReSent Mail</button></div>
   <ag-grid-angular
-  style="width: 75%; height: 500px;"
+  style="width: 75%; height: 550px;"
   class="ag-theme-alpine"
   [rowData]="rowData"
   [columnDefs]="columnDefs"
@@ -14,7 +14,7 @@
 </div>
 <div *ngIf="RowDataUser === 'teacher'">
   <ag-grid-angular
-  style="width: 75%; height: 500px;"
+  style="width: 75%; height: 550px;"
   class="ag-theme-alpine"
   [rowData]="teacherrowData"
   [columnDefs]="columnDefs"
@@ -26,7 +26,7 @@
 </div>
 <div *ngIf="RowDataUser === 'student'">
   <ag-grid-angular
-  style="width: 75%; height: 500px;"
+  style="width: 75%; height: 550px;"
   class="ag-theme-alpine"
   [rowData]="studentrowData"
   [columnDefs]="columnDefs"

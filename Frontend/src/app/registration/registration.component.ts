@@ -15,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MyServiceService } from '../my-service.service';
 
 @Component({
   selector: 'app-registration',
@@ -27,8 +28,10 @@ export class RegistrationComponent implements OnInit {
   // deptName: any;
   // password:any;
   myForm:FormGroup;
+  presentemail='';
+  departmentList : any | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient,private formBuilder: FormBuilder) { 
+  constructor(private myService: MyServiceService,private route: ActivatedRoute, private router: Router, private http: HttpClient,private formBuilder: FormBuilder) { 
     this.myForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       dept: ['', [Validators.required]],
@@ -37,6 +40,12 @@ export class RegistrationComponent implements OnInit {
       phoneno: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{4}$/)]],
       dob: [null, [Validators.required]]
     });
+
+    // this.myForm.get('dept')?.valueChanges.subscribe(deptValue => {
+    //   // Do something with the selected department, e.g., log it
+    //   this.myForm?.get('dept')?.setValue(this.myForm?.get('dept'));
+    //   console.log('Selected department:', deptValue);
+    // });
   }
   get email() {
     return this.myForm.get('email');
@@ -67,10 +76,16 @@ export class RegistrationComponent implements OnInit {
     // Retrieve the email and token from the query parameters
     this.route.queryParams.subscribe(params => {
       //  this.myForm.value.email = params['email'];
+      this.presentemail=params['email'];
        this.myForm?.get('email')?.setValue(params['email']);
        this.myForm.get('email')?.disable();
      
     });
+
+this.myService.getAllCategoriesWithSubcategories().subscribe(data=>{
+     this.departmentList=data;
+     console.log(this.departmentList);
+})
   }
 
   submitRegistrationForm(): void {

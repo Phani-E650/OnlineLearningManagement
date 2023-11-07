@@ -44,6 +44,9 @@ export class MyServiceService {
   addcategory(category:any):Observable<any>{
       return this.http.post<any>(`${this.baseUrl}/category/addcategory`,category);
   }
+  updateCategory(id:any,name:any){
+    return this.http.put((`${this.baseUrl}/category/updatecategory/${id}/${name}`),null);
+  }
 
   getCoursesByEmail(loggedUser : string) : Observable<any>
   {

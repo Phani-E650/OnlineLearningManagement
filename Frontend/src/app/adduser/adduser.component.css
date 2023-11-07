@@ -1,8 +1,11 @@
 /* src/app/user-list/user-list.component.css */
-.user-list {
+/* .user-list {
     text-align: center;
     margin: 20px;
-  }
+    justify-content: center; 
+    display: flex;
+    align-items: center;
+  } */
   
   ul {
     list-style: none;
@@ -15,5 +18,18 @@
     color: white;
     border: none;
     cursor: pointer;
+  }
+  .center-vertically {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .user-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust the height based on your layout requirements */
   }
   

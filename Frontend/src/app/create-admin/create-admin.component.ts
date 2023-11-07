@@ -17,7 +17,7 @@ export class CreateAdminComponent {
   dropdownOptions = [
     { value: 'admin', label: 'Admin' },
     { value: 'student', label: 'Student' },
-    { value: 'teacher', label: 'teacher' },
+    { value: 'teacher', label: 'Teacher' },
   ];
 
   submitAdminCreationForm(): void {

@@ -20,16 +20,23 @@
       </div>
       <div class="form-group">
         <label for="newDept">New Department:</label>
-        <input type="text" class="form-control" id="newDept" [(ngModel)]="newDept" name="newDept">
+          <select id="dept"  class="form-control"  [(ngModel)]="newDept" >
+            <option *ngFor="let department of departmentList" [value]="department.name">{{ department.name }}</option>
+          </select>
       </div>
       <div class="form-group">
         <label for="newPhone">New Phone Number:</label>
         <input type="text" class="form-control" id="newPhone" [(ngModel)]="newPhone" name="newPhone">
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="newDOB">New Date of Birth:</label>
         <input type="text" class="form-control" id="newDOB" [(ngModel)]="newDOB" name="newDOB">
+      </div> -->
+      <div class="form-group">
+        <label for="newDOB">New Date of Birth:</label>
+        <input type="date" class="form-control" id="newDOB" [(ngModel)]="newDOB" name="newDOB">
       </div>
+      
       <!-- Add other form fields for updating user details here -->
       <button type="submit" class="btn btn-primary" (click)="updateUser()">Submit</button>
     </mat-card-content>

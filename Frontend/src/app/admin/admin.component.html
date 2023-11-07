@@ -1,6 +1,7 @@
 
 <app-header></app-header>
 <!-- <app-admin-nav-header></app-admin-nav-header> -->
+<div class="wholescreen">
 <div class="sidebar-container">
     <ul class="sidebar-navigation">
       
@@ -40,15 +41,8 @@
     </ul>
   </div>
   <div class="container">
-    <div class="row">
-        <div class="container">
-            <div class="text-right"> <!-- Align content to the right -->
-              <button class="btn btn-sm btn-primary"(click)="sentmail()">Sent Mail</button>
-            </div>
-          </div>
-        <!-- <div class>  <button (click)="sentmail()">Sent Mail</button> </div> -->
          <app-table [RowDataUser]="rowDataUsers"></app-table>
-    </div>
    </div>
+  </div>
 
 

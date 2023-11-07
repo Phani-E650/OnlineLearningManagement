@@ -1,0 +1,10 @@
+<mat-dialog-content>
+    <h1>Add User</h1>
+    <mat-form-field>
+      <input matInput placeholder="Enter User Mail" name="content" [(ngModel)]="content">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button (click)="submitInput()">Add</button>
+  </mat-dialog-actions>

@@ -51,6 +51,10 @@ import { UpdatevideocontentComponent } from './updatevideocontent/updatevideocon
 import { UpdatemoduleComponent } from './updatemodule/updatemodule.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { DeleteenrollComponent } from './deleteenroll/deleteenroll.component';
+import { EnrollexcelComponent } from './enrollexcel/enrollexcel.component';
+import { AddsingleenrollComponent } from './addsingleenroll/addsingleenroll.component';
+
 
 
 
@@ -92,6 +96,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     UpdatemoduleComponent,
     UpdateCourseComponent,
    
+    DeleteenrollComponent,
+    EnrollexcelComponent,
+    AddsingleenrollComponent
   
   ],
 
