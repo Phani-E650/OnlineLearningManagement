@@ -1,5 +1,6 @@
 package com.application.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +65,17 @@ public class CategoryController {
     	CategoryEntity a=categoryService.addSubcategory(parentCategoryId, subcategory);
 //        return new ResponseEntity<>(a, HttpStatus.CREATED);
     	return "successfully added";
+    }
+    @GetMapping("/maincategories")
+    public List<CategoryEntity> mainCategories() {
+        return categoryRepository.findByParentCategoryIsNull();
+    }
+    @GetMapping("/categories/{id}")
+    public List<CategoryEntity> subofmainCategories(@PathVariable String id) {
+    	 List<CategoryEntity> cc = new ArrayList<CategoryEntity>();
+    	 List<CategoryEntity> result = new ArrayList<CategoryEntity>();
+    		cc.add(categoryRepository.findById(Long.parseLong(id)).get());
+        	categoryService.collectLeafCategories(cc,result);
+        		return result;
     }
 }

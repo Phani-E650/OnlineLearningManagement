@@ -19,7 +19,9 @@ export class AllCoursesComponent {
   myenrollments : Observable<AllCourses[]> | undefined;
   loggedUser = '';
   currRole = '';
-  courses : Observable<Course[]> | undefined;
+  courses : any;
+  approvedcourses:any;
+  unapprovedcourses:any;
   constructor( private _router : Router,private courseService : MyServiceService, private dialog : MatDialog) { }
 
   ngOnInit(): void 
@@ -30,7 +32,14 @@ export class AllCoursesComponent {
     this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
     this.currRole = this.currRole.replace(/"/g, '');
 
-    this.courses = this.courseService.getCoursesByEmail(this.loggedUser);
+    this.courseService.getCoursesByEmail(this.loggedUser).subscribe((data)=>
+    {
+      this.courses=data;
+      // this.approvedcourses=this.courses.forEach((value)=>{ value.courseStatus});
+      this.approvedcourses = this.courses.filter((course: Course) => course.courseStatus === 'active');
+      this.unapprovedcourses = this.courses.filter((course: Course) => course.courseStatus === 'inactive');
+    });
+   
 
     const target = 'https://www.youtube.com/iframe_api'
 

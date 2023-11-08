@@ -1,5 +1,7 @@
 package com.application.demo.controller;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -64,6 +66,15 @@ public class CourseController {
 	    // Generate a new ID and save the course
 	    String newID = getNewID();
 	    course.setCourseId(newID);
+	    LocalDate localEndDate = course.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate localStartDate = course.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        // Calculate the difference in days
+        long daysDifference = localEndDate.toEpochDay() - localStartDate.toEpochDay();
+
+        // Calculate the number of weeks
+        long weeksDifference = daysDifference / 7;
+	    course.setNumberOfWeeks((int)(weeksDifference));
 	    CourseEntity courseObj = courseService.addNewCourse(course);
 
 	    return ResponseEntity.ok(courseObj);

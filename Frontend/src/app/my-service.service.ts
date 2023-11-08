@@ -29,6 +29,14 @@ export class MyServiceService {
     const url = `${this.baseUrl}/category/getcategories`;
     return this.http.get<any[]>(url);
   }
+  getmaincategories(): Observable<any[]> {
+    const url = `${this.baseUrl}/category/maincategories`;
+    return this.http.get<any[]>(url);
+  }
+  getsubCategoriesofcategories(id:any): Observable<any[]> {
+    const url = `${this.baseUrl}/category/categories/${id}`;
+    return this.http.get<any[]>(url);
+  }
 
   addCourse(course : Course) : Observable<any>
   {

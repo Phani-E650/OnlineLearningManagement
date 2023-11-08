@@ -32,7 +32,7 @@ public class CategoryService {
         return fetchSubcategories(topCategories);
     }
 
-    private List<CategoryEntity> fetchSubcategories(List<CategoryEntity> categories) {
+    public List<CategoryEntity> fetchSubcategories(List<CategoryEntity> categories) {
         for (CategoryEntity category : categories) {
             List<CategoryEntity> subcategories = category.getSubcategories();
             if (subcategories != null && !subcategories.isEmpty()) {
@@ -72,7 +72,7 @@ public class CategoryService {
         return leafCategories;
     }
     
-    private void collectLeafCategories(List<CategoryEntity> categories, List<CategoryEntity> leafCategories) {
+    public void collectLeafCategories(List<CategoryEntity> categories, List<CategoryEntity> leafCategories) {
         for (CategoryEntity category : categories) {
             List<CategoryEntity> subcategories = category.getSubcategories();
             if (subcategories == null || subcategories.isEmpty()) {
