@@ -1,0 +1,20 @@
+/* your-component.css */
+.card-item {
+    margin: 20px; /* Add margin around the card */
+    padding: 15px; /* Add padding inside the card */
+}
+
+
+/* Add this to your component's CSS file or your global styles */
+
+.custom-btn {
+    margin-top: 5%;
+    margin-right: 10px; /* Adjust the value to control the spacing between buttons */
+    border: none;
+    transition: background-color 0.3s; /* Add a smooth color transition on hover */
+  }
+  
+  .custom-btn:hover {
+    background-color: #FF5733; /* Change the background color on hover to the desired color */
+  }
+  

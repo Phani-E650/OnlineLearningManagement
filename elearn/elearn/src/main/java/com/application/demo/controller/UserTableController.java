@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.application.demo.entity.CourseEntity;
 import com.application.demo.entity.UserFullDetails;
 import com.application.demo.entity.UserTemp;
 import com.application.demo.repository.UserFullDetailsRepository;
@@ -112,17 +114,17 @@ public class UserTableController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
+        
+        @GetMapping("/getstudentcourses/{email}")
+        public ResponseEntity<List<CourseEntity>> getstudentcourseEntities(@PathVariable String email) {
+            Optional<UserFullDetails> entityOptional = userFullDetailsRepository.findByEmail(email);
+            List<CourseEntity>  courses=entityOptional.get().getEnrollcourseslist().stream().map(enroll->enroll.getCourse()).toList();
+            if (entityOptional.isPresent()) {
+//                UserFullDetails response = entityOptional.get();
+                return ResponseEntity.ok(courses);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        }
+    }
+   

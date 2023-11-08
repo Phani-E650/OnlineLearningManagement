@@ -39,6 +39,7 @@ public class VideoContentService {
         VideoContent videoContent = new VideoContent();
         videoContent.setContentname(videoContentDto.getContentName());
         videoContent.setVideourl(videoContentDto.getVideoUrl());
+        videoContent.setVideodescription(videoContentDto.getVideodescription());
         videoContent.setModule(module);
         videoContent = videoContentRepository.save(videoContent);
         module.getVideoContents().add(videoContent);
@@ -67,6 +68,7 @@ public class VideoContentService {
         }
         videoContent.setContentname(videoContentDto.getContentName());
         videoContent.setVideourl(videoContentDto.getVideoUrl());
+        videoContent.setVideodescription(videoContentDto.getVideodescription());
         videoContent.setModule(module);
         return videoContentRepository.save(videoContent);
     }

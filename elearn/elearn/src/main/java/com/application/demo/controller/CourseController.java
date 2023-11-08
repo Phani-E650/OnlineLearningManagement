@@ -108,7 +108,11 @@ public class CourseController {
 	public List<CourseEntity> getcourses(){
 		return courseService.getAllCourses();
 	}
-	
+	@GetMapping("/getcoursebyid/{id}")
+	public CourseEntity getcoursebyid(@PathVariable String id){
+		
+		return courseRepo.findById(Long.parseLong(id)).get();
+	}
 	
 	
 	

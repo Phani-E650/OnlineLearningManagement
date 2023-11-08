@@ -54,6 +54,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DeleteenrollComponent } from './deleteenroll/deleteenroll.component';
 import { EnrollexcelComponent } from './enrollexcel/enrollexcel.component';
 import { AddsingleenrollComponent } from './addsingleenroll/addsingleenroll.component';
+import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
+import { StudentcoursesComponent } from './studentcourses/studentcourses.component';
 
 
 
@@ -98,7 +100,9 @@ import { AddsingleenrollComponent } from './addsingleenroll/addsingleenroll.comp
    
     DeleteenrollComponent,
     EnrollexcelComponent,
-    AddsingleenrollComponent
+    AddsingleenrollComponent,
+    StudentdashboardComponent,
+    StudentcoursesComponent
   
   ],
 

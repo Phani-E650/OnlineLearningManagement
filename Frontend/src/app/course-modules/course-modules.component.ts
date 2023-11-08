@@ -28,7 +28,7 @@ export class CourseModulesComponent {
   loggedUser = '';
   currRole = '';
   currentmodule="";
-  coursedetails : Observable<Course> | undefined;
+  coursedetails : any;
   createmodule: Module = new Module();
   videocontent:any;
   createvideo:VideoContent=new VideoContent();
@@ -42,6 +42,7 @@ export class CourseModulesComponent {
 
     this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
     this.currRole = this.currRole.replace(/"/g, '');
+    console.log(this.currRole);
     // const coursename = +this.activatedRoute.snapshot.paramMap.get('id');
     // this.activatedRoute.params.subscribe((data1) => {
     //   const coursename = data1['id'];
@@ -208,8 +209,14 @@ export class CourseModulesComponent {
     // });
     .subscribe((data) => {
       this.moduleNames = data;
+      if(this.selectedModuleId==null){
       this.getvideocourse(this.moduleNames[0].id);
-      this.selectmodule(this.moduleNames[0].id)
+      this.selectmodule(this.moduleNames[0].id);
+      }
+      else{
+        this.getvideocourse(this.selectedModuleId);
+      this.selectmodule(this.selectedModuleId);
+      }
       console.log(this.moduleNames);
     });
   }
@@ -257,6 +264,7 @@ export class CourseModulesComponent {
         console.log('You entered: ' + videoName);
         this.createvideo.contentName=videoName.videoname;
         this.createvideo.videoUrl=videoName.videourl;
+        this.createvideo.videodescription=videoName.videodescription;
         this.createvideo.courseName=this.courseName;
              this.createvideo.moduleName=this.currentmodule;
         this.createvideo.instructorName=this.loggedUser;
@@ -279,10 +287,11 @@ export class CourseModulesComponent {
       this.getmodulename();
     })
   }
-  updatevideo(videoname:any,url:any,id:any){
+  updatevideo(videoname:any,url:any,id:any,videodescription:any){
     let content={
       videoname:videoname,
-      videourl:url
+      videourl:url,
+      videodescription:videodescription
     }
     const dialogRef = this.dialog.open(UpdatevideocontentComponent, {
       width: '400px',
@@ -294,7 +303,7 @@ export class CourseModulesComponent {
         // Handle the updated data here
         this.updatevideoreq.contentName=updatedData.videoname;
         this.updatevideoreq.videoUrl=updatedData.videourl;
-
+        this.updatevideoreq.videodescription=updatedData.videodescription;
         console.log('Updated Video Name:', updatedData.videoname);
         console.log('Updated Video URL:', updatedData.videourl);
         // You can update your main component's data with the updatedData
@@ -302,6 +311,7 @@ export class CourseModulesComponent {
           this.courseService.updatevideo(id,this.updatevideoreq).subscribe((data)=>
           {
             this.getmodulename();
+            this.selectvideo(id);
             console.log(data);
           });
           // this.users = this.userService.getUsers();

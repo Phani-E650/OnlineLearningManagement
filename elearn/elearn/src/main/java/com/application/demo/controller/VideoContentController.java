@@ -58,6 +58,7 @@ public class VideoContentController {
 		         return ResponseEntity.ok(videoContentService.addVideoContent(videoContentDto));
     }
 
+    
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateVideoContent(@PathVariable Long id, @RequestBody VideoContentDto videoContentDto) {
     	Optional<VideoContent> video=videoContentRepository.findById(id);
@@ -65,8 +66,9 @@ public class VideoContentController {
 		 List<VideoContent> singlecontent = contentlist.stream()
 	                .filter(modu -> modu.getContentname().equals(videoContentDto.getContentName()))
 	                .collect(Collectors.toList());
+		 
 //			 ModuleEntity exist=moduleService.findModule(module.getModulename(),module.getCoursename(),module.getInstructorname());
-		    	if(singlecontent.size()>0) {
+		    	if(singlecontent.size()>0 && !(singlecontent.get(0).getId().equals(id))) {
 		    		return ResponseEntity.status(HttpStatus.CONFLICT).body("video content already exists");
 		    	}
 		    	

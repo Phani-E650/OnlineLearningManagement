@@ -5,6 +5,7 @@ export class VideoContent
     courseName : string = '';
     instructorName : string = '';
     moduleName : string = '';
+    videodescription:string='';
 
     constructor() {}
 }

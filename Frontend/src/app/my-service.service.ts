@@ -52,6 +52,10 @@ export class MyServiceService {
   {
     return this.http.get<any>(`${this.baseUrl}/getcoursebyemail/`+loggedUser);
   }
+  getstudentCoursesByEmail(loggedUser : string) : Observable<any>
+  {
+    return this.http.get<any>(`${this.baseUrl}/table/getstudentcourses/`+loggedUser);
+  }
   getCoursesByEmailandcoursename(loggedUser : string,cousename:string) : Observable<any>
   {
     return this.http.get<any>(`${this.baseUrl}/getcoursebycousename/${loggedUser}/${cousename}`);

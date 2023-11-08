@@ -4,6 +4,7 @@ public class VideoContentDto {
 	
     private String contentName;
     private String videoUrl;
+    public String videodescription;
     private String moduleName;
     private String courseName;
     private String instructorName;
@@ -18,6 +19,12 @@ public class VideoContentDto {
 	}
 	public void setVideoUrl(String videoUrl) {
 		this.videoUrl = videoUrl;
+	}
+	public String getVideodescription() {
+		return videodescription;
+	}
+	public void setVideodescription(String videodescription) {
+		this.videodescription = videodescription;
 	}
 	public String getModuleName() {
 		return moduleName;
@@ -37,11 +44,12 @@ public class VideoContentDto {
 	public void setInstructorName(String instructorName) {
 		this.instructorName = instructorName;
 	}
-	public VideoContentDto(String contentName, String videoUrl, String moduleName, String courseName,
-			String instructorName) {
+	public VideoContentDto(String contentName, String videoUrl, String videodescription, String moduleName,
+			String courseName, String instructorName) {
 		super();
 		this.contentName = contentName;
 		this.videoUrl = videoUrl;
+		this.videodescription = videodescription;
 		this.moduleName = moduleName;
 		this.courseName = courseName;
 		this.instructorName = instructorName;
@@ -50,6 +58,6 @@ public class VideoContentDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
     // Getters and setters
 }

@@ -1,13 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-header',
-//   templateUrl: './header.component.html',
-//   styleUrls: ['./header.component.css']
-// })
-// export class HeaderComponent {
-
-// }
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -39,11 +29,11 @@ export class HeaderComponent implements OnInit {
     if(this.currRole === "admin"){
       this.title = "Admin Dashboard";
     }
-    else if(this.currRole === "professor"){
-      this.title = "";
+    else if(this.currRole === "teacher"){
+      this.title = "Teacher Dashboard";
     }
-    else if(this.currRole === "user"){
-      this.title = "";
+    else if(this.currRole === "student"){
+      this.title = "Student Dashboard";
     }
   }
 
@@ -78,7 +68,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/teacherdashboard']);
     }
     else if(this.currRole === "student"){
-      this.router.navigate(['/studentdashboard']);
+      this.router.navigate(['/student']);
     }
   }
 

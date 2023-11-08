@@ -10,8 +10,17 @@ import { AssignmentsComponent } from '../assignments/assignments.component';
   styleUrls: ['./moduleheader.component.css']
 })
 export class ModuleheaderComponent {
-
+  loggedUser = '';
+  currRole = '';
   constructor(public dialog: MatDialog){}
+  ngOnInit(): void {
+    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+    this.loggedUser = this.loggedUser.replace(/"/g, '');
+
+    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
+    this.currRole = this.currRole.replace(/"/g, '');
+    console.log(this.currRole);
+  }
   @Input() coursename: string="";
 
   openAnnouncements(): void {

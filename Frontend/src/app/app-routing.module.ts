@@ -20,6 +20,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { AnnouncementsComponent } from './announcements/announcements.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentListComponent } from './assignment-list/assignment-list.component';
+import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
+import { StudentcoursesComponent } from './studentcourses/studentcourses.component';
 
 
 const routes: Routes = [
@@ -43,6 +45,8 @@ const routes: Routes = [
   { path: 'announcements', component: AnnouncementsComponent },
   { path: 'assignments', component: AssignmentsComponent },
   { path: 'assignments-list', component: AssignmentListComponent },
+  { path: 'student', component: StudentdashboardComponent,canActivate: [AuthGuard] },
+  { path: 'allenrollcourses', component: StudentcoursesComponent },
 ];
 
 @NgModule({

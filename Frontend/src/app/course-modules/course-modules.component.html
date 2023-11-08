@@ -23,13 +23,17 @@
        <li *ngFor="let module of moduleNames" [ngClass]="{ 'selected-module': module.id === selectedModuleId }">
         <div class="navbar-item" >
           <label [routerLink]="['/modules', module.id]" (click)="getvideocourse(module.id)" (click)="selectmodule(module.id)" style="cursor: pointer;">{{ module.modulename }}</label>
+          <div *ngIf="this.currRole==='teacher'"  style="display: inline-block;">
           <i class="fa fa-edit" (click)="updatemodule(module.id, module.modulename)" style="font-size: 24px; cursor: pointer;"></i>
           <i class="material-icons" (click)="deletemodule(module.id)" style="font-size: 24px; cursor: pointer;">delete</i>
+          </div>
         </div>
       </li>
+      <div *ngIf="this.currRole==='teacher'">
       <li>
        <button (click)="openInputDialog()">Add Module</button>
        </li>
+      </div>
        <!-- <li> 
         <label [routerLink]="['/userenroll',courseName]" style="cursor: pointer;"> Enrolled students </label>
       </li> -->
@@ -38,7 +42,7 @@
   <div class ="content">
   <div class="continer">
     <div>
-    <div style="font-weight: bolder; color: darkgreen; font-size: 35px; margin-bottom: 2%;">Welcome to {{courseName}} course 👋 </div>
+    <div style="font-weight: bolder; color: darkgreen; font-size: 35px; margin-bottom: 2%;">Welcome to {{this.coursedetails.courseName}} course 👋 </div>
     <youtube-player style="margin-right: 5%;" id="player" [videoId]="video" suggestedQuality="highres" [height]="380" [width]="640"></youtube-player>
   </div>
     <div class="chapter-list" >
@@ -50,13 +54,19 @@
             <!-- <div class="box1" id="select-box"><i class="fa fa-check"></i></div> -->
             <div class="custom-video-style" [ngClass]="{ 'selected-video': video.id === selectedvideoId }">
              <span class="name" (click)="openChapter(video.videourl)"(click)="selectvideo(video.id)">  {{video.contentname}}</span>
-              <i class="fa fa-edit" (click)="updatevideo(video.contentname,video.videourl,video.id)" style="font-size:24px; cursor: pointer;"></i>
+             <!-- <span class="description" >  {{video.videodescription}}</span> -->
+             <div *ngIf="this.currRole==='teacher'"  style="display: inline-block;">
+              <i class="fa fa-edit" (click)="updatevideo(video.contentname,video.videourl,video.id,video.videodescription)" style="font-size:24px; cursor: pointer;"></i>
               <i class="material-icons" (click)="deletevideo(video.id)" style="font-size:24px;cursor : pointer;">delete</i>
+              </div>
+              <div style="color: gray; font-weight: 600; font-size: small; margin-left: 12%;">{{video.videodescription}}</div>
             </div>
             <!-- <div style="color: gray; font-weight: 600; font-size: small; margin-left: 12%;">subcontents (1/1)</div> -->
         <!-- </div> -->
         </div>
+        <div *ngIf="this.currRole==='teacher'">
         <button (click)="videoadd()">Add Video</button>
+        </div>
         <!-- <hr *ngIf="chapter.chapter1name !== ''">
 
         <div style="cursor: pointer;" (click)="set2()" class="chapter2" *ngIf="chapter.chapter2name !== ''">
