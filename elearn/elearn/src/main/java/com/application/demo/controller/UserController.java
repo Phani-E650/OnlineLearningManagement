@@ -93,10 +93,12 @@ public class UserController {
             if (userTemp == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
             }
+            UserFullDetails userFullDetailssaved=userFullDetailsRepository.save(userFullDetails);
             userTemp.setStatus("active");
-            userTempRepository.save(userTemp);
+            userTemp.setUserfulldetails(userFullDetailssaved);
+            UserTemp userTempsaved = userTempRepository.save(userTemp);
             // Save the complete user details in the user_full_details table
-            userFullDetailsRepository.save(userFullDetails);
+            userFullDetails.setUsertemp(userTempsaved);
 
             // Optionally, delete the entry from the user_temp table
 

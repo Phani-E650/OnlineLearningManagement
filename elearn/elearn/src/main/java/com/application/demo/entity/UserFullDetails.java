@@ -16,6 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -43,9 +44,37 @@ public class UserFullDetails {
     @Column(nullable = false)
     private String dob;
     
+    @OneToOne(mappedBy = "userfulldetails")
+    @JsonIgnore
+    private UserTemp usertemp;
+    
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JsonIgnore
     public List<Enrollment> enrollcourseslist= new ArrayList<>();
+    
+    @OneToMany(mappedBy = "subuser", fetch = FetchType.EAGER)
+    @JsonIgnore
+    public List<assignmentsubmEntity> submissionlist= new ArrayList<>();
+
+	public UserFullDetails(Long id, String email, String name, String dept, String password, String phoneno, String dob,
+			UserTemp usertemp, List<Enrollment> enrollcourseslist, List<assignmentsubmEntity> submissionlist) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.name = name;
+		this.dept = dept;
+		this.password = password;
+		this.phoneno = phoneno;
+		this.dob = dob;
+		this.usertemp = usertemp;
+		this.enrollcourseslist = enrollcourseslist;
+		this.submissionlist = submissionlist;
+	}
+
+	public UserFullDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Long getId() {
 		return id;
@@ -103,6 +132,14 @@ public class UserFullDetails {
 		this.dob = dob;
 	}
 
+	public UserTemp getUsertemp() {
+		return usertemp;
+	}
+
+	public void setUsertemp(UserTemp usertemp) {
+		this.usertemp = usertemp;
+	}
+
 	public List<Enrollment> getEnrollcourseslist() {
 		return enrollcourseslist;
 	}
@@ -111,23 +148,16 @@ public class UserFullDetails {
 		this.enrollcourseslist = enrollcourseslist;
 	}
 
-	public UserFullDetails(Long id, String email, String name, String dept, String password, String phoneno, String dob,
-			List<Enrollment> enrollcourseslist) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.name = name;
-		this.dept = dept;
-		this.password = password;
-		this.phoneno = phoneno;
-		this.dob = dob;
-		this.enrollcourseslist = enrollcourseslist;
+	public List<assignmentsubmEntity> getSubmissionlist() {
+		return submissionlist;
 	}
 
-	public UserFullDetails() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setSubmissionlist(List<assignmentsubmEntity> submissionlist) {
+		this.submissionlist = submissionlist;
 	}
+
+	
+	
 
 }
 
