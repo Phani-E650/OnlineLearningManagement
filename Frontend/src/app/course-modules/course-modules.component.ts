@@ -10,6 +10,7 @@ import { VideoContent } from '../models/videocontent';
 import { VideoaddComponent } from '../videoadd/videoadd.component';
 import { UpdatevideocontentComponent } from '../updatevideocontent/updatevideocontent.component';
 import { UpdatemoduleComponent } from '../updatemodule/updatemodule.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-course-modules',
@@ -34,7 +35,7 @@ export class CourseModulesComponent {
   createvideo:VideoContent=new VideoContent();
   updatevideoreq:VideoContent=new VideoContent();
 
-  constructor(private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService,public dialog: MatDialog) { }
+  constructor(private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService,public dialog: MatDialog,private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
@@ -142,6 +143,7 @@ export class CourseModulesComponent {
     this.courseService.deletemodule(id).subscribe((id)=>
     {
       console.log(id+"deleted");
+      this.toastr.error("Module deleted successfully")
       this.getmodulename();
     });
   }
@@ -165,6 +167,7 @@ export class CourseModulesComponent {
           this.courseService.updatemodule(id,moduleName).subscribe((data)=>
           {
             this.getmodulename();
+            this.toastr.success("Module updated successfully")
             console.log(data);
           });
           // this.users = this.userService.getUsers();
@@ -243,6 +246,7 @@ export class CourseModulesComponent {
         if (moduleName) {
           this.courseService.addmodule(this.createmodule).subscribe((data)=>
           {
+            this.toastr.success("Module created successfully")
             this.getmodulename();
             console.log(data);
           });
@@ -272,6 +276,7 @@ export class CourseModulesComponent {
         if (videoName) {
           this.courseService.addvideo(this.createvideo).subscribe((data)=>
           {
+            this.toastr.success("Video added successfully")
             this.getmodulename();
             console.log(data);
           });

@@ -56,7 +56,7 @@ import { EnrollexcelComponent } from './enrollexcel/enrollexcel.component';
 import { AddsingleenrollComponent } from './addsingleenroll/addsingleenroll.component';
 import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
 import { StudentcoursesComponent } from './studentcourses/studentcourses.component';
-import { NgSelectModule } from '@ng-select/ng-select';
+
 
 
 
@@ -98,6 +98,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     UpdatevideocontentComponent,
     UpdatemoduleComponent,
     UpdateCourseComponent,
+    
    
     DeleteenrollComponent,
     EnrollexcelComponent,
@@ -132,6 +133,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
       progressAnimation : 'decreasing',
       closeButton: true,
 
+
+
+
     }
 
     ),  
@@ -139,10 +143,12 @@ import { NgSelectModule } from '@ng-select/ng-select';
     MatNativeDateModule,
     NgbModule,
     MatDialogModule,
-    NgSelectModule,
+
     
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

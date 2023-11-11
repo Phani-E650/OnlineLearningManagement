@@ -30,17 +30,12 @@ export class CreateAdminComponent {
         if (response.status === 201) {
           // Send an email to the admin with the registration link
           // this.sendRegistrationEmail(this.email);
+          this.toastr.success("User Added Successfully")
           console.log('Registration email sent to successful');
           this.router.navigate(['/admin']); // Redirect to student page
           //this.toastr.success('User details updated successfully', 'Success');
 
-          this.toastr.success('User Creation SuccessFul', '', {
-            timeOut: 3000, // Adjust the duration as needed
-            progressBar: false,
-            closeButton: false,
-            positionClass: 'toastr-success', // Apply the custom CSS class
-            tapToDismiss: false, // Disable click to dismiss
-          });
+          
         } else {
           console.error('Admin creation failed.');
         }

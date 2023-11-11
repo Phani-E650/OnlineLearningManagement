@@ -63,6 +63,7 @@ export class LoginComponent {
             this.toastr.success('Login Successful', '');
             this.router.navigate(['/student']);
           } else if (role === 'teacher') {
+            this.toastr.success("Login Successfull")
             this.router.navigate(['/teacherdashboard']);
           } else {
             this.showErrorMessage = true;

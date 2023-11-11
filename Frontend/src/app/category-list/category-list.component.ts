@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MyServiceService } from '../my-service.service';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-category-list',
@@ -10,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent {
+
 
   //  @Input() categories!: any[];
   // @Output() addCategory = new EventEmitter<string>();
@@ -36,7 +38,7 @@ export class CategoryListComponent {
   // onAddCategory(categoryName: string) {
   //   this.toggleInputBox(); // Call toggleInputBox when clicking the "+" button
   // }
-  constructor(private myService: MyServiceService,private http: HttpClient,private cdr: ChangeDetectorRef){};
+  constructor(private myService: MyServiceService,private http: HttpClient,private cdr: ChangeDetectorRef,private toastr:ToastrService){};
   @Input() categories!: any[];
 @Output() addCategory = new EventEmitter<{ categoryName: string, parentCategory: string }>();
 @Output() updateCategory = new EventEmitter<{ categoryid: string, Categoryname: string }>();
@@ -54,15 +56,18 @@ toggleInputBox() {
 onSaveSubcategory(categoryName: string) {
   this.addCategory.emit({ categoryName, parentCategory: this.parentname });
   this.toggleInputBox();
+  //this.toastr.success("category added successfully")
 }
 
 onAddCategory(categoryName: string) {
   this.parentname=categoryName;
   this.toggleInputBox(); 
+  //this.toastr.success("category added successfully")
 }
 
 onAddCategoryInChild(eventData: { categoryName: string, parentCategory: string }) {
   this.addCategory.emit(eventData); 
+  this.toastr.success("category added successfully")
 }
 updatecategory(id:any,name:any){
   this.isupdateSubcategory=true;

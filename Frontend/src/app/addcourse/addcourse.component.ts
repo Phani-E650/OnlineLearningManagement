@@ -6,7 +6,7 @@ import * as $ from 'jquery';
 import { MyServiceService } from '../my-service.service';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NgSelectModule } from '@ng-select/ng-select';
+
 // @NgModule({
 //   declarations: [AddcourseComponent],
 //   imports: [FormsModule, NgSelectModule], // Add FormsModule or ReactiveFormsModule and NgSelectModule here

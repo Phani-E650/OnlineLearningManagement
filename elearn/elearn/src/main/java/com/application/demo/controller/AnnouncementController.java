@@ -79,5 +79,6 @@ public class AnnouncementController {
     public List<AnnouncementEntity> getAllAnnouncements() {
         return announcementRepository.findAll();
     }
+    
 }
 

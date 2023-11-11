@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -12,7 +14,7 @@ export class ExcelUploadComponent {
   data: any[] = [];
   email: any;
   role: any;
-  constructor(private http: HttpClient, public dialog: MatDialog) {}
+  constructor(private http: HttpClient, public dialog: MatDialog, private toastr: ToastrService,private router: Router) {}
   onFileChange(event: any): void {
     const file = event.target.files[0];
     if (file) {
@@ -52,7 +54,11 @@ export class ExcelUploadComponent {
     }
   );
         
-      });
+      }
+      );
+      this.router.navigate(['/Admin']);
+      this.toastr.success("Users added successfully");
+      
     }
   }
 }

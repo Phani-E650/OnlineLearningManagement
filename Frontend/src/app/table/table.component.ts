@@ -251,20 +251,16 @@ export class TableComponent {
 
   sentmail(){
     console.log("hi");
-    this.toastr.success('User Creation SuccessFul', '', {
-      timeOut: 3000, // Adjust the duration as needed
-      progressBar: false,
-      closeButton: false,
-      positionClass: 'toastr-success', // Apply the custom CSS class
-      tapToDismiss: false, // Disable click to dismiss
-    });
+    
     this.http.post('http://localhost:8080/api/admin/sentmail',null).subscribe(
         (response: any) => {
             console.log("hiiiiii");
             if (response.message === 'Mails sent successfully.') {
                 console.log('Registration email sent to successful');
+                this.toastr.success("Registration email sent successfully")
               } else {
                 console.error('Admin creation failed.');
+                this.toastr.error("Mail sent failed")
               }
         },
         (error: any) => {

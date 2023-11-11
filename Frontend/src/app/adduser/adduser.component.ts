@@ -10,6 +10,8 @@ import { DeleteenrollComponent } from '../deleteenroll/deleteenroll.component';
 import { EnrollexcelComponent } from '../enrollexcel/enrollexcel.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddsingleenrollComponent } from '../addsingleenroll/addsingleenroll.component';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-adduser',
@@ -52,7 +54,8 @@ export class AdduserComponent {
   pageSize = 10;
   gridApi: any;
 
-  constructor(public dialog: MatDialog,private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService) { }
+  constructor(public dialog: MatDialog,private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService,private toastr: ToastrService) { }
+
   addUser() {
     const dialogRef = this.dialog.open(AddsingleenrollComponent, {
       width: '400px', // Set the width as per your design
@@ -70,6 +73,7 @@ export class AdduserComponent {
       this.courseService.addenrollment(this.enroll,this.courseName).subscribe((data)=>
       {
         this.getusers();
+        this.toastr.success("user added to course successfully")
         console.log(data);
       });
       // this.users = this.userService.getUsers();
@@ -79,6 +83,7 @@ export class AdduserComponent {
   deleteuser(id:any){
     this.courseService.deleteenrollment(id.enrollid).subscribe((data)=>
     {
+      this.toastr.success("User deleted from course successfully")
       this.getusers();
       console.log(data);
     });

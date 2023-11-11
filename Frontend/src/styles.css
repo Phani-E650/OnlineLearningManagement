@@ -2,6 +2,8 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import 'ag-grid-community/styles/ag-grid.css';
 @import 'ag-grid-community/styles/ag-theme-alpine.css';
+
+@import '~ngx-toastr/toastr';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .ag-theme-alpine {
@@ -15,3 +17,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --ag-font-size: 17px;
     --ag-font-family: monospace;
 }
+

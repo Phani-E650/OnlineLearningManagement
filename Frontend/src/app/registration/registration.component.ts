@@ -16,6 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyServiceService } from '../my-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -31,7 +32,7 @@ export class RegistrationComponent implements OnInit {
   presentemail='';
   departmentList : any | undefined;
 
-  constructor(private myService: MyServiceService,private route: ActivatedRoute, private router: Router, private http: HttpClient,private formBuilder: FormBuilder) { 
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient,private formBuilder: FormBuilder,private toastr: ToastrService,private myService:MyServiceService) { 
     this.myForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       dept: ['', [Validators.required]],
@@ -100,6 +101,7 @@ this.myService.getAllCategoriesWithSubcategories().subscribe(data=>{
     this.http.post('http://localhost:8080/api/student/registration', formData1).subscribe(
       (response: any) => {
         if (response.message === 'Student registration initiated successfully.') {
+          this.toastr.success("User Registration successfull")
           // Send an email to the admin with the registration link
           // this.sendRegistrationEmail(this.email);
           this.router.navigate(['/admin']);

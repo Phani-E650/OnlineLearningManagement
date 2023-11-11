@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
   currRole = '';
   title = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router,private toastr: ToastrService) { }
 
   ngOnInit(): void 
   {
@@ -53,6 +54,7 @@ export class HeaderComponent implements OnInit {
   {
     // sessionStorage.clear();
     // this._router.navigate(['/login']);
+    this.toastr.success("Logout Successfull")
     localStorage.removeItem('isAuthenticated');
     // Redirect to the login page after logout
     this.router.navigate(['/login']);
