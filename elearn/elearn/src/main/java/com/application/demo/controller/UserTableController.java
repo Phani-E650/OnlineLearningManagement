@@ -7,11 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.application.demo.Dto.UserFullDetailsDto;
 import com.application.demo.entity.CourseEntity;
 import com.application.demo.entity.UserFullDetails;
 import com.application.demo.entity.UserTemp;
 import com.application.demo.repository.UserFullDetailsRepository;
 import com.application.demo.repository.UserTempRepository;
+
+import jakarta.persistence.EntityNotFoundException;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -112,6 +115,27 @@ public class UserTableController {
             return ResponseEntity.ok(existingDetails);
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+    
+    
+    @PutMapping("/change-password/{userId}")
+    public ResponseEntity<String> changePassword(@PathVariable String userId, @RequestBody UserFullDetailsDto changePasswordRequest) {
+        try {
+        	UserFullDetails user = userFullDetailsRepository.findByEmail(userId)
+                    .orElseThrow(() -> new EntityNotFoundException("User not found with id: " + userId));
+
+        	if (!user.getPassword().equals(changePasswordRequest.getCurrentPassword())) {
+                throw new IllegalArgumentException("Current password is incorrect");
+            }
+        	else {
+
+            user.setPassword(changePasswordRequest.getNewPassword());
+            userFullDetailsRepository.save(user);
+        	}
+            return ResponseEntity.ok("Password changed successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error changing password");
         }
     }
         

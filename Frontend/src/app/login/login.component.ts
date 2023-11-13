@@ -35,6 +35,10 @@ export class LoginComponent {
     return this.myForm.get('email');
   }
 
+  goToForgotPassword() {
+    this.router.navigate(['/forgot-password']);
+  }
+
   get password() {
     return this.myForm.get('password');
   }
@@ -67,6 +71,7 @@ export class LoginComponent {
             this.router.navigate(['/teacherdashboard']);
           } else {
             this.showErrorMessage = true;
+            this.toastr.error('Login Failed', '');
             this.errorMessage = 'Invalid role or login credentials.';
             console.error('Invalid role:', role);
           }

@@ -22,6 +22,7 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentListComponent } from './assignment-list/assignment-list.component';
 import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
 import { StudentcoursesComponent } from './studentcourses/studentcourses.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'assignments', component: AssignmentsComponent },
   { path: 'assignments-list', component: AssignmentListComponent },
   { path: 'student', component: StudentdashboardComponent,canActivate: [AuthGuard] },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'allenrollcourses', component: StudentcoursesComponent },
 ];
 

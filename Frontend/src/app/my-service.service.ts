@@ -136,5 +136,18 @@ getAllAssignments(fileName : string): Observable<Assignment[]> {
   return this.http.get<Assignment[]>(`${this.baseUrl}/files/download-pdf?fileName=${fileName}`);
 }
 
+
+getFileNamesByCourseId(courseId: string): Observable<string[]> {
+  return this.http.get<string[]>(`${this.baseUrl}/files/find-assignment/${courseId}`);
+}
+
+
+changePassword(userId: string, currentPassword: string, newPassword: string): Observable<any> {
+  console.log(userId)
+  const url = `${this.baseUrl}/table/change-password/${userId}`;
+  const body = { currentPassword: currentPassword, newPassword:newPassword };
+  return this.http.put(url, body);
+}
+
   
 }

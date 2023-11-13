@@ -100,15 +100,16 @@ this.myService.getAllCategoriesWithSubcategories().subscribe(data=>{
     
     this.http.post('http://localhost:8080/api/student/registration', formData1).subscribe(
       (response: any) => {
-        if (response.message === 'Student registration initiated successfully.') {
-          this.toastr.success("User Registration successfull")
+        if (response.status === 201) {
+          this.toastr.success("User Registration successful");
           // Send an email to the admin with the registration link
           // this.sendRegistrationEmail(this.email);
           this.router.navigate(['/admin']);
-          console.log('Registration email sent to successful');
+          console.log('Registration email sent successfully');
         } else {
           console.error('Admin creation failed.');
         }
+        
       },
       (error: any) => {
         console.error('An error occurred while creating the admin:', error);

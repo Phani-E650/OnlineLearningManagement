@@ -56,6 +56,8 @@ import { EnrollexcelComponent } from './enrollexcel/enrollexcel.component';
 import { AddsingleenrollComponent } from './addsingleenroll/addsingleenroll.component';
 import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
 import { StudentcoursesComponent } from './studentcourses/studentcourses.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -104,7 +106,9 @@ import { StudentcoursesComponent } from './studentcourses/studentcourses.compone
     EnrollexcelComponent,
     AddsingleenrollComponent,
     StudentdashboardComponent,
-    StudentcoursesComponent
+    StudentcoursesComponent,
+    ChangePasswordComponent,
+    ForgotPasswordComponent
   
   ],
 
