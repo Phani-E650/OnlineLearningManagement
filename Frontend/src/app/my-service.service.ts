@@ -149,5 +149,20 @@ changePassword(userId: string, currentPassword: string, newPassword: string): Ob
   return this.http.put(url, body);
 }
 
+
+sendOtp(email: string): Observable<string> {
+  const sendOtpUrl = `${this.baseUrl}/api/send-otp`;
+  const payload = { email };
+
+  return this.http.post<string>(sendOtpUrl, payload);
+}
+
+resetPassword(email: string, otp: string, newPassword: string): Observable<string> {
+  const resetPasswordUrl = `${this.baseUrl}/api/reset-password`;
+  const payload = { email, otp, newPassword };
+
+  return this.http.post<string>(resetPasswordUrl, payload);
+}
+
   
 }

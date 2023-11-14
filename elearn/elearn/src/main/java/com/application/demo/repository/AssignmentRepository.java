@@ -13,5 +13,7 @@ import com.application.demo.entity.AssignmentEntity;
 public interface AssignmentRepository extends JpaRepository<AssignmentEntity, Long> {
 	@Query("SELECT a.fileName FROM AssignmentEntity a WHERE a.course.id = :courseId")
     List<String> findFileNamesByCourseId(@Param("courseId") String courseId);
+
+	AssignmentEntity getAssignmentByFileName(String fileName);
 }
 
