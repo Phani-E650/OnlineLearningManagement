@@ -58,6 +58,7 @@ import { StudentdashboardComponent } from './studentdashboard/studentdashboard.c
 import { StudentcoursesComponent } from './studentcourses/studentcourses.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AssignmentSolutionComponent } from './assignment-solution/assignment-solution.component';
 
 
 
@@ -108,7 +109,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     StudentdashboardComponent,
     StudentcoursesComponent,
     ChangePasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AssignmentSolutionComponent
   
   ],
 
