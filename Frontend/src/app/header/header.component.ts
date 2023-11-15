@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class HeaderComponent implements OnInit {
   currRole = '';
   title = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router,private toastr: ToastrService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router,private toastr: ToastrService,public dialog: MatDialog) { }
 
   ngOnInit(): void 
   {
@@ -77,6 +79,18 @@ export class HeaderComponent implements OnInit {
   viewDetails()
   {
 
+  }
+
+  changePassword(): void {
+    this.dialog.open(ChangePasswordComponent, {
+      
+      width: '400px',
+      height:'400px',
+      data:{
+        userId: this.loggedUser
+      }
+    });
+    
   }
 
 

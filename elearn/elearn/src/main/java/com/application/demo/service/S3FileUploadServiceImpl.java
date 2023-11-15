@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -40,7 +41,7 @@ public class S3FileUploadServiceImpl implements S3FileUploadService {
   @Autowired
   private CourseRepository courseRepository;
 
-  public Map<String, String> uploadFileToS3(MultipartFile multipartfile, String title, String description, Long courseId) {
+  public Map<String, String> uploadFileToS3(MultipartFile multipartfile, String title, String description, String courseId) {
 	    Map<String, String> response = new HashMap<>();
 
 	    if (multipartfile != null && !multipartfile.isEmpty()) {
@@ -68,7 +69,7 @@ public class S3FileUploadServiceImpl implements S3FileUploadService {
 	            response.put("fileUrl", s3FileAccessUrl);
 
 	            // Create an AssignmentEntity and set the title, description, and file URL
-	            Optional<CourseEntity> course = courseRepository.findById(courseId);
+	            Optional<CourseEntity> course = courseRepository.findById((long) Integer.parseInt(courseId));
 	            AssignmentEntity assignment = new AssignmentEntity();
 	            assignment.setTitle(title);
 	            assignment.setDescription(description);
@@ -110,6 +111,11 @@ public class S3FileUploadServiceImpl implements S3FileUploadService {
 	    s3Client.deleteObject(bucketName, keyName);
 	    assignmentRepository.delete(a);
 	  }
+  
+  
+  public List<String> getFileNamesByCourseId(String courseId) {
+      return assignmentRepository.findFileNamesByCourseId(courseId);
+  }
   
   
 

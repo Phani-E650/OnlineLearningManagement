@@ -22,6 +22,8 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentListComponent } from './assignment-list/assignment-list.component';
 import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
 import { StudentcoursesComponent } from './studentcourses/studentcourses.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AssignmentSolutionComponent } from './assignment-solution/assignment-solution.component';
 
 
 const routes: Routes = [
@@ -45,7 +47,9 @@ const routes: Routes = [
   { path: 'announcements', component: AnnouncementsComponent },
   { path: 'assignments', component: AssignmentsComponent },
   { path: 'assignments-list', component: AssignmentListComponent },
+  { path: 'assignments-solution', component: AssignmentSolutionComponent },
   { path: 'student', component: StudentdashboardComponent,canActivate: [AuthGuard] },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'allenrollcourses', component: StudentcoursesComponent },
 ];
 

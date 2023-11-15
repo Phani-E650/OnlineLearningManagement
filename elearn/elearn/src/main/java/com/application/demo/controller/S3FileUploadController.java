@@ -1,8 +1,7 @@
 package com.application.demo.controller;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -11,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,7 +55,7 @@ public class S3FileUploadController {
       @RequestPart(name = "multipartfile", required = true) MultipartFile multipartfile,
       @RequestParam("title") String title,
       @RequestParam("description") String description,
-      @RequestParam("id") Long courseId
+      @RequestParam("id") String courseId
       
   ) {
       return ResponseEntity.ok(s3FileUploadService.uploadFileToS3(multipartfile, title, description,courseId));
@@ -127,6 +127,14 @@ public class S3FileUploadController {
           // Handle other exceptions
           return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
       }
+  }
+  
+  
+  
+  
+  @GetMapping("/find-assignment/{courseId}")
+  public List<String> getFileNamesByCourseId(@PathVariable String courseId) {
+      return s3FileUploadService.getFileNamesByCourseId(courseId);
   }
 
  

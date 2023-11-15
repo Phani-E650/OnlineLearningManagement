@@ -1,6 +1,7 @@
 package com.application.demo.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
@@ -15,6 +16,7 @@ import com.application.demo.entity.UserTemp;
 import com.application.demo.repository.UserFullDetailsRepository;
 import com.application.demo.repository.UserTempRepository;
 import com.application.demo.service.EmailService;
+import com.application.demo.service.UserService;
 
 //public class UserController {
 //
@@ -31,6 +33,11 @@ public class UserController {
     ModelMapper modelMapper;
     @Autowired
     private EmailService emailService;
+    
+    
+    @Autowired
+    private UserService userService;
+
 
     // Admin creates a student
     @PostMapping("/admin/create-student")
@@ -126,7 +133,28 @@ public class UserController {
         }
     }
 
-    
+    @PostMapping("/send-otp")
+    public ResponseEntity<String> sendOtp(@RequestBody Map<String, String> payload) {
+        String email = payload.get("email");
+        if (userService.sendOtp(email)) {
+            return ResponseEntity.ok("OTP sent successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+        }
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody Map<String, String> payload) {
+        String email = payload.get("email");
+        String otp = payload.get("otp");
+        String newPassword = payload.get("newPassword");
+
+        if (userService.resetPassword(email, otp, newPassword)) {
+            return ResponseEntity.ok("Password reset successful.");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid OTP.");
+        }
+    }
     
     
     

@@ -1,74 +1,20 @@
 <div class="container mt-4">
-  <div class="card-body mt-4">
-    <h2>Assignment List</h2>
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">ASE Assignment</h2>
-        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
-      </div>
-    </div>
-  </div>
-  <div class="card-body mt-4">
-    <h2>Assignment List</h2>
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">ASE Assignment</h2>
-        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
-      </div>
-    </div>
-  </div>
-  <div class="card-body mt-4">
-    <h2>Assignment List</h2>
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">ASE Assignment</h2>
-        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
-      </div>
-    </div>
-  </div>
-  <div class="card-body mt-4">
-    <h2>Assignment List</h2>
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">ASE Assignment</h2>
-        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
-      </div>
-    </div>
-  </div>
-  <div class="card-body mt-4">
-    <h2>Assignment List</h2>
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">ASE Assignment</h2>
-        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
-      </div>
-    </div>
-  </div>
-  <div class="card-body mt-4">
-    <h2>Assignment List</h2>
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">ASE Assignment</h2>
-        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
-      </div>
-    </div>
-  </div>
-  <div class="card-body mt-4">
-    <h2>Assignment List</h2>
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">ASE Assignment</h2>
-        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
-      </div>
-    </div>
-  </div>
-  <div class="card-body mt-4">
-    <h2>Assignment List</h2>
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">ASE Assignment</h2>
-        <embed [src]="pdfUrl" type="application/pdf" width="100%" height="250">
-      </div>
+  <div class="card">
+    <div class="card-body">
+  <h2>Assignment List</h2>
+  <div class="card mt-4" *ngFor="let pdfUrl of pdfUrls; let i = index">
+    <div class="card-body">
+      <h2 class="card-title">ASE Assignment {{ i + 1 }}</h2>
+      <h4 class="card-title">Python</h4>
+      <h4 class="card-title">Python Assignment {{ i + 1 }}</h4>
+      <!-- Use an anchor tag for the download link -->
+      <a [href]="pdfUrl" download="{{ fileNames[i] }}">
+        Download Assignment
+      </a>
     </div>
   </div>
 </div>
+</div>
+</div>
+
+

@@ -6,6 +6,7 @@ import * as $ from 'jquery';
 import { MyServiceService } from '../my-service.service';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 // @NgModule({
 //   declarations: [AddcourseComponent],
@@ -22,7 +23,7 @@ export class AddcourseComponent implements OnInit {
   msg = ' ';
   subcategories: any;
   categories:any;
-  constructor(private courseService : MyServiceService, private _router : Router, private http : HttpClient) { }
+  constructor(private courseService : MyServiceService, private _router : Router, private http : HttpClient, private toastr: ToastrService) { }
 
   ngOnInit(): void 
   {
@@ -57,7 +58,8 @@ export class AddcourseComponent implements OnInit {
     this.courseService.addCourse(this.course).subscribe(
       data => {
         console.log("Course added Successfully !!!");
-        this._router.navigate(['/addcourse']);
+        this._router.navigate(['/add-course']);
+        this.toastr.success("Course approve request sent to admin")
         this.course.department='';
       },
       error => {

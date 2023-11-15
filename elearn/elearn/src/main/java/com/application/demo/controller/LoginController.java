@@ -23,20 +23,17 @@ public class LoginController {
     private UserTempRepository userTempRepository;
 
     @PostMapping("/login")
-    public ResponseEntity<UserTemp> login(@RequestBody LoginDto request) {
+    public ResponseEntity<?> login(@RequestBody LoginDto request) {
         UserFullDetails user = userDetailsRepository.findByEmail(request.getEmail());
-        UserTemp userdetails=null;
+        UserTemp userdetails = null;
+
         if (user != null && user.getPassword().equals(request.getPassword())) {
-        	userdetails = userTempRepository.findByEmail(request.getEmail());
-            
+            userdetails = userTempRepository.findByEmail(request.getEmail());
             return ResponseEntity.ok(userdetails);
-        } 
-        else {
-        	return null;
+        } else {
+            // Return a response indicating invalid credentials
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
         }
-            //System.out.print("login failed");
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
-//            throw new Exception("User does not exists!!! Please enter valid credentials...");
-//        }
     }
+
 }

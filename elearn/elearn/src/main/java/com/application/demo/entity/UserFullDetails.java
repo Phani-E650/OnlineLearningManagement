@@ -37,6 +37,8 @@ public class UserFullDetails {
     
     private String password;
     
+    private String otp;
+    
     
     @Column(nullable = false)
     private String phoneno;
@@ -56,7 +58,7 @@ public class UserFullDetails {
     @JsonIgnore
     public List<assignmentsubmEntity> submissionlist= new ArrayList<>();
 
-	public UserFullDetails(Long id, String email, String name, String dept, String password, String phoneno, String dob,
+	public UserFullDetails(Long id, String email, String name, String dept, String password, String phoneno, String dob, String otp,
 			UserTemp usertemp, List<Enrollment> enrollcourseslist, List<assignmentsubmEntity> submissionlist) {
 		super();
 		this.id = id;
@@ -66,6 +68,7 @@ public class UserFullDetails {
 		this.password = password;
 		this.phoneno = phoneno;
 		this.dob = dob;
+		this.otp=otp;
 		this.usertemp = usertemp;
 		this.enrollcourseslist = enrollcourseslist;
 		this.submissionlist = submissionlist;
@@ -130,6 +133,16 @@ public class UserFullDetails {
 
 	public void setDob(String dob) {
 		this.dob = dob;
+	}
+	
+	
+
+	public String getOtp() {
+		return otp;
+	}
+
+	public void setOtp(String otp) {
+		this.otp = otp;
 	}
 
 	public UserTemp getUsertemp() {
