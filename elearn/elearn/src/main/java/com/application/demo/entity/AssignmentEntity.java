@@ -1,10 +1,13 @@
 package com.application.demo.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,12 +31,16 @@ public class AssignmentEntity {
     private String fileUrl;
     
     private String fileName;
+  private String totalmarks;
+    
+    private Date deadlinedate;
     
     @ManyToOne
     @JoinColumn(name = "course_id")
     private CourseEntity course;
     
     @OneToMany(mappedBy = "assignment",fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<assignmentsubmEntity> assignmentsubmissions= new ArrayList<>();
 
 	public Long getId() {
@@ -76,6 +83,22 @@ public class AssignmentEntity {
 		this.fileName = fileName;
 	}
 
+	public String getTotalmarks() {
+		return totalmarks;
+	}
+
+	public void setTotalmarks(String totalmarks) {
+		this.totalmarks = totalmarks;
+	}
+
+	public Date getDeadlinedate() {
+		return deadlinedate;
+	}
+
+	public void setDeadlinedate(Date deadlinedate) {
+		this.deadlinedate = deadlinedate;
+	}
+
 	public CourseEntity getCourse() {
 		return course;
 	}
@@ -93,13 +116,16 @@ public class AssignmentEntity {
 	}
 
 	public AssignmentEntity(Long id, String title, String description, String fileUrl, String fileName,
-			CourseEntity course, List<assignmentsubmEntity> assignmentsubmissions) {
+			String totalmarks, Date deadlinedate, CourseEntity course,
+			List<assignmentsubmEntity> assignmentsubmissions) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.fileUrl = fileUrl;
 		this.fileName = fileName;
+		this.totalmarks = totalmarks;
+		this.deadlinedate = deadlinedate;
 		this.course = course;
 		this.assignmentsubmissions = assignmentsubmissions;
 	}
@@ -109,8 +135,6 @@ public class AssignmentEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-    
-    
 	
 	
 

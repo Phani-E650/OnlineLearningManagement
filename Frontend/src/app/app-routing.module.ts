@@ -24,6 +24,7 @@ import { StudentdashboardComponent } from './studentdashboard/studentdashboard.c
 import { StudentcoursesComponent } from './studentcourses/studentcourses.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AssignmentSolutionComponent } from './assignment-solution/assignment-solution.component';
+import { AssignmentsubmissionsComponent } from './assignmentsubmissions/assignmentsubmissions.component';
 
 
 const routes: Routes = [
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: 'student', component: StudentdashboardComponent,canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'allenrollcourses', component: StudentcoursesComponent },
+  { path: 'submissions/:assignid', component: AssignmentsubmissionsComponent },
 ];
 
 @NgModule({

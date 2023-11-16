@@ -48,8 +48,10 @@ public class CourseEntity {
     public List<AnnouncementEntity> announcements= new ArrayList<>();
     
     
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<AssignmentEntity> assignments;
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<AssignmentEntity> assignments= new ArrayList<>();
+
 
 	public Long getId() {
 		return id;
@@ -211,10 +213,26 @@ public class CourseEntity {
 	}
 
 
+	public List<AssignmentEntity> getAssignments() {
+		return assignments;
+	}
+
+
+	public void setAssignments(List<AssignmentEntity> assignments) {
+		this.assignments = assignments;
+	}
+
+
+	public CourseEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public CourseEntity(Long id, String courseName, String courseId, String courseDescription, Date startDate,
 			int numberOfWeeks, Long userId, String department, String courseStatus, Date endDate, String category,
 			String modules, String professorName, List<ModuleEntity> moduleslist, List<Enrollment> enrolllist,
-			List<AnnouncementEntity> announcements) {
+			List<AnnouncementEntity> announcements, List<AssignmentEntity> assignments) {
 		super();
 		this.id = id;
 		this.courseName = courseName;
@@ -232,17 +250,10 @@ public class CourseEntity {
 		this.moduleslist = moduleslist;
 		this.enrolllist = enrolllist;
 		this.announcements = announcements;
+		this.assignments = assignments;
 	}
-
-
-	public CourseEntity() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 
 	
-
 
 
 

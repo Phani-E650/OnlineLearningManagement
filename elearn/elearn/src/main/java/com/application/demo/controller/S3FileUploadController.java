@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -25,6 +26,13 @@ import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
+import com.application.demo.Dto.assignsubmissions;
+import com.application.demo.Dto.assignsubrequest;
+import com.application.demo.entity.AssignmentEntity;
+import com.application.demo.entity.CourseEntity;
+import com.application.demo.entity.UserFullDetails;
+import com.application.demo.repository.AssignmentRepository;
+import com.application.demo.repository.CourseRepository;
 import com.application.demo.service.S3FileUploadService;
 
 
@@ -37,6 +45,10 @@ public class S3FileUploadController {
   
   @Autowired
   private AmazonS3 s3Client;
+  @Autowired
+  private AssignmentRepository assignmentRepository;
+  @Autowired
+  private CourseRepository courseRepo;
   
   private String bucketName = "elearningsystem";
 
@@ -60,7 +72,15 @@ public class S3FileUploadController {
   ) {
       return ResponseEntity.ok(s3FileUploadService.uploadFileToS3(multipartfile, title, description,courseId));
   }
-
+  @PostMapping(value = "/upload-answer")
+  public ResponseEntity<Map<String, String>> uploadsubmission(
+      @RequestPart(name = "answer", required = true) MultipartFile multipartfile,
+      @RequestParam("assignmentIndex") String asignment,
+      @RequestParam("usermail") String user
+      
+  ) {
+      return ResponseEntity.ok(s3FileUploadService.uploadSubmissionToS3(multipartfile,user,  asignment));
+  }
 
   @PostMapping(path = "/delete")
   public void deleteFile(@RequestParam(name = "fileId", required = true) Long fileId) {
@@ -132,11 +152,21 @@ public class S3FileUploadController {
   
   
   
-  @GetMapping("/find-assignment/{courseId}")
-  public List<String> getFileNamesByCourseId(@PathVariable String courseId) {
-      return s3FileUploadService.getFileNamesByCourseId(courseId);
-  }
+//  @GetMapping("/find-assignment/{courseId}")
+//  public List<String> getFileNamesByCourseId(@PathVariable String courseId) {
+//      return s3FileUploadService.getFileNamesByCourseId(courseId);
+//  }
+@GetMapping("/find-assignment/{courseId}")
+public List<AssignmentEntity> getFileNamesByCourseId(@PathVariable String courseId) {
+//    return s3FileUploadService.getFileNamesByCourseId(courseId);
+	CourseEntity c=courseRepo.findById(Long.parseLong(courseId)).get();
+    return courseRepo.findById(Long.parseLong(courseId)).get().getAssignments();
+    
+}
 
- 
+@GetMapping("/getsubmissions/{assignid}")
+public List<assignsubmissions> getsubmissionsByassignmentId(@PathVariable String assignid) {
+	return s3FileUploadService.getsubmissions(assignid);
+}
   
 }

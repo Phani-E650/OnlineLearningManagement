@@ -2,19 +2,19 @@
     <div class="card">
       <div class="card-body">
         <h2>Assignment List</h2>
-        <div class="card mt-4" *ngFor="let pdfUrl of pdfUrls; let i = index">
+        <div class="card mt-4" *ngFor="let pdfUrl of fileNames; let i = index">
           <div class="card-body">
             <h2 class="card-title">ASE Assignment {{ i + 1 }}</h2>
             <h4 class="card-title">Python</h4>
             <h4 class="card-title">Python Assignment {{ i + 1 }}</h4>
             <!-- Use an anchor tag for the download link -->
-            <a [href]="pdfUrl" download="{{ fileNames[i] }}">
+            <a href="javascript:void(0)" (click)="download(pdfUrl.fileName)">
               Download Assignment
             </a>
             <br>
 
             <input class="mt-4" type="file" (change)="onFileSelected($event, i)">
-            <button (click)="uploadAnswer(i)">Submit Answer</button>
+            <button (click)="uploadAnswer(pdfUrl.id)">Submit Answer</button>
           </div>
         </div>
       </div>

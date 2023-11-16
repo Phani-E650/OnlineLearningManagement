@@ -59,6 +59,7 @@ import { StudentcoursesComponent } from './studentcourses/studentcourses.compone
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AssignmentSolutionComponent } from './assignment-solution/assignment-solution.component';
+import { AssignmentsubmissionsComponent } from './assignmentsubmissions/assignmentsubmissions.component';
 
 
 
@@ -110,7 +111,8 @@ import { AssignmentSolutionComponent } from './assignment-solution/assignment-so
     StudentcoursesComponent,
     ChangePasswordComponent,
     ForgotPasswordComponent,
-    AssignmentSolutionComponent
+    AssignmentSolutionComponent,
+    AssignmentsubmissionsComponent
   
   ],
 

@@ -16,10 +16,10 @@ import { ICellRendererParams } from 'ag-grid-community';
 
 @Component({
   selector: 'app-username-link-renderer',
+  templateUrl: './username-link-renderer.component.html',
+  styleUrls: ['./username-link-renderer.component.css']
   // <a [routerLink]="['/user-details', params.data.email]">{{ params.value }}</a>
-  template: `
-      <button (click)="onClick()" class="btn btn-primary">View Details</button>
-  `,
+ 
 })
 export class UsernameLinkRendererComponent implements ICellRendererAngularComp {
   // router: any;

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -137,7 +137,7 @@ getAllAssignments(fileName : string): Observable<Assignment[]> {
 }
 
 
-getFileNamesByCourseId(courseId: string): Observable<string[]> {
+getFileNamesByCourseId(courseId: string) {
   return this.http.get<string[]>(`${this.baseUrl}/files/find-assignment/${courseId}`);
 }
 
@@ -163,6 +163,23 @@ resetPassword(email: string, otp: string, newPassword: string): Observable<strin
 
   return this.http.post<string>(resetPasswordUrl, payload);
 }
+addassignsubmission(data: FormData) {
 
-  
+  return this.http.post(`${this.baseUrl}/files/upload-answer`, data);
+}
+getdownload(fileName: String):Observable<ArrayBuffer> {
+  // return this.http.get<ArrayBuffer>(`${this.baseUrl}/files/download-pdf?fileName=${fileName}`);
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    // Add any other headers if needed
+  });
+
+  return this.http.get(`${this.baseUrl}/files/download-pdf?fileName=${fileName}`, {
+    headers: headers,
+    responseType: 'arraybuffer'
+  });
+}
+getsubmissionsbyassignid(assignid:any){
+  return this.http.get<any>(`${this.baseUrl}/files/getsubmissions/${assignid}`);
+ }
 }
