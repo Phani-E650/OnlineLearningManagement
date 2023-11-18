@@ -1,0 +1,15 @@
+/* Decrease the width of the entire ag-Grid table */
+.ag-theme-alpine .ag-root-wrapper {
+    width: 400px; /* Adjust the width as needed */
+  }
+  
+  /* Decrease the width of the table cells */
+  .ag-theme-alpine .ag-cell {
+    padding: 2px; /* Adjust the padding as needed */
+  }
+  
+  /* Decrease the width of the header cells */
+  .ag-theme-alpine .ag-header-cell {
+    width: 100px; /* Adjust the width as needed */
+  }
+  

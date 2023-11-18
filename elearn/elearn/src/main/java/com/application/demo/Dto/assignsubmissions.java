@@ -23,6 +23,8 @@ public class assignsubmissions {
 	    private String totalmarks;
 	    private String filename;
 	    private String status;
+	    private String weightage;
+	    private String assignedmarks;
 		public Long getSubmissionid() {
 			return submissionid;
 		}
@@ -71,8 +73,24 @@ public class assignsubmissions {
 		public void setStatus(String status) {
 			this.status = status;
 		}
+		public String getWeightage() {
+			return weightage;
+		}
+		public void setWeightage(String weightage) {
+			this.weightage = weightage;
+		}
+		public String getAssignedmarks() {
+			return assignedmarks;
+		}
+		public void setAssignedmarks(String assignedmarks) {
+			this.assignedmarks = assignedmarks;
+		}
+		public assignsubmissions() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
 		public assignsubmissions(Long submissionid, String email, String name, String dept, Date submitteddate,
-				String totalmarks, String filename, String status) {
+				String totalmarks, String filename, String status, String weightage, String assignedmarks) {
 			super();
 			this.submissionid = submissionid;
 			this.email = email;
@@ -82,12 +100,10 @@ public class assignsubmissions {
 			this.totalmarks = totalmarks;
 			this.filename = filename;
 			this.status = status;
+			this.weightage = weightage;
+			this.assignedmarks = assignedmarks;
 		}
-		public assignsubmissions() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
-		
 	    
+		
 	    
 }

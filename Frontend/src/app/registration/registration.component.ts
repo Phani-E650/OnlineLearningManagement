@@ -1,16 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-registration',
-//   templateUrl: './registration.component.html',
-//   styleUrls: ['./registration.component.css']
-// })
-// export class RegistrationComponent {
-
-// }
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';

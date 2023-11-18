@@ -165,7 +165,7 @@ resetPassword(email: string, otp: string, newPassword: string): Observable<strin
 }
 addassignsubmission(data: FormData) {
 
-  return this.http.post(`${this.baseUrl}/files/upload-answer`, data);
+  return this.http.post(`${this.baseUrl}/assignmentsubmissions/upload-answer`, data);
 }
 getdownload(fileName: String):Observable<ArrayBuffer> {
   // return this.http.get<ArrayBuffer>(`${this.baseUrl}/files/download-pdf?fileName=${fileName}`);
@@ -180,6 +180,9 @@ getdownload(fileName: String):Observable<ArrayBuffer> {
   });
 }
 getsubmissionsbyassignid(assignid:any){
-  return this.http.get<any>(`${this.baseUrl}/files/getsubmissions/${assignid}`);
+  return this.http.get<any>(`${this.baseUrl}/assignmentsubmissions/getsubmissions/${assignid}`);
  }
+assignmarks(summittedid:any,marks:any){
+  return this.http.post(`${this.baseUrl}/assignmentsubmissions/markssubmission?submissionid=${summittedid}&marks=${marks}`,null);
+}
 }

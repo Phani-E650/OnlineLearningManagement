@@ -67,20 +67,22 @@ public class S3FileUploadController {
       @RequestPart(name = "multipartfile", required = true) MultipartFile multipartfile,
       @RequestParam("title") String title,
       @RequestParam("description") String description,
-      @RequestParam("id") String courseId
-      
+      @RequestParam("id") String courseId,
+      @RequestParam("marks") String marks,
+      @RequestParam("weightage") String weightage,
+      @RequestParam("deadlinedate") String deadlinedate
   ) {
-      return ResponseEntity.ok(s3FileUploadService.uploadFileToS3(multipartfile, title, description,courseId));
+      return ResponseEntity.ok(s3FileUploadService.uploadFileToS3(multipartfile, title, description,courseId,marks,weightage,deadlinedate));
   }
-  @PostMapping(value = "/upload-answer")
-  public ResponseEntity<Map<String, String>> uploadsubmission(
-      @RequestPart(name = "answer", required = true) MultipartFile multipartfile,
-      @RequestParam("assignmentIndex") String asignment,
-      @RequestParam("usermail") String user
-      
-  ) {
-      return ResponseEntity.ok(s3FileUploadService.uploadSubmissionToS3(multipartfile,user,  asignment));
-  }
+//  @PostMapping(value = "/upload-answer")
+//  public ResponseEntity<Map<String, String>> uploadsubmission(
+//      @RequestPart(name = "answer", required = true) MultipartFile multipartfile,
+//      @RequestParam("assignmentIndex") String asignment,
+//      @RequestParam("usermail") String user
+//      
+//  ) {
+//      return ResponseEntity.ok(s3FileUploadService.uploadSubmissionToS3(multipartfile,user,  asignment));
+//  }
 
   @PostMapping(path = "/delete")
   public void deleteFile(@RequestParam(name = "fileId", required = true) Long fileId) {
@@ -164,9 +166,9 @@ public List<AssignmentEntity> getFileNamesByCourseId(@PathVariable String course
     
 }
 
-@GetMapping("/getsubmissions/{assignid}")
-public List<assignsubmissions> getsubmissionsByassignmentId(@PathVariable String assignid) {
-	return s3FileUploadService.getsubmissions(assignid);
-}
+//@GetMapping("/getsubmissions/{assignid}")
+//public List<assignsubmissions> getsubmissionsByassignmentId(@PathVariable String assignid) {
+//	return s3FileUploadService.getsubmissions(assignid);
+//}
   
 }

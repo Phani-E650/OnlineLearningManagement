@@ -32,7 +32,11 @@ export class AssignmentsComponent {
       formData.append('title', this.assignment.title);
       formData.append('description', this.assignment.description);
       formData.append('id',  this.courseId );
-      formData.append('multipartfile', this.selectedFile); // Ensure that 'multipartfile' matches the parameter name on the backend
+      formData.append('multipartfile', this.selectedFile);
+      formData.append('marks', this.assignment.marks);
+      formData.append('weightage', this.assignment.weightage);
+      formData.append('deadlinedate', this.assignment.deadlinedate);
+       // Ensure that 'multipartfile' matches the parameter name on the backend
       
       this.assignmentService.createAssignmentWithFileUpload(formData)
         .subscribe((result: any) => {

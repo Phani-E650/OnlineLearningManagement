@@ -14,6 +14,7 @@ export class AssignmentSolutionComponent implements OnInit {
   courseId: any | null = null;
   loggedUser="";
   selectedFile: File | undefined;
+  presenttime:any;
   constructor(private assignmentService: MyServiceService, private sanitizer: DomSanitizer, private http: HttpClient,private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -21,6 +22,9 @@ export class AssignmentSolutionComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.courseId = params['coursename'];
     });
+    this.presenttime=this.getCurrentTimestamp();
+    this.presenttime=this.dateRenderer(this.presenttime);
+    console.log(this.presenttime);
     this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
     this.loggedUser = this.loggedUser.replace(/"/g, '');
     const courseIdString = sessionStorage.getItem('course');
@@ -30,6 +34,9 @@ export class AssignmentSolutionComponent implements OnInit {
       (fileNames) => {
         // Set the file names
         this.fileNames = fileNames;
+        for (let obj of this.fileNames) {
+          obj.deadlinedate=this.dateRenderer(obj.deadlinedate);
+        } 
         // Load PDFs based on the file names
         // this.loadPdfs();
       },
@@ -116,5 +123,28 @@ export class AssignmentSolutionComponent implements OnInit {
         console.error(error); // Handle error response
       }
     );
+  }
+  getCurrentTimestamp(): number {
+    return new Date().getTime();
+  }
+  dateRenderer(params: any) {
+    const epochTime = params;
+    const date = new Date(epochTime);
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Months are 0-based, so add 1
+    const year = date.getFullYear();
+  
+    // Format the date as "dd/mm/yyyy"
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate;
+  }
+  isBeforeDeadline(deadline: string, currentTime: string): boolean {
+    const [deadlineDay, deadlineMonth, deadlineYear] = deadline.split('/');
+    const [currentDay, currentMonth, currentYear] = currentTime.split('/');
+
+    const deadlineDate = new Date(`${deadlineYear}-${deadlineMonth}-${deadlineDay}`);
+    const currentDate = new Date(`${currentYear}-${currentMonth}-${currentDay}`);
+
+    return currentDate < deadlineDate;
   }
 }

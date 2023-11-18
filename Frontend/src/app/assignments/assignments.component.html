@@ -10,6 +10,18 @@
         <label for="description">Description</label>
         <textarea class="form-control" id="description" name="description" rows="4" required [(ngModel)]="assignment.description"></textarea>
       </div>
+      <div class="form-group mt-4">
+        <label for="marks">Total Marks</label>
+        <input type="text" class="form-control" id="marks" name="marks"  required [(ngModel)]="assignment.marks">
+      </div>
+      <div class="form-group mt-4">
+        <label for="weightage">Total Weightage</label>
+        <input type="text" class="form-control" id="weightage" name="weightage" required [(ngModel)]="assignment.weightage">
+      </div>
+      <div class="form-group mt-4">
+        <label for="deadlinedate">deadline Date </label>
+        <input type="date" class="form-control" id="deadlinedate" name="deadlinedate" required [(ngModel)]="assignment.deadlinedate">
+      </div>
       <div class="form-group" class="mt-4">
         <label for="pdfFile">PDF File</label>
         <input type="file" class="form-control-file" id="pdfFile" name="pdfFile" (change)="onFileSelected($event)" required>

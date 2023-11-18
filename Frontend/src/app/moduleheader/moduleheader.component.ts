@@ -43,5 +43,8 @@ export class ModuleheaderComponent {
   openAssignmentsList() : void {
     this.route.navigate(["assignments-list"]);
   }
-
+  openassignmentsolution():void{
+    this.route.navigate(["assignments-solution"]);
+  }
+  
 }

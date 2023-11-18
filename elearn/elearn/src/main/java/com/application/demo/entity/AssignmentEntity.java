@@ -32,8 +32,8 @@ public class AssignmentEntity {
     
     private String fileName;
   private String totalmarks;
-    
-    private Date deadlinedate;
+  private String weightage;
+    private String deadlinedate;
     
     @ManyToOne
     @JoinColumn(name = "course_id")
@@ -91,11 +91,19 @@ public class AssignmentEntity {
 		this.totalmarks = totalmarks;
 	}
 
-	public Date getDeadlinedate() {
+	public String getWeightage() {
+		return weightage;
+	}
+
+	public void setWeightage(String weightage) {
+		this.weightage = weightage;
+	}
+
+	public String getDeadlinedate() {
 		return deadlinedate;
 	}
 
-	public void setDeadlinedate(Date deadlinedate) {
+	public void setDeadlinedate(String deadlinedate) {
 		this.deadlinedate = deadlinedate;
 	}
 
@@ -115,8 +123,13 @@ public class AssignmentEntity {
 		this.assignmentsubmissions = assignmentsubmissions;
 	}
 
+	public AssignmentEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public AssignmentEntity(Long id, String title, String description, String fileUrl, String fileName,
-			String totalmarks, Date deadlinedate, CourseEntity course,
+			String totalmarks, String weightage, String deadlinedate, CourseEntity course,
 			List<assignmentsubmEntity> assignmentsubmissions) {
 		super();
 		this.id = id;
@@ -125,17 +138,12 @@ public class AssignmentEntity {
 		this.fileUrl = fileUrl;
 		this.fileName = fileName;
 		this.totalmarks = totalmarks;
+		this.weightage = weightage;
 		this.deadlinedate = deadlinedate;
 		this.course = course;
 		this.assignmentsubmissions = assignmentsubmissions;
 	}
 
-	public AssignmentEntity() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	
 	
 
 	

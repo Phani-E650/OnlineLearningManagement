@@ -1,14 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-button-renderer',
-//   templateUrl: './button-renderer.component.html',
-//   styleUrls: ['./button-renderer.component.css']
-// })
-// export class ButtonRendererComponent {
-
-// }
-// button-renderer.component.ts
 import { Component } from '@angular/core';
 
 @Component({

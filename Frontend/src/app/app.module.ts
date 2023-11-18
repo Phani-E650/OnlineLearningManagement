@@ -60,6 +60,10 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AssignmentSolutionComponent } from './assignment-solution/assignment-solution.component';
 import { AssignmentsubmissionsComponent } from './assignmentsubmissions/assignmentsubmissions.component';
+import { AssignmarksComponent } from './assignmarks/assignmarks.component';
+import { MarkssubmitComponent } from './markssubmit/markssubmit.component';
+import { SubmissiondownloadComponent } from './submissiondownload/submissiondownload.component';
+import { DeadlinedatevalueComponent } from './deadlinedatevalue/deadlinedatevalue.component';
 
 
 
@@ -112,7 +116,11 @@ import { AssignmentsubmissionsComponent } from './assignmentsubmissions/assignme
     ChangePasswordComponent,
     ForgotPasswordComponent,
     AssignmentSolutionComponent,
-    AssignmentsubmissionsComponent
+    AssignmentsubmissionsComponent,
+    AssignmarksComponent,
+    MarkssubmitComponent,
+    SubmissiondownloadComponent,
+    DeadlinedatevalueComponent
   
   ],
 
