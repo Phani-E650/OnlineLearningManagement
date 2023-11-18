@@ -23,8 +23,12 @@ export class ChangePasswordComponent {
     });
     this.loggedUser = data.userId;
     console.log(this.loggedUser)
+    console.log(this.loggedUser)
+
     
   }
+
+  
 
 
   // ngOnit() : void{
