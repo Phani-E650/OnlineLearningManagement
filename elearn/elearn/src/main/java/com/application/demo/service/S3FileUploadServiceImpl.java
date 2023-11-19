@@ -13,7 +13,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import com.amazonaws.services.s3.AmazonS3;
@@ -54,7 +56,7 @@ public class S3FileUploadServiceImpl implements S3FileUploadService {
   @Autowired
   private CourseRepository courseRepository;
 
-  public Map<String, String> uploadFileToS3(MultipartFile multipartfile, String title, String description, String courseId,String marks,String weightage,String deadlinedate) {
+  public ResponseEntity<Map<String, String>> uploadFileToS3(MultipartFile multipartfile, String title, String description, String courseId,String marks,String weightage,String deadlinedate) {
 	    Map<String, String> response = new HashMap<>();
 
 	    if (multipartfile != null && !multipartfile.isEmpty()) {
@@ -108,13 +110,16 @@ public class S3FileUploadServiceImpl implements S3FileUploadService {
 	            //courseRepository.save(course);
 	            course.get().getAssignments().add(savedassign);
 	            file.delete();
+	            response.put("message", "success");
+	            
 	        } catch (FileNotFoundException e) {
 	            e.printStackTrace();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
 	    }
-	    return response;
+	    return ResponseEntity.status(HttpStatus.SC_CREATED).body(response);
+
 	}
   
   public void deleteFile(Long fileId) {

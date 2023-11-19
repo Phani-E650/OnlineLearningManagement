@@ -54,14 +54,6 @@ public class S3FileUploadController {
 
   private String folderName = "/lms/";
 
-//  @PostMapping(value = "/upload")
-//  public ResponseEntity<Map<String, String>> uploadFile(
-//      @RequestPart(name = "multipartfile", required = true) MultipartFile multipartfile) {
-//
-//    return ResponseEntity.ok(s3FileUploadService.uploadFileToS3(multipartfile));
-//  }
-//  
-  
   @PostMapping(value = "/upload")
   public ResponseEntity<Map<String, String>> uploadFile(
       @RequestPart(name = "multipartfile", required = true) MultipartFile multipartfile,
@@ -72,46 +64,20 @@ public class S3FileUploadController {
       @RequestParam("weightage") String weightage,
       @RequestParam("deadlinedate") String deadlinedate
   ) {
-      return ResponseEntity.ok(s3FileUploadService.uploadFileToS3(multipartfile, title, description,courseId,marks,weightage,deadlinedate));
+      ResponseEntity<Map<String, String>> result = s3FileUploadService.uploadFileToS3(multipartfile, title, description, courseId, marks, weightage, deadlinedate);
+
+      
+          // Return 201 Created if the operation is successful
+          return result;
+     
   }
-//  @PostMapping(value = "/upload-answer")
-//  public ResponseEntity<Map<String, String>> uploadsubmission(
-//      @RequestPart(name = "answer", required = true) MultipartFile multipartfile,
-//      @RequestParam("assignmentIndex") String asignment,
-//      @RequestParam("usermail") String user
-//      
-//  ) {
-//      return ResponseEntity.ok(s3FileUploadService.uploadSubmissionToS3(multipartfile,user,  asignment));
-//  }
 
   @PostMapping(path = "/delete")
   public void deleteFile(@RequestParam(name = "fileId", required = true) Long fileId) {
 
     s3FileUploadService.deleteFile(fileId);
   }
-  
-//  @GetMapping("/download-pdf")
-//  public ResponseEntity<byte[]> downloadPDF(@RequestParam String fileName) {
-//      try {
-//          byte[] pdfBytes = s3Client.getObject(bucketName, folderName + fileName).getObjectContent().readAllBytes();
-//          HttpHeaders headers = new HttpHeaders();
-//          headers.setContentType(MediaType.APPLICATION_PDF);
-//          headers.set("Content-Disposition", "inline; filename=" + fileName);
-//          return ResponseEntity.ok().headers(headers).body(pdfBytes);
-//      } catch (AmazonS3Exception e) {
-//          if (e.getStatusCode() == 404) {
-//              // Handle 404 (Not Found) error
-//              return ResponseEntity.notFound().build();
-//          } else {
-//              // Handle other S3 errors
-//              return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//          }
-//      } catch (IOException e) {
-//          // Handle other exceptions
-//          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//      }
-//  }
-  
+ 
   
   @GetMapping("/download-pdf")
   public ResponseEntity<?> downloadPDF(@RequestParam String fileName) {
@@ -154,10 +120,7 @@ public class S3FileUploadController {
   
   
   
-//  @GetMapping("/find-assignment/{courseId}")
-//  public List<String> getFileNamesByCourseId(@PathVariable String courseId) {
-//      return s3FileUploadService.getFileNamesByCourseId(courseId);
-//  }
+
 @GetMapping("/find-assignment/{courseId}")
 public List<AssignmentEntity> getFileNamesByCourseId(@PathVariable String courseId) {
 //    return s3FileUploadService.getFileNamesByCourseId(courseId);
@@ -166,9 +129,5 @@ public List<AssignmentEntity> getFileNamesByCourseId(@PathVariable String course
     
 }
 
-//@GetMapping("/getsubmissions/{assignid}")
-//public List<assignsubmissions> getsubmissionsByassignmentId(@PathVariable String assignid) {
-//	return s3FileUploadService.getsubmissions(assignid);
-//}
   
 }

@@ -19,7 +19,8 @@
  -->
  <app-header></app-header>
 <app-moduleheader [coursename]="courseId"></app-moduleheader>
- <button class="center-vertically" (click)="openAssignments()">Add Assignments</button>
+<button class="center-vertically custom-button" (click)="openAssignments()">Add Assignments</button>
+
  <div class="container mt-4">
   <div class="card">
     <div class="card-body">
@@ -36,7 +37,7 @@
             Download Assignment
           </a>
           <br>
-          <button  [routerLink]="['/submissions', pdfUrl.id]">Submitions</button>
+          <button class="center-vertically custom-button mt-4" [routerLink]="['/submissions', pdfUrl.id]">Submitions</button>
         </div>
       </div>
     </div>
