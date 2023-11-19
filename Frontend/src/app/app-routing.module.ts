@@ -12,9 +12,9 @@ import { CategoryCreateComponent } from './category-create/category-create.compo
 import { TeacherdashboardComponent } from './teacherdashboard/teacherdashboard.component';
 import { AddcourseComponent } from './addcourse/addcourse.component';
 import { CoursestableComponent } from './coursestable/coursestable.component';
-import { AllCoursesComponent } from './all-courses/all-courses.component';
+
 import { CourseModulesComponent } from './course-modules/course-modules.component';
-import { CourseContentComponent } from './course-content/course-content.component';
+
 import { AdduserComponent } from './adduser/adduser.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
@@ -25,6 +25,8 @@ import { StudentcoursesComponent } from './studentcourses/studentcourses.compone
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AssignmentSolutionComponent } from './assignment-solution/assignment-solution.component';
 import { AssignmentsubmissionsComponent } from './assignmentsubmissions/assignmentsubmissions.component';
+import { AllCoursesComponent } from './courses/all-courses/all-courses.component';
+import { CourseContentComponent } from './courses/course-content/course-content.component';
 
 
 const routes: Routes = [

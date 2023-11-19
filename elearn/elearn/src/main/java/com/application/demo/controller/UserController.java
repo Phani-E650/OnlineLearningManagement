@@ -100,20 +100,25 @@ public class UserController {
             if (userTemp == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
             }
-            UserFullDetails userFullDetailssaved=userFullDetailsRepository.save(userFullDetails);
+
+            UserFullDetails userFullDetailssaved = userFullDetailsRepository.save(userFullDetails);
             userTemp.setStatus("active");
             userTemp.setUserfulldetails(userFullDetailssaved);
             UserTemp userTempsaved = userTempRepository.save(userTemp);
+
             // Save the complete user details in the user_full_details table
             userFullDetails.setUsertemp(userTempsaved);
 
             // Optionally, delete the entry from the user_temp table
 
+            // Return 201 status for successful registration
             return ResponseEntity.status(HttpStatus.CREATED).body("Registration completed successfully.");
         } catch (Exception e) {
+            // Return 500 status for internal server error
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred.");
         }
     }
+
     @PostMapping("/admin/sentmail")
     public ResponseEntity<String> sentMailRequest() {
         try {

@@ -75,33 +75,49 @@ this.myService.getAllCategoriesWithSubcategories().subscribe(data=>{
      console.log(this.departmentList);
 })
   }
-
   submitRegistrationForm(): void {
-    // const adminData = { email: this.email, name: this.name, deptName:this.deptName ,password:this.password};
     if (this.myForm.valid) {
       const formData = this.myForm.value;
-      const formData1={email:this.myForm.get('email')?.value,name:this.myForm.get('name')?.value,
-      password:this.myForm.get('password')?.value,dept:this.myForm.get('dept')?.value,
-      phoneno:this.myForm.get('phoneno')?.value,dob:this.myForm.get('dob')?.value}
-      console.log( formData1);
-    
-    this.http.post('http://localhost:8080/api/student/registration', formData1).subscribe(
-      (response: any) => {
-        if (response.status === 201) {
-          this.toastr.success("User Registration successful");
-          // Send an email to the admin with the registration link
-          // this.sendRegistrationEmail(this.email);
-          this.router.navigate(['/admin']);
-          console.log('Registration email sent successfully');
-        } else {
-          console.error('Admin creation failed.');
+      const formData1 = {
+        email: this.myForm.get('email')?.value,
+        name: this.myForm.get('name')?.value,
+        password: this.myForm.get('password')?.value,
+        dept: this.myForm.get('dept')?.value,
+        phoneno: this.myForm.get('phoneno')?.value,
+        dob: this.myForm.get('dob')?.value
+      };
+  
+      console.log(formData1);
+  
+      this.http.post('http://localhost:8080/api/student/registration', formData1,{ responseType: 'text' }).subscribe(
+        (response: any) => {
+          if (response === 'Registration completed successfully.' ) {
+            this.toastr.success("User Registration successful");
+            // Send an email to the admin with the registration link
+            // this.sendRegistrationEmail(this.email);
+            this.router.navigate(['/login']);
+            console.log('Registration successful');
+          } else {
+            console.error('Unexpected response status:', response.status);
+            // Handle other status codes as needed
+          }
+        },
+        (error: any) => {
+          console.error('An error occurred while creating the user:', error);
+          // Handle error cases
+          if (error.status === 404) {
+            // User not found
+            this.toastr.error("User not found.");
+          } else if (error.status === 500) {
+            // Internal server error
+            this.toastr.error("User Registered already Please Login");
+            this.router.navigate(['/login']);
+          } else {
+            // Handle other status codes as needed
+          }
         }
-        
-      },
-      (error: any) => {
-        console.error('An error occurred while creating the admin:', error);
-      }
-    );
+      );
     }
   }
+  
 }

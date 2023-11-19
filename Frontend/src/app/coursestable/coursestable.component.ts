@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
-import { ApprovecourseComponent } from '../approvecourse/approvecourse.component';
+
 import { MyServiceService } from '../my-service.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ApprovecourseComponent } from '../courses/approvecourse/approvecourse.component';
 
 @Component({
   selector: 'app-coursestable',

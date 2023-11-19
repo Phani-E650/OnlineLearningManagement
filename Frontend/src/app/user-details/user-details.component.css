@@ -1,15 +1,36 @@
- .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Makes the container take the full viewport height */
-  }
-   /* user-details.component.css */
 
-.large-card {
-  width: 400px; /* Adjust the width to your desired size */
-  height: auto; /* Adjust the height as needed */
-  padding: 20px; /* Adjust the padding as needed */
-  /* Add any other styles you want for the card */
+
+.container {
+  margin-top: 50px;
+  background-color: white; /* Set your desired background color */
 }
+
+.card {
+  max-width: 800px; /* Set your desired maximum width */
+  margin: 0 auto;
+  background-color: #cfaeae; /* Set your desired background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+}
+
+.card-body {
+  padding: 20px; /* Add some padding for content inside the card */
+}
+
+.card-title {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+
+.btn-primary {
+  width: 20%;
+}
+
+.alert {
+  margin-top: 20px;
+}
+

@@ -33,11 +33,9 @@ import { TeacherdashboardComponent } from './teacherdashboard/teacherdashboard.c
 import { AdduserComponent } from './adduser/adduser.component';
 import { AddcourseComponent } from './addcourse/addcourse.component';
 import { CoursestableComponent } from './coursestable/coursestable.component';
-import { ApprovecourseComponent } from './approvecourse/approvecourse.component';
-import { CourseListComponent } from './course-list/course-list.component';
-import { AllCoursesComponent } from './all-courses/all-courses.component';
+
 import { CourseModulesComponent } from './course-modules/course-modules.component';
-import { CourseContentComponent } from './course-content/course-content.component';
+
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { ModuleheaderComponent } from './moduleheader/moduleheader.component';
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
@@ -49,7 +47,7 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 import { AssignmentListComponent } from './assignment-list/assignment-list.component';
 import { UpdatevideocontentComponent } from './updatevideocontent/updatevideocontent.component';
 import { UpdatemoduleComponent } from './updatemodule/updatemodule.component';
-import { UpdateCourseComponent } from './update-course/update-course.component';
+
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DeleteenrollComponent } from './deleteenroll/deleteenroll.component';
 import { EnrollexcelComponent } from './enrollexcel/enrollexcel.component';
@@ -64,6 +62,11 @@ import { AssignmarksComponent } from './assignmarks/assignmarks.component';
 import { MarkssubmitComponent } from './markssubmit/markssubmit.component';
 import { SubmissiondownloadComponent } from './submissiondownload/submissiondownload.component';
 import { DeadlinedatevalueComponent } from './deadlinedatevalue/deadlinedatevalue.component';
+import { ApprovecourseComponent } from './courses/approvecourse/approvecourse.component';
+import { CourseListComponent } from './courses/course-list/course-list.component';
+import { AllCoursesComponent } from './courses/all-courses/all-courses.component';
+import { CourseContentComponent } from './courses/course-content/course-content.component';
+import { UpdateCourseComponent } from './courses/update-course/update-course.component';
 
 
 

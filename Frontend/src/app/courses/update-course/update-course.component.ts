@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component , Inject} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Course } from '../models/course';
+import { Course } from 'src/app/models/course';
 
 @Component({
   selector: 'app-update-course',

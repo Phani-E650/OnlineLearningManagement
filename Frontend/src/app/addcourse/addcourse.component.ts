@@ -58,7 +58,7 @@ export class AddcourseComponent implements OnInit {
     this.courseService.addCourse(this.course).subscribe(
       data => {
         console.log("Course added Successfully !!!");
-        this._router.navigate(['/add-course']);
+        this._router.navigate(['/teacherdashboard']);
         this.toastr.success("Course approve request sent to admin")
         this.course.department='';
       },

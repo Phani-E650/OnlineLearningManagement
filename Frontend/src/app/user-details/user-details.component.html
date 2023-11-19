@@ -1,4 +1,22 @@
-<app-header></app-header>
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <p><strong>Email:</strong> {{ cardData.email }}</p>
+      <p><strong>Name:</strong> {{ cardData.name }}</p>
+      <p><strong>Department:</strong> {{ cardData.dept }}</p>
+      <p><strong>Phone Number:</strong> {{ cardData.phoneno }}</p>
+      <p><strong>DOB:</strong> {{ cardData.dob }}</p>
+      </div>
+      
+    </div>
+    <div class="mt-4">
+      <button  (click)="closeDialog()" class="btn btn-primary ">Cancel</button>
+    </div>
+    
+  </div>
+
+
+<!-- 
 <div class="container">
   <mat-card>
     <mat-card-header>
@@ -11,7 +29,7 @@
       <p><strong>Phone Number:</strong> {{ cardData.phoneno }}</p>
       <p><strong>DOB:</strong> {{ cardData.dob }}</p>
 
-      <!-- <button class="btn btn-primary" (click)="startEditing()">Update</button> -->
+      <button class="btn btn-primary" (click)="startEditing()">Update</button>
     </mat-card-content>
     <mat-card-content *ngIf="isEditing">
       <div class="form-group">
@@ -30,8 +48,8 @@
         <label for="newDOB">New Date of Birth:</label>
         <input type="text" class="form-control" id="newDOB" [(ngModel)]="newDOB" name="newDOB">
       </div>
-      <!-- Add other form fields for updating user details here -->
+      Add other form fields for updating user details here
       <button type="submit" class="btn btn-primary" (click)="updateUser()">Submit</button>
     </mat-card-content>
   </mat-card>
-  </div>
+  </div> -->

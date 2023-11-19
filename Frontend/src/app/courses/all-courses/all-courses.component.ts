@@ -3,10 +3,12 @@ import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Observable } from 'rxjs';
 import { AllCourses } from 'src/app/models/allcourses';
-import { Course } from '../models/course';
-import { MyServiceService } from '../my-service.service';
+
+
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateCourseComponent } from '../update-course/update-course.component';
+import { CourseService } from '../course-service.service';
+import { Course } from 'src/app/models/course';
 
 
 @Component({
@@ -22,7 +24,7 @@ export class AllCoursesComponent {
   courses : any;
   approvedcourses:any;
   unapprovedcourses:any;
-  constructor( private _router : Router,private courseService : MyServiceService, private dialog : MatDialog) { }
+  constructor( private _router : Router,private courseService : CourseService, private dialog : MatDialog) { }
 
   ngOnInit(): void 
   {

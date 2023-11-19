@@ -13,6 +13,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
+import { UserDetailsComponent } from '../user-details/user-details.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-username-link-renderer',
@@ -31,7 +33,7 @@ export class UsernameLinkRendererComponent implements ICellRendererAngularComp {
   agInit(params: any): void {
     this.params = params;
   }
-  constructor(private http: HttpClient,private router: Router) {}
+  constructor(private http: HttpClient,private router: Router,public dialog: MatDialog) {}
 
 
   onClick(): void {
@@ -41,6 +43,17 @@ export class UsernameLinkRendererComponent implements ICellRendererAngularComp {
      // this.params.onClick(this.params.data);
     // }
   }
+
+
+  
+  openUserDetails(): void {
+    this.dialog.open(UserDetailsComponent, {
+      
+      width: '400px',
+      height:'300px'
+    });
+  }
+
 
 
   // public params!: ICellRendererParams;

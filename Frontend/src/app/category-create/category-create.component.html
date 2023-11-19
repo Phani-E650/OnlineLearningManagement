@@ -3,7 +3,7 @@
     <h2>Categories</h2>
     <app-category-list [categories]="categoriesWithSubcategories" (addCategory)="onAddCategory($event)"  (updateCategory)="updateCategory($event)" ></app-category-list>
     <div class="centered-container">
-    <button (click)="showInputBox = true" class="btn btn-primary">Add Category</button>
+    <button (click)="showInputBox = true" class="btn btn-primary">Add Department</button>
 
     <div *ngIf="showInputBox">
       <input type="text" [(ngModel)]="newCategory" placeholder="Enter a new category">

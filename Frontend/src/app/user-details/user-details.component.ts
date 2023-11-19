@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -13,7 +14,8 @@ export class UserDetailsComponent {
     private http: HttpClient,
     private route: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialogRef:MatDialogRef<UserDetailsComponent>
   ) {}
 
   cardData: any;
@@ -25,7 +27,8 @@ export class UserDetailsComponent {
 
   ngOnInit() {
     this.route.params.subscribe((data1) => {
-      const email = data1['id'];
+      const p=sessionStorage.getItem('loggedUser');
+      const email = p;
 
       this.http.get<any>(`http://localhost:8080/table/getuserdetails/${email}`).subscribe((data) => {
         this.cardData = data;
@@ -37,6 +40,11 @@ export class UserDetailsComponent {
     this.isEditing = true;
   }
 
+  closeDialog(): void {
+    this.dialogRef.close();
+  }
+
+ 
   updateUser() {
     const updatedUserData = {
       name: this.newName,
@@ -45,6 +53,8 @@ export class UserDetailsComponent {
       dob: this.newDOB
       // Add other properties as needed
     };
+
+    
 
     this.http.post(`http://localhost:8080/table/updateuserdetails/${this.cardData.email}`, updatedUserData)
       .subscribe(

@@ -4,7 +4,7 @@
     <form (ngSubmit)="submitForm()" #announcementForm="ngForm">
       <div class="form-group">
         <label for="title">Course Name</label>
-        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="course.courseName" required>
+        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="course.courseName" value="course.courseName" required>
       </div>
       <div class="form-group mt-4">
         <label for="description">Description</label>
