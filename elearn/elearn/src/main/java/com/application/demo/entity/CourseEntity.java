@@ -12,7 +12,10 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 
 @Entity
@@ -26,11 +29,17 @@ public class CourseEntity {
     private Date startDate;
     private int numberOfWeeks;
     private Long userId;
-    private String department;
+    @ManyToOne( fetch = FetchType.EAGER)
+    @JoinColumn(name = "deptreference_id")
+    @JsonIgnore
+    private CategoryEntity department;
     private String courseStatus;
 
     private Date endDate;
-    private String category;
+    @ManyToOne( fetch = FetchType.EAGER)
+    @JoinColumn(name = "categoryreference_id")
+    @JsonIgnore
+    private CategoryEntity category;
 	private String modules;
     
     private String professorName;
@@ -123,12 +132,12 @@ public class CourseEntity {
 	}
 
 
-	public String getDepartment() {
+	public CategoryEntity getDepartment() {
 		return department;
 	}
 
 
-	public void setDepartment(String department) {
+	public void setDepartment(CategoryEntity department) {
 		this.department = department;
 	}
 
@@ -153,12 +162,12 @@ public class CourseEntity {
 	}
 
 
-	public String getCategory() {
+	public CategoryEntity getCategory() {
 		return category;
 	}
 
 
-	public void setCategory(String category) {
+	public void setCategory(CategoryEntity category) {
 		this.category = category;
 	}
 
@@ -223,16 +232,10 @@ public class CourseEntity {
 	}
 
 
-	public CourseEntity() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
 	public CourseEntity(Long id, String courseName, String courseId, String courseDescription, Date startDate,
-			int numberOfWeeks, Long userId, String department, String courseStatus, Date endDate, String category,
-			String modules, String professorName, List<ModuleEntity> moduleslist, List<Enrollment> enrolllist,
-			List<AnnouncementEntity> announcements, List<AssignmentEntity> assignments) {
+			int numberOfWeeks, Long userId, CategoryEntity department, String courseStatus, Date endDate,
+			CategoryEntity category, String modules, String professorName, List<ModuleEntity> moduleslist,
+			List<Enrollment> enrolllist, List<AnnouncementEntity> announcements, List<AssignmentEntity> assignments) {
 		super();
 		this.id = id;
 		this.courseName = courseName;
@@ -253,9 +256,14 @@ public class CourseEntity {
 		this.assignments = assignments;
 	}
 
+
+	public CourseEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	
-
-
 
     
     

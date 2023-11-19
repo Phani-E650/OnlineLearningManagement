@@ -36,8 +36,9 @@ export class CoursestableComponent {
       // }as IGroupCellRendererParams,
     },
     { headerName: 'CourseDescription', field: 'courseDescription', cellStyle: { textAlign: 'left' },filter:true, },
-    { headerName: 'Category', field: 'department', cellStyle: { textAlign: 'left' },filter:true, },
+    { headerName: 'Category', field: 'category', cellStyle: { textAlign: 'left' },filter:true, },
     { headerName: 'StartDate', field: 'startDate', cellStyle: { textAlign: 'left' },filter:true,  cellRenderer: this.dateRenderer},
+    { headerName: 'EndDate', field: 'endDate', cellStyle: { textAlign: 'left' },filter:true,  cellRenderer: this.dateRenderer},
     { headerName: 'NumberOfWeeks', field: 'numberOfWeeks', cellStyle: { textAlign: 'left' },filter:true, },
     { headerName: 'ProfessorName', field: 'professorName' , cellStyle: { textAlign: 'left' },
     // cellRenderer: ActionCellRendererComponent,
@@ -98,7 +99,7 @@ export class CoursestableComponent {
     return formattedDate;
   }
   enableDisableCallback(data: any) {
-    
+    console.log(data)
     const id=data.id;
     this.courseService.enablecourse(id).subscribe((response)=>{
       console.log('Update:',response);

@@ -84,8 +84,8 @@ export class AddcourseComponent implements OnInit {
         department=char.name;
       }
     }
-     console.log(department);
-    this.course.department=department;
+    //  console.log(department);
+    // this.course.department=department;
     // console.log(this.categories.filter((cat:any)=>{cat.id===selectedOptionValue})[0]);
     this.courseService.getsubCategoriesofcategories(selectedOptionValue).subscribe((categories)=>{
       this.subcategories=categories;

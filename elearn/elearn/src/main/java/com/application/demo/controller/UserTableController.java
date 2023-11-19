@@ -8,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.application.demo.Dto.UserFullDetailsDto;
+import com.application.demo.Dto.registrationrequest;
 import com.application.demo.entity.CourseEntity;
 import com.application.demo.entity.UserFullDetails;
 import com.application.demo.entity.UserTemp;
+import com.application.demo.repository.CategoryRepository;
 import com.application.demo.repository.UserFullDetailsRepository;
 import com.application.demo.repository.UserTempRepository;
 
@@ -25,6 +27,8 @@ public class UserTableController {
     private UserTempRepository userTempRepository;
 	@Autowired
     private UserFullDetailsRepository userFullDetailsRepository;
+	 @Autowired
+	 private CategoryRepository categoryrepo;
     
 	
 	@GetMapping("getdata")
@@ -85,19 +89,27 @@ public class UserTableController {
 	
     
     @GetMapping("/getuserdetails/{email}")
-    public ResponseEntity<UserFullDetails> getUserEntities(@PathVariable String email) {
+    public ResponseEntity<registrationrequest> getUserEntities(@PathVariable String email) {
         Optional<UserFullDetails> entityOptional = userFullDetailsRepository.findByEmail(email);
         
         if (entityOptional.isPresent()) {
             UserFullDetails response = entityOptional.get();
-            return ResponseEntity.ok(response);
+            
+            registrationrequest userprofile=new registrationrequest();
+            userprofile.setDept(response.getDepartment().getName());
+            userprofile.setDob(response.getDob());
+            userprofile.setEmail(response.getEmail());
+            userprofile.setName(response.getName());
+            userprofile.setPhoneno(response.getPhoneno());
+            
+           return ResponseEntity.ok(userprofile);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
     @PostMapping("/updateuserdetails/{email}")
-    public ResponseEntity<UserFullDetails> updateUserDetails(@PathVariable String email, @RequestBody UserFullDetails updatedDetails) {
+    public ResponseEntity<UserFullDetails> updateUserDetails(@PathVariable String email, @RequestBody registrationrequest updatedDetails) {
         Optional<UserFullDetails> entityOptional = userFullDetailsRepository.findByEmail(email);
         
         if (entityOptional.isPresent()) {
@@ -105,7 +117,8 @@ public class UserTableController {
             
             // Update the existing user details with the new details
             existingDetails.setName(updatedDetails.getName());
-            existingDetails.setDept(updatedDetails.getDept());
+//            existingDetails.setDept(updatedDetails.getDept());
+            existingDetails.setDepartment(categoryrepo.findById(Long.parseLong(updatedDetails.getDept())).get());
             existingDetails.setPhoneno(updatedDetails.getPhoneno());
             existingDetails.setDob(updatedDetails.getDob());
             

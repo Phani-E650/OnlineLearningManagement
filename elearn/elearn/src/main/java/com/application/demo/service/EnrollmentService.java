@@ -35,13 +35,15 @@ public class EnrollmentService {
 	  return  enrollRepo.save(enroll);
 	}
 	public List<enrollresponse> getAllEnrollUsers(String id) {
+		 CourseEntity course=courseRepo.findById(Long.parseLong(id)).get();
+		 List<Enrollment> enr=course.getEnrolllist();
 		List<UserFullDetails> enrollers= courseRepo.findById(Long.parseLong(id)).get().getEnrolllist().stream().map(enroll->enroll.getUser()).toList();
 		List<Enrollment> enrollment=courseRepo.findById(Long.parseLong(id)).get().getEnrolllist();
 		 List<enrollresponse> enrollerresponse= new ArrayList<>();
 		 for(UserFullDetails i:enrollers) {
 			 enrollresponse enroll=new enrollresponse();
 			 enroll.setId(i.getId());
-			 enroll.setDept(i.getDept());
+			 enroll.setDept(i.getDepartment().getName());
 			 enroll.setEmail(i.getEmail());
 			 enroll.setName(i.getName());
 			 for(Enrollment j:enrollment) {

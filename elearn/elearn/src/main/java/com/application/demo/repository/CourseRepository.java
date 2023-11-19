@@ -12,6 +12,6 @@ import com.application.demo.entity.CourseEntity;
 public interface CourseRepository extends JpaRepository<CourseEntity, Long>{
 	List<CourseEntity> findByProfessorName(String professorName);
 	CourseEntity findByCourseNameAndProfessorName(String courseName, String professorName);
-	CourseEntity findByCourseNameAndProfessorNameAndCategory(String courseName, String professorName, String Category);
-//	Optional<CourseEntity> findById(Long id);
+	CourseEntity findByCourseNameAndProfessorNameAndCategoryId(String courseName, String professorName, Long Category);
+	Optional<CourseEntity> findById(Long id);
 }

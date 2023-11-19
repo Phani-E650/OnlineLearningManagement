@@ -32,7 +32,7 @@
     <div class="form-group">
       <label for="dept">Department:</label>
       <select id="dept" formControlName="dept" class="form-control">
-        <option *ngFor="let department of departmentList" [value]="department.name">{{ department.name }}</option>
+        <option *ngFor="let department of departmentList" [value]="department.id">{{ department.name }}</option>
       </select>
       <mat-error *ngIf="myForm.get('dept')?.errors?.['required']">Dept Name is required.</mat-error>
     </div>

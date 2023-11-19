@@ -11,8 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.application.demo.Dto.UseTempDto;
+import com.application.demo.Dto.registrationrequest;
 import com.application.demo.entity.UserFullDetails;
 import com.application.demo.entity.UserTemp;
+import com.application.demo.repository.CategoryRepository;
 import com.application.demo.repository.UserFullDetailsRepository;
 import com.application.demo.repository.UserTempRepository;
 import com.application.demo.service.EmailService;
@@ -37,6 +39,8 @@ public class UserController {
     
     @Autowired
     private UserService userService;
+    @Autowired
+    private CategoryRepository categoryrepo;
 
 
     // Admin creates a student
@@ -93,14 +97,20 @@ public class UserController {
     
     
     @PostMapping("/student/registration")
-    public ResponseEntity<String> completeRegistration(@RequestBody UserFullDetails userFullDetails) {
+    public ResponseEntity<String> completeRegistration(@RequestBody registrationrequest registrationrequest) {
         try {
             // Find the corresponding user_temp entry by email
-            UserTemp userTemp = userTempRepository.findByEmail(userFullDetails.getEmail());
+            UserTemp userTemp = userTempRepository.findByEmail(registrationrequest.getEmail());
             if (userTemp == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
             }
-
+            UserFullDetails userFullDetails=new UserFullDetails();
+            userFullDetails.setDepartment(categoryrepo.findById(Long.parseLong(registrationrequest.getDept())).get());
+            userFullDetails.setDob(registrationrequest.getDob());
+            userFullDetails.setEmail(registrationrequest.getEmail());
+            userFullDetails.setName(registrationrequest.getName());
+            userFullDetails.setPassword(registrationrequest.getPassword());
+            userFullDetails.setPhoneno(registrationrequest.getPhoneno());
             UserFullDetails userFullDetailssaved = userFullDetailsRepository.save(userFullDetails);
             userTemp.setStatus("active");
             userTemp.setUserfulldetails(userFullDetailssaved);

@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-action-cell-renderer',
   // <button (click)="enableDisable()">{{params.data.status}}</button>
   template: `
-    <div *ngIf="params.data.status==='Req Sent'">
-              <p>Req Sent</p>
+    <div *ngIf="params.data.status==='request sent'">
+              <p>request sent</p>
   <!-- Content to display when the condition is true -->
 </div>
 <div *ngIf="params.data.status==='active'">

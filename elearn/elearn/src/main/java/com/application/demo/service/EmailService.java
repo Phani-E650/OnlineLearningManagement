@@ -30,8 +30,8 @@ public class EmailService {
         javaMailSender.send(message);
     }
     
-    public void sendAnnouncementEmail(String courseid,String title, String description) {
-        List<String> userEmails = enrollmentService.findAllEmails(Long.parseLong(courseid)); // Implement this method in your repository
+    public void sendAnnouncementEmail(Long courseid,String title, String description) {
+        List<String> userEmails = enrollmentService.findAllEmails(courseid); // Implement this method in your repository
         
         for (String email : userEmails) {
             SimpleMailMessage message = new SimpleMailMessage();

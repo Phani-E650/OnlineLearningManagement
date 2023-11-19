@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.demo.Dto.addcourserequest;
+import com.application.demo.Dto.getcourseresponse;
 import com.application.demo.entity.CourseEntity;
 import com.application.demo.entity.UserTemp;
 import com.application.demo.repository.CourseRepository;
@@ -54,7 +56,7 @@ public class CourseController {
 	
 	
 	@PostMapping("/addCourse")
-	public ResponseEntity<?> addNewCourse(@RequestBody CourseEntity course) {
+	public ResponseEntity<?> addNewCourse(@RequestBody addcourserequest course) {
 	    // Check if a course with the same courseName and professorName already exists
 	    CourseEntity existingCourse = courseService.findCourseByCourseNameAndProfessorNameAndCategoryName(course.getCourseName(), course.getProfessorName(), course.getCategory());
 
@@ -116,7 +118,7 @@ public class CourseController {
 	}
 	
 	@GetMapping("/getcourses")
-	public List<CourseEntity> getcourses(){
+	public List<getcourseresponse> getcourses(){
 		return courseService.getAllCourses();
 	}
 	@GetMapping("/getcoursebyid/{id}")

@@ -24,7 +24,7 @@
       <div class="form-group">
         <label for="newDept" class="dept">New Department:</label>
           <select id="dept"  class="form-control"  [(ngModel)]="newDept" >
-            <option *ngFor="let department of departmentList" [value]="department.name">{{ department.name }}</option>
+            <option *ngFor="let department of departmentList" [value]="department.id">{{ department.name }}</option>
           </select>
       </div>
       <div class="form-group">

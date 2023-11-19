@@ -142,7 +142,7 @@ public class AssignmentSubmissionService {
 					}
 					
 				}
-				res.setDept(i.getDept());
+				res.setDept(i.getDepartment().getName());
 				res.setEmail(i.getEmail());
 				res.setName(i.getName());
 				result.add(res);
