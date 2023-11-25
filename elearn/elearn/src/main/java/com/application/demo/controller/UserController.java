@@ -47,11 +47,7 @@ public class UserController {
     @PostMapping("/admin/create-student")
     public ResponseEntity<String> createStudent(@RequestBody UserTemp userTempDto) {
         try {
-            // Save the email and role in the user_temp table
-//        	System.out.println(userTempDto.getRole());
-//        	System.out.println(userTempDto.getEmail());
-//        	System.out.println(userTempDto.getId());
-//        	UserTemp a=modelMapper.map(userTempDto, UserTemp.class);
+   
         	System.out.println(userTempDto.getRole());
         	System.out.println(userTempDto.getEmail());
         	System.out.println(userTempDto.getId());
@@ -59,13 +55,9 @@ public class UserController {
             userTempRepository.save(userTempDto);
             String registrationToken = UUID.randomUUID().toString();
 
-            // Save the email and role in the user_temp table along with the registration token
-            //userTemp.setRegistrationToken(registrationToken);
-            // Send an email to the student with the registration link
+         
             emailService.sendRegistrationEmail(userTempDto.getEmail(), registrationToken);
 
-            // Send an email to the student with a link to the registration page,
-            // including the email and a unique token or link
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Student registration initiated successfully.");
         } catch (Exception e) {
@@ -74,27 +66,6 @@ public class UserController {
         }
     }
 
-    // Student completes registration
-//    @PostMapping("/student/registration")
-//    public ResponseEntity<String> completeRegistration(@RequestBody UserFullDetails userFullDetails) {
-//        try {
-//            // Find the corresponding user_temp entry by email
-//            UserTemp userTemp = userTempRepository.findByEmail(userFullDetails.getEmail());
-//            if (userTemp == null) {
-//                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
-//            }
-//
-//            // Save the complete user details in the user_full_details table
-//            userFullDetailsRepository.save(userFullDetails);
-//
-//            // Optionally, delete the entry from the user_temp table
-//
-//            return ResponseEntity.status(HttpStatus.CREATED).body("Registration completed successfully.");
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred.");
-//        }
-//    }
-    
     
     @PostMapping("/student/registration")
     public ResponseEntity<String> completeRegistration(@RequestBody registrationrequest registrationrequest) {
