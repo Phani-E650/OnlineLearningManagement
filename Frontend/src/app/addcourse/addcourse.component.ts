@@ -53,6 +53,17 @@ export class AddcourseComponent implements OnInit {
     // }).change();
   }
 
+  checkDateValidity() {
+    const startDate = new Date(this.course.startDate);
+    const endDate = new Date(this.course.endDate);
+
+    if (endDate < startDate) {
+      this.msg = 'End date should be greater than or equal to start date';
+    } else {
+      this.msg = ''; // Reset the message if the dates are valid
+    }
+  }
+
   addCourse()
   {
     this.courseService.addCourse(this.course).subscribe(

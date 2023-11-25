@@ -19,6 +19,12 @@
             
         </div>
     </div>
+     
+      <!-- Check if unapprovedcourses array is empty -->
+     <div *ngIf="approvedcourses === undefined && unapprovedcourses === undefined" class="col-12 text-center">
+        <h1 class="empty-course-message">Please create a course.</h1>
+      </div>
+      
     <div  *ngFor="let course of unapprovedcourses " class="col-3 card card-item" id="bloodCards">
         <br>
         <div class="card-block">

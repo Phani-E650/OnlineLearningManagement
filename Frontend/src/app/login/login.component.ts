@@ -60,7 +60,7 @@ export class LoginComponent {
           this.authService.setAuthenticated(true);
   
           if (role === 'admin') {
-            this.notifyService.showSuccess('Login Successful', 'ItSolutionStuff.com');
+            
             this.toastr.success('Login Successful', '');
             this.router.navigate(['/admin']);
           } else if (role === 'student') {

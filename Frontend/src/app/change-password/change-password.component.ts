@@ -49,12 +49,24 @@ export class ChangePasswordComponent {
       this.userService.changePassword(this.loggedUser, currentPassword, newPassword)
         .subscribe(
           response => {
+            
             console.log('Password changed successfully:', response);
-            // Handle success, e.g., show a success message
+            if(response.message=="Password changed successfully"){
+              console.log('Password changed successfully:', response);
+              this.toastr.success("Password change Successfully")
+              }
+              else{
+                this.toastr.error("Please enter correct current password")
+              }
           },
           error => {
-            console.error('Error changing password:', error);
-            this.toastr.success("Password change Successfully")
+            if(error.status==200){
+              console.log('Password changed successfully:', error);
+              this.toastr.success("Password change Successfully")
+              }
+              else{
+                this.toastr.error("Please enter correct current password")
+              }
             
           }
         );
