@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course';
 
 import * as $ from 'jquery';
-import { MyServiceService } from '../my-service.service';
+
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';

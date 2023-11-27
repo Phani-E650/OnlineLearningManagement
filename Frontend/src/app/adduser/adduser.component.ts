@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../models/course';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MyServiceService } from '../my-service.service';
+
 import { Enrollment } from '../models/enroll';
 import * as XLSX from 'xlsx';
 import { ColDef } from 'ag-grid-community';

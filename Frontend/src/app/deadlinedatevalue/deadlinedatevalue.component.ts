@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MyServiceService } from '../my-service.service';
+
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
@@ -14,7 +14,7 @@ export class DeadlinedatevalueComponent implements ICellRendererAngularComp{
   refresh(params: ICellRendererParams<any, any, any>): boolean {
     throw new Error('Method not implemented.');
   }
-  constructor(private myService : MyServiceService, private _router : Router, private http : HttpClient) { }
+  constructor( private _router : Router, private http : HttpClient) { }
   params:any;
   label:any;
   value:any;

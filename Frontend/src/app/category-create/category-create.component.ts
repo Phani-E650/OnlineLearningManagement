@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { LogoutService } from '../logout.service';
 import { HttpClient } from '@angular/common/http';
-import { MyServiceService } from '../my-service.service';
+
 import { CategoryService } from '../category.service';
 // import { AllservicesService } from '../allservices.service';
 

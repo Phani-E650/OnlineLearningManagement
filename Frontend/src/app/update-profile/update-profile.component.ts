@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { MyServiceService } from '../my-service.service';
+
 import { CategoryService } from '../category.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, distinctUntilChanged, filter, take } from 'rxjs';
 import { Course } from '../models/course';
-import { MyServiceService } from '../my-service.service';
+
 import { Module } from '../models/module';
 import { MatDialog } from '@angular/material/dialog';
 import { InputDialogComponent } from '../input-dialog/input-dialog.component';

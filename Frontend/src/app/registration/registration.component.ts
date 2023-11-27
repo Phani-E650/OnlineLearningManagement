@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MyServiceService } from '../my-service.service';
+
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from '../category.service';
 

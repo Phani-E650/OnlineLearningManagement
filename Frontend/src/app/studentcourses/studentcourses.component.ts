@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 import { AllCourses } from '../models/allcourses';
 import { Course } from '../models/course';
 import { Router } from '@angular/router';
-import { MyServiceService } from '../my-service.service';
+
 import { MatDialog } from '@angular/material/dialog';
+import { CourseService } from '../courses/course-service.service';
 
 @Component({
   selector: 'app-studentcourses',
@@ -18,7 +19,7 @@ export class StudentcoursesComponent {
   loggedUser = '';
   currRole = '';
   courses : Observable<Course[]> | undefined;
-  constructor( private _router : Router,private courseService : MyServiceService, private dialog : MatDialog) { }
+  constructor( private _router : Router,private courseService : CourseService, private dialog : MatDialog) { }
 
   ngOnInit(): void 
   {
