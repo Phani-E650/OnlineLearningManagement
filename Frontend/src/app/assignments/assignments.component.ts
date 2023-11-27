@@ -4,6 +4,7 @@ import { Assignment } from '../models/assignment';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AssignmentService } from '../assignment.service';
 
 @Component({
   selector: 'app-assignments',
@@ -17,7 +18,7 @@ export class AssignmentsComponent {
   successMessage: string | null = null;
   courseId: any | null = null;
 
-  constructor(private assignmentService: MyServiceService, private dialogRef: MatDialogRef<AssignmentsComponent>,private route: ActivatedRoute,private toastr:ToastrService) {}
+  constructor(private assignmentService: AssignmentService, private dialogRef: MatDialogRef<AssignmentsComponent>,private route: ActivatedRoute,private toastr:ToastrService) {}
   ngOnInit() {
     // Subscribe to route params to get courseId from the URL
     this.route.params.subscribe(params => {

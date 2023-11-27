@@ -11,6 +11,8 @@ import { EnrollexcelComponent } from '../enrollexcel/enrollexcel.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddsingleenrollComponent } from '../addsingleenroll/addsingleenroll.component';
 import { ToastrService } from 'ngx-toastr';
+import { EnrollmentService } from '../enrollment.service';
+import { CourseService } from '../courses/course-service.service';
 
 
 @Component({
@@ -54,7 +56,7 @@ export class AdduserComponent {
   pageSize = 10;
   gridApi: any;
 
-  constructor(public dialog: MatDialog,private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService,private toastr: ToastrService) { }
+  constructor(public dialog: MatDialog,private _router : Router, private activatedRoute: ActivatedRoute,private courseService : EnrollmentService,private toastr: ToastrService,private courseServicee : CourseService) { }
 
   addUser() {
     const dialogRef = this.dialog.open(AddsingleenrollComponent, {

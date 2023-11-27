@@ -11,6 +11,8 @@ import { VideoaddComponent } from '../videoadd/videoadd.component';
 import { UpdatevideocontentComponent } from '../updatevideocontent/updatevideocontent.component';
 import { UpdatemoduleComponent } from '../updatemodule/updatemodule.component';
 import { ToastrService } from 'ngx-toastr';
+import { ModuleService } from '../module.service';
+import { VideoService } from '../video.service';
 
 @Component({
   selector: 'app-course-modules',
@@ -35,7 +37,7 @@ export class CourseModulesComponent {
   createvideo:VideoContent=new VideoContent();
   updatevideoreq:VideoContent=new VideoContent();
 
-  constructor(private _router : Router, private activatedRoute: ActivatedRoute,private courseService : MyServiceService,public dialog: MatDialog,private toastr:ToastrService) { }
+  constructor(private _router : Router, private activatedRoute: ActivatedRoute,private moduleService : ModuleService,public dialog: MatDialog,private toastr:ToastrService,private videoService:VideoService) { }
 
   ngOnInit(): void {
     this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
@@ -48,24 +50,24 @@ export class CourseModulesComponent {
     // this.activatedRoute.params.subscribe((data1) => {
     //   const coursename = data1['id'];
 
-    //   this.courseService.getCoursesByEmailandcoursename(this.loggedUser,coursename).subscribe((data) => {
+    //   this.moduleService.getCoursesByEmailandcoursename(this.loggedUser,coursename).subscribe((data) => {
     //     this.coursedetails = data;
     //   });
     //   console.log(this.coursedetails);
     // });
   
-    // this.course = this.courseService.getCourseById(courseId);
+    // this.course = this.moduleService.getCourseById(courseId);
 
     $("#overview").show();
     $("#qa, #notes, #announcements, #questions, #notestxt, #downloads").hide();
     $("#downloadalert").css("display","none");
     this.courseName = this.activatedRoute.snapshot.params['coursename'];
     sessionStorage.setItem('course',this.courseName);
-    // this.courseService.getCoursesByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
+    // this.moduleService.getCoursesByEmailandcoursename(this.loggedUser,this.courseName).subscribe((data) => {
     //   this.coursedetails = data;
     //   console.log(this.coursedetails);
     // });
-    this.courseService.getCourseDetailsbyid(this.courseName).subscribe((data) => {
+    this.videoService.getCourseDetailsbyid(this.courseName).subscribe((data) => {
       this.coursedetails = data;
       console.log(this.coursedetails);
     });
@@ -113,11 +115,11 @@ export class CourseModulesComponent {
   }
   getvideocourse(moduleid:any){
     this.currentmodule=moduleid;
-    // this.courseService.getvideocontent(this.loggedUser,this.courseName,module).subscribe((data) => {
+    // this.moduleService.getvideocontent(this.loggedUser,this.courseName,module).subscribe((data) => {
     //   this.videocontent = data;
     //   console.log(this.videocontent);
     // });
-    this.courseService.getvideocontentbyid(moduleid).subscribe((data) => {
+    this.videoService.getvideocontentbyid(moduleid).subscribe((data) => {
       this.videocontent = data;
       console.log(this.videocontent);
     });
@@ -131,7 +133,7 @@ export class CourseModulesComponent {
     this.createmodule.instructorname=this.loggedUser;
 
     if (moduleName) {
-      this.courseService.addmodule(this.createmodule).subscribe((data)=>
+      this.moduleService.addmodule(this.createmodule).subscribe((data)=>
       {
         this.getmodulename();
         console.log(data);
@@ -140,7 +142,7 @@ export class CourseModulesComponent {
     }
   }
   deletemodule(id:any){
-    this.courseService.deletemodule(id).subscribe((id)=>
+    this.moduleService.deletemodule(id).subscribe((id)=>
     {
       console.log(id+"deleted");
       this.toastr.error("Module deleted successfully")
@@ -164,7 +166,7 @@ export class CourseModulesComponent {
         // this.createmodule.instructorname=this.loggedUser;
     
         if (moduleName) {
-          this.courseService.updatemodule(id,moduleName).subscribe((data)=>
+          this.moduleService.updatemodule(id,moduleName).subscribe((data)=>
           {
             this.getmodulename();
             this.toastr.success("Module updated successfully")
@@ -177,7 +179,7 @@ export class CourseModulesComponent {
 
   }
   // getmodulename(){
-  //   this.courseService.getmoduleByEmailandcoursename(this.loggedUser,this.courseName)
+  //   this.moduleService.getmoduleByEmailandcoursename(this.loggedUser,this.courseName)
   //   //  .pipe(
   //   //   filter(data => !!data), // Ensure that data is available
   //   //   distinctUntilChanged((prev, current) => this.getModuleName(prev) === this.getModuleName(current)), // Prevent redundant calls
@@ -197,7 +199,7 @@ export class CourseModulesComponent {
   //   });
   // }
   getmodulename(){
-    this.courseService.getmoduleById(this.courseName)
+    this.moduleService.getmoduleById(this.courseName)
     //  .pipe(
     //   filter(data => !!data), // Ensure that data is available
     //   distinctUntilChanged((prev, current) => this.getModuleName(prev) === this.getModuleName(current)), // Prevent redundant calls
@@ -244,7 +246,7 @@ export class CourseModulesComponent {
         this.createmodule.instructorname=this.loggedUser;
     
         if (moduleName) {
-          this.courseService.addmodule(this.createmodule).subscribe((data)=>
+          this.moduleService.addmodule(this.createmodule).subscribe((data)=>
           {
             this.toastr.success("Module created successfully")
             this.getmodulename();
@@ -274,7 +276,7 @@ export class CourseModulesComponent {
         this.createvideo.instructorName=this.loggedUser;
     
         if (videoName) {
-          this.courseService.addvideo(this.createvideo).subscribe((data)=>
+          this.videoService.addvideo(this.createvideo).subscribe((data)=>
           {
             this.toastr.success("Video added successfully")
             this.getmodulename();
@@ -286,7 +288,7 @@ export class CourseModulesComponent {
     });
   }
   deletevideo(id:any){
-    this.courseService.deletevideo(id).subscribe((id)=>
+    this.videoService.deletevideo(id).subscribe((id)=>
     {
       console.log(id+"deleted");
       this.getmodulename();
@@ -313,7 +315,7 @@ export class CourseModulesComponent {
         console.log('Updated Video URL:', updatedData.videourl);
         // You can update your main component's data with the updatedData
         if (updatedData) {
-          this.courseService.updatevideo(id,this.updatevideoreq).subscribe((data)=>
+          this.videoService.updatevideo(id,this.updatevideoreq).subscribe((data)=>
           {
             this.getmodulename();
             this.selectvideo(id);

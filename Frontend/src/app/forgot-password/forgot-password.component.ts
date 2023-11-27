@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyServiceService } from '../my-service.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: MyServiceService,private toastr: ToastrService,private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthenticationService,private toastr: ToastrService,private router: Router) { }
 
   ngOnInit(): void {
     this.forgotPasswordForm = this.fb.group({

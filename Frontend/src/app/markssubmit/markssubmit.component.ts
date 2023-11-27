@@ -5,6 +5,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 import { ToastrService } from 'ngx-toastr';
 import { MyServiceService } from '../my-service.service';
+import { AssignmentService } from '../assignment.service';
 
 @Component({
   selector: 'app-markssubmit',
@@ -12,7 +13,7 @@ import { MyServiceService } from '../my-service.service';
   styleUrls: ['./markssubmit.component.css']
 })
 export class MarkssubmitComponent implements ICellRendererAngularComp {
-  constructor(private activatedRoute: ActivatedRoute,private myService: MyServiceService, private router: Router,private toastr: ToastrService,public dialog: MatDialog) { }
+  constructor(private activatedRoute: ActivatedRoute,private myService: AssignmentService, private router: Router,private toastr: ToastrService,public dialog: MatDialog) { }
 
   refresh(params: ICellRendererParams<any, any, any>): boolean {
     throw new Error('Method not implemented.');

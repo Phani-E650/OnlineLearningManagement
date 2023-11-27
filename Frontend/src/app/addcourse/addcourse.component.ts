@@ -7,6 +7,7 @@ import { MyServiceService } from '../my-service.service';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CategoryService } from '../category.service';
 
 // @NgModule({
 //   declarations: [AddcourseComponent],
@@ -23,7 +24,7 @@ export class AddcourseComponent implements OnInit {
   msg = ' ';
   subcategories: any;
   categories:any;
-  constructor(private courseService : MyServiceService, private _router : Router, private http : HttpClient, private toastr: ToastrService) { }
+  constructor(private courseService : CategoryService, private _router : Router, private http : HttpClient, private toastr: ToastrService) { }
 
   ngOnInit(): void 
   {

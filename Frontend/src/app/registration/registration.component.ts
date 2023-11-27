@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyServiceService } from '../my-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-registration',
@@ -19,7 +20,7 @@ export class RegistrationComponent implements OnInit {
   presentemail='';
   departmentList : any | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient,private formBuilder: FormBuilder,private toastr: ToastrService,private myService:MyServiceService) { 
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient,private formBuilder: FormBuilder,private toastr: ToastrService,private myService:CategoryService) { 
     this.myForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       dept: ['', [Validators.required]],

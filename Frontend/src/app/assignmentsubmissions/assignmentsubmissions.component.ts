@@ -8,6 +8,7 @@ import { AssignmarksComponent } from '../assignmarks/assignmarks.component';
 import { MarkssubmitComponent } from '../markssubmit/markssubmit.component';
 import { DeadlinedatevalueComponent } from '../deadlinedatevalue/deadlinedatevalue.component';
 import { SubmissiondownloadComponent } from '../submissiondownload/submissiondownload.component';
+import { AssignmentService } from '../assignment.service';
 
 @Component({
   selector: 'app-assignmentsubmissions',
@@ -67,7 +68,7 @@ export class AssignmentsubmissionsComponent {
   pageSize = 10;
   gridApi: any;
   courseId:any
-  constructor(public dialog: MatDialog,private _router : Router, private activatedRoute: ActivatedRoute,private myService : MyServiceService,private toastr: ToastrService) { }
+  constructor(public dialog: MatDialog,private _router : Router, private activatedRoute: ActivatedRoute,private myService : AssignmentService,private toastr: ToastrService) { }
   ngOnInit() {
       this.assignmentid = this.activatedRoute.snapshot.params['assignid'];
       this.getsubmissions(this.assignmentid);

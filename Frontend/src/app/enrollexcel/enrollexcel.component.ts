@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import * as XLSX from 'xlsx';
 import { AdduserComponent } from '../adduser/adduser.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-enrollexcel',
@@ -13,7 +14,7 @@ export class EnrollexcelComponent {
   data: any[] = [];
   email: any;
   role: any;
-  constructor(private adduserexcel: MatDialogRef<AdduserComponent>,private http: HttpClient, public dialog: MatDialog) {}
+  constructor(private adduserexcel: MatDialogRef<AdduserComponent>,private http: HttpClient, public dialog: MatDialog, private toastr:ToastrService) {}
   onFileChange(event: any): void {
     const file = event.target.files[0];
     if (file) {

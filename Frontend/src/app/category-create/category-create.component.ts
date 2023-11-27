@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { LogoutService } from '../logout.service';
 import { HttpClient } from '@angular/common/http';
 import { MyServiceService } from '../my-service.service';
+import { CategoryService } from '../category.service';
 // import { AllservicesService } from '../allservices.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { MyServiceService } from '../my-service.service';
   styleUrls: ['./category-create.component.css']
 })
 export class CategoryCreateComponent {
-  constructor(private myService: MyServiceService,private http: HttpClient,private cdr: ChangeDetectorRef){};
+  constructor(private myService: CategoryService,private http: HttpClient,private cdr: ChangeDetectorRef){};
   categoriesWithSubcategories: any[] = [];
   showInputBox = false;  // To control the visibility of the input box
   newCategory: string = ''; 

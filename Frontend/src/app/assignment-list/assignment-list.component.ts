@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { AssignmentsComponent } from '../assignments/assignments.component';
+import { AssignmentService } from '../assignment.service';
 @Component({
   selector: 'app-assignment-list',
   templateUrl: './assignment-list.component.html',
@@ -15,7 +16,7 @@ export class AssignmentListComponent implements OnInit {
   pdfUrls: SafeResourceUrl[] = [];
   fileNames: any; // Dynamically set from the API
   courseId: any | null = null;
-  constructor(private assignmentService: MyServiceService, private sanitizer: DomSanitizer, private http: HttpClient,private route: ActivatedRoute,private myServiceService : MyServiceService,public dialog: MatDialog,private toastr:ToastrService) {}
+  constructor(private assignmentService: AssignmentService, private sanitizer: DomSanitizer, private http: HttpClient,private route: ActivatedRoute,private myServiceService : MyServiceService,public dialog: MatDialog,private toastr:ToastrService) {}
   ngOnInit() {
     //const courseId = '20'; // Replace with the actual course ID
     this.route.params.subscribe(params => {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
+import { AssignmentService } from '../assignment.service';
 
 @Component({
   selector: 'app-submissiondownload',
@@ -14,7 +15,7 @@ export class SubmissiondownloadComponent implements ICellRendererAngularComp  {
   refresh(params: ICellRendererParams<any, any, any>): boolean {
     throw new Error('Method not implemented.');
   }
-  constructor(private myService : MyServiceService, private _router : Router, private http : HttpClient) { }
+  constructor(private myService : AssignmentService, private _router : Router, private http : HttpClient) { }
   params:any;
   label:any;
   value:any;

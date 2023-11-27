@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MyServiceService } from '../my-service.service';
+
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { AssignmentService } from '../assignment.service';
 @Component({
   selector: 'app-assignment-solution',
   templateUrl: './assignment-solution.component.html',
@@ -15,7 +16,7 @@ export class AssignmentSolutionComponent implements OnInit {
   loggedUser="";
   selectedFile: File | undefined;
   presenttime:any;
-  constructor(private assignmentService: MyServiceService, private sanitizer: DomSanitizer, private http: HttpClient,private route: ActivatedRoute) {}
+  constructor(private assignmentService: AssignmentService, private sanitizer: DomSanitizer, private http: HttpClient,private route: ActivatedRoute) {}
 
   ngOnInit() {
     //const courseId = '20'; // Replace with the actual course ID

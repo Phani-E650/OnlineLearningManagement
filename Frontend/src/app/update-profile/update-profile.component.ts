@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MyServiceService } from '../my-service.service';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-update-profile',
@@ -16,7 +17,7 @@ export class UpdateProfileComponent {
     private route: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,
-    private myService: MyServiceService,
+    private myService: CategoryService,
   ) {}
 
   cardData: any;
