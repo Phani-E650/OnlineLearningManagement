@@ -50,12 +50,13 @@ public class AssignmentController {
   @Autowired
   private CourseRepository courseRepo;
   
+  
   private String bucketName = "elearningsystem";
 
   private String folderName = "/lms/";
 
   @PostMapping(value = "/upload")
-  public ResponseEntity<Map<String, String>> uploadFile(
+  public ResponseEntity<?> uploadFile(
       @RequestPart(name = "multipartfile", required = true) MultipartFile multipartfile,
       @RequestParam("title") String title,
       @RequestParam("description") String description,
@@ -64,6 +65,15 @@ public class AssignmentController {
       @RequestParam("weightage") String weightage,
       @RequestParam("deadlinedate") String deadlinedate
   ) {
+	  
+	  List<AssignmentEntity> totalassignment=courseRepo.findById(Long.parseLong(courseId)).get().getAssignments();
+	  int totalweightage=0;
+	  for(AssignmentEntity i:totalassignment) {
+		  totalweightage=totalweightage+Integer.parseInt(i.getWeightage());
+	  }
+	  if(totalweightage+Integer.parseInt(weightage)>100) {
+		  return ResponseEntity.status(HttpStatus.CONFLICT).body("weightage is above 100");
+	  }
       ResponseEntity<Map<String, String>> result = s3FileUploadService.uploadFileToS3(multipartfile, title, description, courseId, marks, weightage, deadlinedate);
 
       

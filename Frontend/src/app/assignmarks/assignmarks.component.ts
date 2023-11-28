@@ -14,6 +14,7 @@ export class AssignmarksComponent implements ICellRendererAngularComp {
   params:any;
   label:any;
   value:any;
+  update=false;
   agInit(params: any) {
     this.params = params;
     this.label = params.label || '';
@@ -25,5 +26,8 @@ export class AssignmarksComponent implements ICellRendererAngularComp {
   onInputChange(): void {
     // Update the data in the row node when the input changes
     this.params.node.setDataValue('assignmarks', this.value);
+  }
+  updatemarks():void{
+    this.update=true;
   }
 }

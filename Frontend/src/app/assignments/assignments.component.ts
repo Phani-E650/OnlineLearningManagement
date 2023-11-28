@@ -38,6 +38,7 @@ export class AssignmentsComponent {
       formData.append('marks', this.assignment.marks);
       formData.append('weightage', this.assignment.weightage);
       formData.append('deadlinedate', this.assignment.deadlinedate);
+      this.dialogRef.close();
        // Ensure that 'multipartfile' matches the parameter name on the backend
        this.assignmentService.createAssignmentWithFileUpload(formData)
        .subscribe(
@@ -48,7 +49,8 @@ export class AssignmentsComponent {
              this.resetForm();
              console.log('Successful:', result);
              this.toastr.success(this.successMessage);
-           } else {
+           } 
+           else {
              this.resetForm();
              this.successMessage = 'Assignment creation failed';
              console.log(result.status)
@@ -57,11 +59,16 @@ export class AssignmentsComponent {
            }
          },
          (error) => {
+          if(error.status===409){
+            this.toastr.error("weightage is above 100") ;
+          }
+          else{
            this.resetForm();
            console.log(error.status)
            this.successMessage = 'Assignment creation failed';
            this.toastr.error(this.successMessage);
            console.error('Error:', error);
+          }
          }
        );
      

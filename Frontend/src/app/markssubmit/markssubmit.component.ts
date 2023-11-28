@@ -34,11 +34,18 @@ export class MarkssubmitComponent implements ICellRendererAngularComp {
     // For example, you might want to send the value to an API
     const rowData = this.params.node.data;
     const marksValue = rowData['assignmarks']; // Get the marks value from the row data
+    if(marksValue<this.params.data.totalmarks){
     console.log('Submitted marks:', marksValue);
     this.myService.assignmarks(rowData.submissionid,marksValue).subscribe((response)=>
     {
+      window.location.reload();
       console.log("successfully updated");
+      this.toastr.success("marks updated successfull")
     })
     // Add your API call or any other logic here
   }
+  else{
+    this.toastr.error("marks assigned are greater than total marks");
+  }
+}
 }

@@ -24,7 +24,7 @@ export class DeadlinedatevalueComponent implements ICellRendererAngularComp{
     this.label = params.label || '';
     console.log(this.params.data.submitteddate);
     // this.onClick = params.onClick || (() => {});
-    if(this.params.data.status=="submitted"){
+    if(this.params.data.status=="submitted"|| this.params.data.status=='marks assigned'){
        this.enddate=this.dateRenderer(this.params.data.submitteddate)
     }
   }

@@ -31,8 +31,8 @@ public class AssignmentEntity {
     private String fileUrl;
     
     private String fileName;
-  private String totalmarks;
-  private String weightage;
+    private String totalmarks;
+    private String weightage;
     private String deadlinedate;
     
     @ManyToOne

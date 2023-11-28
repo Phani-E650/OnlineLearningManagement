@@ -139,6 +139,10 @@ public class AssignmentSubmissionService {
 						res.setTotalmarks(j.getAssignment().getTotalmarks());
 						res.setWeightage(j.getAssignment().getWeightage());
 						res.setStatus("submitted");
+						if(j.getMarks()!=null) {
+							res.setStatus("marks assigned");
+							res.setAssignedmarks(j.getMarks());
+						}
 					}
 					
 				}
