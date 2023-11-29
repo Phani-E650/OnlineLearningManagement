@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.application.demo.Dto.assignsubmissions;
+import com.application.demo.Dto.resultresponse;
+import com.application.demo.entity.AssignmentEntity;
 import com.application.demo.entity.CategoryEntity;
+import com.application.demo.entity.CourseEntity;
 import com.application.demo.entity.assignmentsubmEntity;
 import com.application.demo.repository.AssignmentRepository;
 import com.application.demo.service.AssignmentSubmissionService;
@@ -47,5 +50,11 @@ public class AssignmentSubmissionController {
 	  @GetMapping("/getsubmissions/{assignid}")
 	  public List<assignsubmissions> getsubmissionsByassignmentId(@PathVariable String assignid) {
 	  	return assignmentSubmissionService.getsubmissions(assignid);
+	  }
+	  
+	  @GetMapping("/find-results/{courseId}/{user}")
+	  public List<resultresponse> getresultsforstudents(@PathVariable String courseId,@PathVariable String user) {
+		  return assignmentSubmissionService.getresultsforstudents(courseId,user);
+	      
 	  }
 }

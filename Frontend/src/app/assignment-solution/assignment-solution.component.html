@@ -49,12 +49,20 @@
                 </a>
                 <br>
               <div *ngIf="isBeforeDeadline(pdfUrl.deadlinedate, this.presenttime)">
-                <input class="mt-4" type="file" (change)="onFileSelected($event, i)">
-                <button (click)="uploadAnswer(pdfUrl.id)">Submit Answer</button>
+                <!-- <input class="mt-4" type="file" (change)="onFileSelected($event, i)"> -->
+                <button (click)="updatesubmission(pdfUrl.id)">Submit Answer</button>
               </div>
               </div>
               <div class="marks-box">
-                Marks Assigned: {{ pdfUrl.marks }} <!-- Display marks here -->
+                <h4>{{pdfUrl.status}}</h4>
+                <div *ngIf="pdfUrl.status=='assignment evaluated'">
+                Marks Assigned: {{ pdfUrl.assignedmarks }}
+              </div>
+              <div *ngIf="pdfUrl.status!=='assignment not submitted'">
+                <a href="javascript:void(0)" (click)="download(pdfUrl.submittedfile)">
+                  Download Submission
+                </a>
+              </div>
               </div>
             </div>
           </div>

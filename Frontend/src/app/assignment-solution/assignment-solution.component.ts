@@ -4,6 +4,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { AssignmentService } from '../assignment.service';
+import { AssignmentfilesubmissionComponent } from '../assignmentfilesubmission/assignmentfilesubmission.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-assignment-solution',
   templateUrl: './assignment-solution.component.html',
@@ -16,7 +18,7 @@ export class AssignmentSolutionComponent implements OnInit {
   loggedUser="";
   selectedFile: File | undefined;
   presenttime:any;
-  constructor(private assignmentService: AssignmentService, private sanitizer: DomSanitizer, private http: HttpClient,private route: ActivatedRoute) {}
+  constructor(public dialog: MatDialog,private assignmentService: AssignmentService, private sanitizer: DomSanitizer, private http: HttpClient,private route: ActivatedRoute) {}
 
   ngOnInit() {
     //const courseId = '20'; // Replace with the actual course ID
@@ -31,12 +33,13 @@ export class AssignmentSolutionComponent implements OnInit {
     const courseIdString = sessionStorage.getItem('course');
     this.courseId = courseIdString ? +courseIdString : null;
     // Fetch the file names from the API
-    this.assignmentService.getFileNamesByCourseId(this.courseId).subscribe(
+    this.assignmentService.getstudentresult(this.courseId,this.loggedUser).subscribe(
       (fileNames) => {
         // Set the file names
         this.fileNames = fileNames;
         for (let obj of this.fileNames) {
           obj.deadlinedate=this.dateRenderer(obj.deadlinedate);
+          obj.submitteddate=this.dateRenderer(obj.submitteddate);
         } 
         // Load PDFs based on the file names
         // this.loadPdfs();
@@ -124,6 +127,12 @@ export class AssignmentSolutionComponent implements OnInit {
         console.error(error); // Handle error response
       }
     );
+  }
+  updatesubmission(id:any){
+    const dialogRef = this.dialog.open(AssignmentfilesubmissionComponent, {
+      width: '400px', // Set the width as per your design
+      data: { assignmentid: id },
+    });
   }
   getCurrentTimestamp(): number {
     return new Date().getTime();

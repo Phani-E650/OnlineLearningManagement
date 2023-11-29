@@ -20,12 +20,15 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.application.demo.Dto.assignsubmissions;
+import com.application.demo.Dto.resultresponse;
 import com.application.demo.entity.AssignmentEntity;
 import com.application.demo.entity.CategoryEntity;
+import com.application.demo.entity.CourseEntity;
 import com.application.demo.entity.UserFullDetails;
 import com.application.demo.entity.assignmentsubmEntity;
 import com.application.demo.repository.AssignmentRepository;
 import com.application.demo.repository.AssignmentSubmissionRepository;
+import com.application.demo.repository.CourseRepository;
 import com.application.demo.repository.UserFullDetailsRepository;
 
 @Service
@@ -43,6 +46,8 @@ public class AssignmentSubmissionService {
 	  private AssignmentRepository assignmentRepository;
 	  @Autowired
 	  private UserFullDetailsRepository userFullDetailsRepository;
+	  @Autowired
+	  private CourseRepository courseRepo;
 	  @Autowired
 	  private AssignmentSubmissionRepository assignmentSubmission;
 	  public assignmentsubmEntity markssubmission(String submissionid, String marks) {
@@ -154,5 +159,44 @@ public class AssignmentSubmissionService {
 			return result;
 			
 	  }
+	public List<resultresponse> getresultsforstudents(String courseId,String user) {
+		UserFullDetails userdetails = userFullDetailsRepository.findByEmail(user).get();
+//		 AssignmentEntity assignment=assignmentRepository.findById(Long.parseLong(assignid)).get();
+		List<AssignmentEntity> asssignments= courseRepo.findById(Long.parseLong(courseId)).get().getAssignments();
+		List<assignmentsubmEntity>assignmentsubmissionsbystudent=userdetails.getSubmissionlist();
+		List<resultresponse> studentresult=new ArrayList<>();
+		for(AssignmentEntity i:asssignments) {
+			resultresponse res=new resultresponse();
+			res.setStatus("assignment not submitted");
+			for(assignmentsubmEntity j:assignmentsubmissionsbystudent) {
+				if(j.getAssignment().getId().equals(i.getId())) {
+					System.out.println("assignment"+j.getAssignment().getId());
+					System.out.println(i.getId());
+					res.setSubmittedfile(j.getFileName());
+					res.setStatus("assignment not evaluated");
+					if(j.getMarks()!=null) {
+						System.out.println("evaluated"+j.getAssignment().getId());
+						System.out.println(i.getId());
+						res.setAssignedmarks(j.getMarks());
+						res.setStatus("assignment evaluated");
+						
+					}
+					res.setSubmitteddate(j.getSubmitteddate());
+				}
+				res.setTitle(i.getTitle());
+				res.setTotalmarks(i.getTotalmarks());
+				res.setWeightage(i.getWeightage());
+				res.setFileUrl(i.getFileUrl());
+				res.setFileName(i.getFileName());
+				res.setDescription(i.getDescription());
+				res.setDeadlinedate(i.getDeadlinedate());
+				res.setId(i.getId());
+			}
+			
+			studentresult.add(res);
+			
+		}
+		return studentresult;
+	}
 
 }
