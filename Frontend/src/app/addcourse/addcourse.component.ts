@@ -19,6 +19,7 @@ export class AddcourseComponent implements OnInit {
   msg = ' ';
   subcategories: any;
   categories:any;
+  startdatemsg:any;
   constructor(private courseService : CategoryService, private _router : Router, private http : HttpClient, private toastr: ToastrService) { }
 
   ngOnInit(): void 
@@ -42,6 +43,15 @@ export class AddcourseComponent implements OnInit {
     } else {
       this.msg = ''; 
     }
+  }
+  checkstartDateValidity(){
+    const selectedDate = new Date(this.course.startDate);
+    const currentDate = new Date();
+        if (selectedDate < currentDate) {
+          this.startdatemsg = 'Start date should be greater than current date';
+        } else {
+          this.startdatemsg = ''; 
+        }
   }
 
   addCourse()

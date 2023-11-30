@@ -33,6 +33,11 @@
     width: 30%;
     cursor: pointer;
 }
+.btnRegister:disabled {
+    opacity: 0.6; /* Adjust opacity to make it visually different */
+    cursor: not-allowed; /* Change cursor to not-allowed */
+    /* Add any other styles you want to differentiate the disabled state */
+  }
 .loginbtn
 {
     float: right;
