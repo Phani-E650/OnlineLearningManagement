@@ -75,7 +75,7 @@ export class AssignmentListComponent implements OnInit {
     this.dialog.open(AssignmentsComponent, {
       
       width: '400px',
-      height:'400px'
+      height:'630px'
     });
   }
 

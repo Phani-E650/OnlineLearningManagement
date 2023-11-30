@@ -18,7 +18,7 @@ export class StudentcoursesComponent {
   myenrollments : Observable<AllCourses[]> | undefined;
   loggedUser = '';
   currRole = '';
-  courses : Observable<Course[]> | undefined;
+  courses : any;
   constructor( private _router : Router,private courseService : CourseService, private dialog : MatDialog) { }
 
   ngOnInit(): void 
@@ -29,8 +29,12 @@ export class StudentcoursesComponent {
     this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
     this.currRole = this.currRole.replace(/"/g, '');
 
-    this.courses = this.courseService.getstudentCoursesByEmail(this.loggedUser);
-
+    this.courseService.getstudentCoursesByEmail(this.loggedUser).subscribe((data)=>
+    {
+      this.courses =data;
+      console.log(this.courses);
+    });
+   console.log(this.courses);
     const target = 'https://www.youtube.com/iframe_api'
 
   if (!this.isScriptLoaded(target)) {

@@ -8,11 +8,6 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from '../category.service';
-
-// @NgModule({
-//   declarations: [AddcourseComponent],
-//   imports: [FormsModule, NgSelectModule], // Add FormsModule or ReactiveFormsModule and NgSelectModule here
-// })
 @Component({
   selector: 'app-addcourse',
   templateUrl: './addcourse.component.html',
@@ -36,22 +31,6 @@ export class AddcourseComponent implements OnInit {
     })
     const p=sessionStorage.getItem('loggedUser');
     this.course.professorName=p;
-    // $("#websitelink, #youtubelink").css("display","none");
-    // $("#websitelink").hide();
-    // $("select").on('change', function() {
-    //   $(this).find("option:selected").each(function() {
-    //       var option = $(this).attr("value");
-    //       if(option === "Website") {
-    //         $("#websitelink").css("display","block");
-    //         $("#youtubelink").css("display","none");
-    //       } 
-    //       else if(option === "Youtube")
-    //       {
-    //         $("#youtubelink").css("display","block");
-    //         $("#websitelink").css("display","none");
-    //       }
-    //   });
-    // }).change();
   }
 
   checkDateValidity() {
@@ -61,7 +40,7 @@ export class AddcourseComponent implements OnInit {
     if (endDate < startDate) {
       this.msg = 'End date should be greater than or equal to start date';
     } else {
-      this.msg = ''; // Reset the message if the dates are valid
+      this.msg = ''; 
     }
   }
 

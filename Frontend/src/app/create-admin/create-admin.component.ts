@@ -24,7 +24,7 @@ export class CreateAdminComponent {
     // Send a POST request to your backend API to create the admin
     console.log(this.role);
     const adminData = { email: this.email, role: this.role };
-
+    
     this.http.post('http://localhost:8080/api/admin/create-student', adminData).subscribe(
       (response: any) => {
         if (response.status === 201) {
@@ -37,10 +37,21 @@ export class CreateAdminComponent {
 
           
         } else {
-          console.error('Admin creation failed.');
+          console.error('User creation failed.');
+          this.toastr.error('User creation failed.');
+          this.router.navigate(['/admin']);
         }
       },
       (error: any) => {
+        if (error.status === 409) {
+          if (error.error) {
+            const errorBody = error.error;
+            this.toastr.error(errorBody);
+          } else {
+            this.toastr.error('Conflict occurred.'); 
+          }
+        } 
+        else{
         this.router.navigate(['/admin']); // Redirect to student page
           //this.toastr.success('User details updated successfully', 'Success');
 
@@ -53,23 +64,8 @@ export class CreateAdminComponent {
           });
         console.error('An error occurred while creating the admin:', error);
       }
+    }
     );
   }
-
-  // sendRegistrationEmail(recipientEmail: string): void {
-  //   // Send an HTTP request to your backend API to send the registration email
-  //   this.http.post('/student/registration', { email: recipientEmail }).subscribe(
-  //     (response: any) => {
-  //       if (response.message === 'Email sent successfully') {
-  //         console.log('Registration email sent to', recipientEmail);
-  //       } else {
-  //         console.error('Email sending failed.');
-  //       }
-  //     },
-  //     (error: any) => {
-  //       console.error('An error occurred while sending the email:', error);
-  //     }
-  //   );
-  // }
 }
 

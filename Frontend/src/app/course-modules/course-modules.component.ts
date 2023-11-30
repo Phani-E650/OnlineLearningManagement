@@ -23,7 +23,7 @@ export class CourseModulesComponent {
   selectedModuleId: any | null = null;
   selectedvideoId: any | null = null;
   moduleNames: Module[]=[];
-  video = 'jpvZXcGkUMY';
+  video = 'Qqx_wzMmFeA';
   courseName = 'springboot';
   // chapterlist : Observable<Chapter[]> | undefined;
   chapter : any | undefined;
@@ -109,6 +109,7 @@ export class CourseModulesComponent {
   }
   selectmodule(moduleid:any){
     this.selectedModuleId =moduleid;
+    this.video = 'Qqx_wzMmFeA';
   }
   selectvideo(videoid:any){
     this.selectedvideoId =videoid;
@@ -281,6 +282,16 @@ export class CourseModulesComponent {
             this.toastr.success("Video added successfully")
             this.getmodulename();
             console.log(data);
+          },
+          (error)=>{
+            if(error.status===406){
+              if (error.error) {
+                const errorBody = error.error;
+                this.toastr.error(errorBody);
+              } else {
+                this.toastr.error('Conflict occurred.'); 
+              }
+            }
           });
           // this.users = this.userService.getUsers();
         }

@@ -72,7 +72,8 @@ public class AssignmentController {
 		  totalweightage=totalweightage+Integer.parseInt(i.getWeightage());
 	  }
 	  if(totalweightage+Integer.parseInt(weightage)>100) {
-		  return ResponseEntity.status(HttpStatus.CONFLICT).body("weightage is above 100");
+		  int remainingweightage=100-totalweightage;
+		  return ResponseEntity.status(HttpStatus.CONFLICT).body("weightage is above 100 and remaining weightage is "+remainingweightage);
 	  }
       ResponseEntity<Map<String, String>> result = s3FileUploadService.uploadFileToS3(multipartfile, title, description, courseId, marks, weightage, deadlinedate);
 

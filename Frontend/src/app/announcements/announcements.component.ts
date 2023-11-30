@@ -39,7 +39,7 @@ export class AnnouncementsComponent {
 
   submitForm() {
     console.log(this.announcement);
-    
+    this.dialogRef.close();
     this.http.post('http://localhost:8080/announcements/add', this.announcement).subscribe(
       (response) => {
         console.log('Announcement submitted:', response);

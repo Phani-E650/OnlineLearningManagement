@@ -50,20 +50,8 @@ export class UsernameLinkRendererComponent implements ICellRendererAngularComp {
     this.dialog.open(UserDetailsComponent, {
       
       width: '400px',
-      height:'300px'
+      height:'300px',
+      data: { useremail: this.params.data.email },
     });
   }
-
-
-
-  // public params!: ICellRendererParams;
-  // public color!: string;
-  // agInit(params: ICellRendererParams): void {
-  //   this.params = params;
-  //   this.color = this.params.node.group ? 'coral' : 'lightgreen';
-  // }
-
-  // refresh(params: ICellRendererParams) {
-  //   return false;
-  // }
 }

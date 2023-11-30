@@ -45,8 +45,9 @@ public class VideoContentController {
 //    		return ResponseEntity.status(HttpStatus.CONFLICT).body("Video content already exists");
 //    	}
 //         return ResponseEntity.ok(videoContentService.addVideoContent(videoContentDto));
+    	try {
     	 Optional<ModuleEntity> module=modulerepo.findById(Long.parseLong(videoContentDto.getModuleName()));
-		 List<VideoContent> contentlist=module.get().getVideoContents();
+    	 List<VideoContent> contentlist=module.get().getVideoContents();
 		 List<VideoContent> singlecontent = contentlist.stream()
 	                .filter(modu -> modu.getContentname().equals(videoContentDto.getContentName()))
 	                .collect(Collectors.toList());
@@ -56,6 +57,10 @@ public class VideoContentController {
 		    	}
 		    	
 		         return ResponseEntity.ok(videoContentService.addVideoContent(videoContentDto));
+    	}
+    	catch(Exception e) {
+    		return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("create a module first and then create a video");
+    	}
     }
 
     

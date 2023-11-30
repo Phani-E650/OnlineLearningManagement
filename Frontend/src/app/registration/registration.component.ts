@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from '../category.service';
@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       phoneno: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{4}$/)]],
-      dob: [null, [Validators.required]]
+      dob: [null, [Validators.required,this.dateNotInFutureValidator()]]
     });
 
     // this.myForm.get('dept')?.valueChanges.subscribe(deptValue => {
@@ -35,6 +35,19 @@ export class RegistrationComponent implements OnInit {
     //   this.myForm?.get('dept')?.setValue(this.myForm?.get('dept'));
     //   console.log('Selected department:', deptValue);
     // });
+  }
+  dateNotInFutureValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value) {
+        const selectedDate = new Date(control.value);
+        const currentDate = new Date();
+  
+        if (selectedDate > currentDate) {
+          return { 'futureDate': true }; // Return an error object if the date is in the future
+        }
+      }
+      return null; // Return null if the date is valid
+    };
   }
   get email() {
     return this.myForm.get('email');

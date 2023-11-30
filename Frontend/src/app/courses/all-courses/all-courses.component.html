@@ -3,6 +3,10 @@
 <div class="container mt-4">
     <div class="card">
       <div class="card-body">
+        <div class="line-container">
+          <button class="custom-button" [routerLink]="['/add-course']">Add Course</button>
+        </div>
+        
 <div class="row">
     <div  *ngFor="let course of approvedcourses" class="col-3 card card-item" id="bloodCards">
         <br>
@@ -21,7 +25,7 @@
     </div>
      
       <!-- Check if unapprovedcourses array is empty -->
-     <div *ngIf="approvedcourses === undefined && unapprovedcourses === undefined" class="col-12 text-center">
+     <div *ngIf="approvedcourses === undefined  && unapprovedcourses === undefined" class="col-12 text-center">
         <h1 class="empty-course-message">Please create a course.</h1>
       </div>
       

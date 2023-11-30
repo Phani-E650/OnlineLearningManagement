@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,7 +61,12 @@ public class UserController {
 
 
             return ResponseEntity.status(HttpStatus.CREATED).body("Student registration initiated successfully.");
-        } catch (Exception e) {
+        } 
+        catch (DataIntegrityViolationException e) {
+            System.out.println("Duplicate key exception occurred: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already exists");
+        } 
+        catch (Exception e) {
         	System.out.println(e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred.");
         }
@@ -105,7 +111,7 @@ public class UserController {
         try {
         	List<UserTemp> mailsent=userTempRepository.findAll();
         	for(UserTemp temp:mailsent) {
-        		if(temp.getStatus().equals("Req Sent")) {
+        		if(temp.getStatus().equals("request sent")) {
         			String registrationToken = UUID.randomUUID().toString();
         			 emailService.sendRegistrationEmail(temp.getEmail(), registrationToken);
         		}

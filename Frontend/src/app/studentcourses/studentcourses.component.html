@@ -1,7 +1,10 @@
 <app-header></app-header>
 <br>
+<div *ngIf="courses && courses.length === 0" class="col-12 text-center">
+    <h1 class="empty-course-message">Not Added to any Course</h1>
+</div>
 <div class="row">
-    <div  *ngFor="let course of courses | async" class="col-3 card card-item" id="bloodCards">
+    <div  *ngFor="let course of courses"  class="col-3 card card-item" id="bloodCards">
         <br>
         <div class="card-block">
             <div class="text"><b style="color: darkred; font-size: large;">Course :</b> {{course.courseName}}</div>

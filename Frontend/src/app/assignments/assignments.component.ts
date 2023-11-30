@@ -27,6 +27,9 @@ export class AssignmentsComponent {
     const courseIdString = sessionStorage.getItem('course');
     this.courseId = courseIdString ? +courseIdString : null;
   }
+  Cancel(){
+    this.dialogRef.close();
+  }
 
   onSubmit() {
     if (this.selectedFile) {
@@ -60,7 +63,13 @@ export class AssignmentsComponent {
          },
          (error) => {
           if(error.status===409){
-            this.toastr.error("weightage is above 100") ;
+            // this.toastr.error("weightage is above 100") ;
+            if (error.error) {
+              const errorBody = error.error;
+              this.toastr.error(errorBody);
+            } else {
+              this.toastr.error('Conflict occurred.'); 
+            }
           }
           else{
            this.resetForm();
