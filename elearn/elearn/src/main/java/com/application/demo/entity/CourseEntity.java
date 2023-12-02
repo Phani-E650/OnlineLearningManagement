@@ -60,6 +60,11 @@ public class CourseEntity {
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<AssignmentEntity> assignments= new ArrayList<>();
+    
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<CourseAttachmentsEntity> courseAttachments= new ArrayList<>();
 
 
 	public Long getId() {
@@ -232,10 +237,12 @@ public class CourseEntity {
 	}
 
 
+
 	public CourseEntity(Long id, String courseName, String courseId, String courseDescription, Date startDate,
 			int numberOfWeeks, Long userId, CategoryEntity department, String courseStatus, Date endDate,
 			CategoryEntity category, String modules, String professorName, List<ModuleEntity> moduleslist,
-			List<Enrollment> enrolllist, List<AnnouncementEntity> announcements, List<AssignmentEntity> assignments) {
+			List<Enrollment> enrolllist, List<AnnouncementEntity> announcements, List<AssignmentEntity> assignments,
+			List<CourseAttachmentsEntity> courseAttachments) {
 		super();
 		this.id = id;
 		this.courseName = courseName;
@@ -254,6 +261,7 @@ public class CourseEntity {
 		this.enrolllist = enrolllist;
 		this.announcements = announcements;
 		this.assignments = assignments;
+		this.courseAttachments = courseAttachments;
 	}
 
 
@@ -261,6 +269,18 @@ public class CourseEntity {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
+	public List<CourseAttachmentsEntity> getCourseAttachments() {
+		return courseAttachments;
+	}
+
+
+	public void setCourseAttachments(List<CourseAttachmentsEntity> courseAttachments) {
+		this.courseAttachments = courseAttachments;
+	}
+	
+	
 
 
 	

@@ -43,13 +43,7 @@ public class EnrollmentController {
 	public ResponseEntity<?> addNewCourse(@RequestBody enrollrequest enroll,@PathVariable String courseid) throws Exception
 	{
 		Enrollment courseObj = null;
-//		String newID = getNewID();
-//		enrollment.setEnrollid(newID);
-//		List<Enrollment> existenroll=enrollRepo.findByEnrolledusernameAndCoursenameAndInstructorname(enrollment.getEnrolledusername(),enrollment.getCoursename(),enrollment.getInstructorname());
-//		List<Enrollment> existenroll= courseRepo.findById(Long.parseLong(courseid)).get().getEnrolllist().stream()
-//                .filter(modu -> modu.getEnrolledusername().equals(enrollment.getEnrolledusername()))
-//                .collect(Collectors.toList());
-//		Optional<UserFullDetails> existingusers= userfull.findByEmail(enrollment.getEnrolledusername());
+
 		Optional<UserFullDetails> existingusers=userfull.findByEmail(enroll.getEnrolledusername());
 		if(!(existingusers.isEmpty())) {
 		List<Enrollment> existenroll= courseRepo.findById(Long.parseLong(courseid)).get().getEnrolllist().stream()
@@ -77,10 +71,7 @@ public class EnrollmentController {
         }
         return sb.toString();
 	}
-//	@GetMapping("/getenrolledusers/{email}/{coursename}")
-//	public List<Enrollment> getusers(@PathVariable String email,@PathVariable String coursename){
-//		return enrollService.getAllEnrollUsers(email,coursename);
-//	}
+
 	@GetMapping("/getenrolledusers/{id}")
 	public List<enrollresponse> getusers(@PathVariable String id){
 		try{

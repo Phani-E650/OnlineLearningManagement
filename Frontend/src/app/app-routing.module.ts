@@ -27,6 +27,8 @@ import { AssignmentSolutionComponent } from './assignment-solution/assignment-so
 import { AssignmentsubmissionsComponent } from './assignmentsubmissions/assignmentsubmissions.component';
 import { AllCoursesComponent } from './courses/all-courses/all-courses.component';
 import { CourseContentComponent } from './courses/course-content/course-content.component';
+import { CourseAttachmentsComponent } from './course-attachments/course-attachments.component';
+import { CourseAttachmentsListComponent } from './course-attachments-list/course-attachments-list.component';
 
 
 const routes: Routes = [
@@ -50,6 +52,8 @@ const routes: Routes = [
   { path: 'announcements', component: AnnouncementsComponent },
   { path: 'assignments', component: AssignmentsComponent },
   { path: 'assignments-list', component: AssignmentListComponent },
+  { path: 'attachments-list', component: CourseAttachmentsListComponent  },
+ 
   { path: 'assignments-solution', component: AssignmentSolutionComponent },
   { path: 'student', component: StudentcoursesComponent,canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
