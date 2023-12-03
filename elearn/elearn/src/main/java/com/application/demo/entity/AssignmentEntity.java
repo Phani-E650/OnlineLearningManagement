@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +27,8 @@ public class AssignmentEntity {
     private Long id;
 
     private String title;
+    
+    @Column(length = 10000)
     private String description;
     
     private String fileUrl;

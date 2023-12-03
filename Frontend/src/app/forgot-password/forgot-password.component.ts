@@ -32,8 +32,10 @@ export class ForgotPasswordComponent implements OnInit {
     this.authService.sendOtp(email).subscribe(
       response => {
         console.log(response); // Handle success response
+        this.toastr.success("Otp sent sucessfully");
       },
       error => {
+        this.toastr.success("Otp sent sucessfully");
         console.error(error); // Handle error response
       }
     );

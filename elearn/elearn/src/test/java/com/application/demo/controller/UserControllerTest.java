@@ -19,11 +19,16 @@ import com.application.demo.repository.UserFullDetailsRepository;
 import com.application.demo.repository.UserTempRepository;
 import com.application.demo.service.EmailService;
 import com.application.demo.service.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = UserController.class)
 @AutoConfigureMockMvc
 public class UserControllerTest {
+	
+	@Autowired
+	private ObjectMapper objectMapper;
+
 
     @Autowired
     private MockMvc mockMvc;
@@ -44,7 +49,7 @@ public class UserControllerTest {
     @Test
     public void testCreateStudent_Success() throws Exception {
         // Mock the necessary dependencies
-        // For simplicity, you can use Mockito to mock the behavior of the repositories and services
+        
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/admin/create-student")
                 .contentType(MediaType.APPLICATION_JSON)

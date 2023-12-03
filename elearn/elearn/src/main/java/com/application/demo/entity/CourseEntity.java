@@ -7,6 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class CourseEntity {
     private Long id;
     private String courseName;
     private String courseId;
+    @Column(length = 10000)
     private String courseDescription;
     private Date startDate;
     private int numberOfWeeks;
