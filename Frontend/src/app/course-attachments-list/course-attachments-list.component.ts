@@ -9,6 +9,7 @@ import { AssignmentsComponent } from '../assignments/assignments.component';
 import { AssignmentService } from '../assignment.service';
 import { CourseAttachmentsComponent } from '../course-attachments/course-attachments.component';
 import { CourseAttachmentService } from '../course-attachment.service';
+import { error } from 'jquery';
 
 @Component({
   selector: 'app-course-attachments-list',
@@ -19,6 +20,8 @@ export class CourseAttachmentsListComponent implements OnInit {
   pdfUrls: SafeResourceUrl[] = [];
   fileNames: any; // Dynamically set from the API
   courseId: any | null = null;
+  loggedUser:any;
+  currRole:any;
   constructor(private assignmentService: CourseAttachmentService, private sanitizer: DomSanitizer, private http: HttpClient,private route: ActivatedRoute,public dialog: MatDialog,private toastr:ToastrService) {}
   ngOnInit() {
     //const courseId = '20'; // Replace with the actual course ID
@@ -42,6 +45,12 @@ export class CourseAttachmentsListComponent implements OnInit {
         console.error('API error:', error);
       }
     );
+    this.loggedUser = JSON.stringify(sessionStorage.getItem('loggedUser')|| '{}');
+    this.loggedUser = this.loggedUser.replace(/"/g, '');
+
+    this.currRole = JSON.stringify(sessionStorage.getItem('ROLE')|| '{}'); 
+    this.currRole = this.currRole.replace(/"/g, '');
+    console.log(this.currRole);
   }
 
   
@@ -89,5 +98,21 @@ export class CourseAttachmentsListComponent implements OnInit {
     // Format the date as "dd/mm/yyyy"
     const formattedDate = `${day}/${month}/${year}`;
     return formattedDate;
+  }
+  deleteattachment(id:any){
+    this.assignmentService.deleteattachment(id).subscribe((response)=>{
+      if(response.status=='200'){
+      this.toastr.success("courseattachment deleted successful");
+      console.log("deleted successfully");
+      location.reload();
+      }
+    },
+    (error)=>{
+      if(error.status=='200'){
+        this.toastr.success("courseattachment deleted successful");
+        console.log("deleted successfully");
+        location.reload();
+        }
+    })
   }
 }

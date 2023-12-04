@@ -21,6 +21,7 @@
           </a>
           <br>
           <button class="center-vertically custom-button mt-4" [routerLink]="['/submissions', pdfUrl.id]">Submissions</button>
+          <button class="center-vertically custom-button mt-4" (click)="deleteassignment(pdfUrl.id)">Delete</button>
         </div>
       </div>
     </div>

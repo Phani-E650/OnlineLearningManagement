@@ -52,6 +52,7 @@ export class AssignmentsComponent {
              this.resetForm();
              console.log('Successful:', result);
              this.toastr.success(this.successMessage);
+             location.reload();
            } 
            else {
              this.resetForm();

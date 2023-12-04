@@ -15,6 +15,7 @@
     <button class="logoutbtn"  [routerLink]="['/allcourses', coursename]" style="color: whitesmoke;">Course Home</button>
     <div *ngIf="this.currRole=='student'" style="display: inline-block;">
         <button class="logoutbtn" (click)="openassignmentsolution()" style="color: whitesmoke;">Assignments</button>
+        <button class="logoutbtn" (click)="openCourseAttachmentsList()" style="color: whitesmoke;">Course Attachments</button>
         <!-- <button class="logoutbtn" (click)="openAssignmentsList()" style="color: whitesmoke;">AssignmentList</button> -->
         </div>
     <!-- <b class="sidebar-text" style="color: whitesmoke;" > Assignments</b>

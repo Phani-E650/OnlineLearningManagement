@@ -54,6 +54,9 @@ getsubmissionsbyassignid(assignid:any){
 assignmarks(summittedid:any,marks:any){
   return this.http.post(`${this.baseUrl}/assignmentsubmissions/markssubmission?submissionid=${summittedid}&marks=${marks}`,null);
 }
+deleteassignment(assignmentid:any){
+  return this.http.delete<any>(`${this.baseUrl}/files/deleteassignment/${assignmentid}`);
+}
 
 }
 

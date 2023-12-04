@@ -19,7 +19,7 @@ export class UpdateProfileComponent {
     private toastr: ToastrService,
     private myService: CategoryService,
   ) {}
-
+  datemsg:any;
   cardData: any;
   isEditing: boolean = false; // Initially, editing is disabled
   newName: string = '';
@@ -83,5 +83,14 @@ export class UpdateProfileComponent {
           this.toastr.error('An error occurred while updating user details', 'Error');
         }
       );
+  }
+  checkstartDateValidity(){
+    const selectedDate = new Date(this.newDOB);
+    const currentDate = new Date();
+        if (selectedDate > currentDate) {
+          this.datemsg = 'Date of birth cannot be in the future';
+        } else {
+          this.datemsg = ''; 
+        }
   }
 }

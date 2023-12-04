@@ -166,6 +166,7 @@ public class AssignmentSubmissionService {
 		List<assignmentsubmEntity>assignmentsubmissionsbystudent=userdetails.getSubmissionlist();
 		List<resultresponse> studentresult=new ArrayList<>();
 		for(AssignmentEntity i:asssignments) {
+			if(!i.isDeleted()) {
 			resultresponse res=new resultresponse();
 			res.setStatus("assignment not submitted");
 			for(assignmentsubmEntity j:assignmentsubmissionsbystudent) {
@@ -195,6 +196,7 @@ public class AssignmentSubmissionService {
 			
 			studentresult.add(res);
 			
+		}
 		}
 		return studentresult;
 	}

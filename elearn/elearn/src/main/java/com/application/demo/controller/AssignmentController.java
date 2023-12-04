@@ -1,14 +1,18 @@
 package com.application.demo.controller;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +33,7 @@ import com.amazonaws.util.IOUtils;
 import com.application.demo.Dto.assignsubmissions;
 import com.application.demo.Dto.assignsubrequest;
 import com.application.demo.entity.AssignmentEntity;
+import com.application.demo.entity.CourseAttachmentsEntity;
 import com.application.demo.entity.CourseEntity;
 import com.application.demo.entity.UserFullDetails;
 import com.application.demo.repository.AssignmentRepository;
@@ -136,9 +141,28 @@ public class AssignmentController {
 public List<AssignmentEntity> getFileNamesByCourseId(@PathVariable String courseId) {
 //    return s3FileUploadService.getFileNamesByCourseId(courseId);
 	CourseEntity c=courseRepo.findById(Long.parseLong(courseId)).get();
-    return courseRepo.findById(Long.parseLong(courseId)).get().getAssignments();
+//    return courseRepo.findById(Long.parseLong(courseId)).get().getAssignments();
+    
+    List<AssignmentEntity> filteredAssignments = courseRepo.findById(Long.parseLong(courseId))
+            .map(course -> course.getAssignments().stream()
+                    .filter(attachment -> !attachment.isDeleted())
+                    .collect(Collectors.toList())
+            )
+            .orElse(Collections.emptyList());
+    return filteredAssignments;
     
 }
+@DeleteMapping("/deleteassignment/{assignmentId}")
+public ResponseEntity<?> deleteattachment(@PathVariable String assignmentId) {
+	try {
+		s3FileUploadService.deleteassignment(Long.parseLong(assignmentId));
+	 return ResponseEntity.status(HttpStatus.OK).body("Successfully deleted");
+	}
+	catch(Exception e) {
+		 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+	}
+}
+
 
   
 }

@@ -77,7 +77,14 @@ export class AdduserComponent {
         this.getusers();
         this.toastr.success("user added to course successfully")
         console.log(data);
-      });
+      },
+      (error)=>{
+        if (error.error) {
+          const errorBody = error.error;
+          this.toastr.error(errorBody);
+        }
+      }
+      );
       // this.users = this.userService.getUsers();
     }
   });

@@ -17,6 +17,8 @@ void deleteFile(Long fileId);
 
 List<String> getFileNamesByCourseId(String courseId);
 
+void deleteassignment(long parseLong);
+
 //Map<String, String> uploadSubmissionToS3(MultipartFile multipartfile,  String userid, String assignid);
 //
 //List<assignsubmissions> getsubmissions(String assignid);

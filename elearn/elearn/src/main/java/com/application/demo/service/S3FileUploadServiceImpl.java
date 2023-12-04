@@ -138,7 +138,7 @@ public class S3FileUploadServiceImpl implements S3FileUploadService {
       return assignmentRepository.findFileNamesByCourseId(courseId);
       
   }
-//  public Map<String, String> uploadSubmissionToS3(MultipartFile multipartfile,  String userid, String assignid) {
+ //  public Map<String, String> uploadSubmissionToS3(MultipartFile multipartfile,  String userid, String assignid) {
 //	    Map<String, String> response = new HashMap<>();
 //
 //	    if (multipartfile != null && !multipartfile.isEmpty()) {
@@ -236,6 +236,22 @@ public class S3FileUploadServiceImpl implements S3FileUploadService {
 //		return result;
 //		
 //  }
+  public void deleteassignment(long assignmentId) {
+	  Optional<AssignmentEntity> assignmentOptional = assignmentRepository.findById(assignmentId);
+
+      assignmentOptional.ifPresent(assignment -> {
+          // Remove associated submissions
+          List<assignmentsubmEntity> submissions = assignment.getAssignmentsubmissions();
+//          for (assignmentsubmEntity submission : submissions) {
+//              submission.setAssignment(null); // Break the relationship to avoid deletion constraints
+//          }
+//          submissions.clear(); // Remove submissions from assignment
+
+          // Delete the assignment
+          assignment.setDeleted(true);
+          assignmentRepository.save(assignment);
+      });
+  }
   
 
 }

@@ -127,6 +127,26 @@ public class CourseAttachmentService {
 //		    s3Client.deleteObject(bucketName, keyName);
 //		    assignmentRepository.delete(a);
 //		  }
+
+	public void deleteattachment(Long attachmentId) {
+		 Optional<CourseAttachmentsEntity> attachmentOptional = courseAttachmentRepository.findById(attachmentId);
+
+	        if (attachmentOptional.isPresent()) {
+	        	CourseAttachmentsEntity attachment = attachmentOptional.get();
+
+	            // Make sure the attachment is associated with a course
+	            CourseEntity course = attachment.getCourse();
+//	            if (course != null) {
+//	                // Remove attachment from the course
+//	                course.getCourseAttachments().remove(attachment);
+//	            }
+	            
+	            attachment.setDeleted(true);
+	            // Delete the attachment
+	             courseAttachmentRepository.save(attachment);
+		
+	}
+	}
 	
 	  
 	

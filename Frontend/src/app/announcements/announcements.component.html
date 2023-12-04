@@ -1,7 +1,7 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-body">
-    <form (ngSubmit)="submitForm()" #announcementForm="ngForm">
+    <form  #announcementForm="ngForm">
       <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" name="title" [(ngModel)]="announcement.title" required>
@@ -12,7 +12,7 @@
       </div>
       <div class="mt-4">
         <button  (click)="closeDialog()" class="btn btn-primary ">Cancel</button>
-      <button type="submit" class="btn btn-primary ms-2" >Submit</button>
+      <button type="submit" [disabled]="announcementForm.form.invalid" (click)="submitForm()" class="btn btn-primary ms-2" >Submit</button>
     </div>
     </form>
     </div>

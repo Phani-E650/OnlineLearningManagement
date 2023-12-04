@@ -40,7 +40,7 @@ public class EnrollmentController {
 		private CourseRepository courseRepo;
 	
 	@PostMapping("/addenrollment/{courseid}")
-	public ResponseEntity<?> addNewCourse(@RequestBody enrollrequest enroll,@PathVariable String courseid) throws Exception
+	public ResponseEntity<?> addNewEnroll(@RequestBody enrollrequest enroll,@PathVariable String courseid) throws Exception
 	{
 		Enrollment courseObj = null;
 
@@ -51,6 +51,9 @@ public class EnrollmentController {
               .collect(Collectors.toList());
 		if(existenroll.size()>0) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists");
+		}
+		if(existingusers.get().getUsertemp().getRole().equals("admin")) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Admin cannot be added");
 		}
 		};
 		if(existingusers.isEmpty()) {

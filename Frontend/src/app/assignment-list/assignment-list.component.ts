@@ -114,4 +114,22 @@ export class AssignmentListComponent implements OnInit {
     const formattedDate = `${day}/${month}/${year}`;
     return formattedDate;
   }
+  deleteassignment(id:any){
+    this.assignmentService.deleteassignment(id).subscribe((response)=>{
+      console.log("deleted successfully");
+      if(response.status=='200'){
+        this.toastr.success("courseattachment deleted successful");
+        console.log("deleted successfully");
+        location.reload();
+        }
+      },
+      (error)=>{
+        if(error.status=='200'){
+          this.toastr.success("courseattachment deleted successful");
+          console.log("deleted successfully");
+          location.reload();
+          }
+      }
+    )
+  }
 }
