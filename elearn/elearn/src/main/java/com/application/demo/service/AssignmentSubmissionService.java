@@ -184,6 +184,7 @@ public class AssignmentSubmissionService {
 					}
 					res.setSubmitteddate(j.getSubmitteddate());
 				}
+			}
 				res.setTitle(i.getTitle());
 				res.setTotalmarks(i.getTotalmarks());
 				res.setWeightage(i.getWeightage());
@@ -192,7 +193,7 @@ public class AssignmentSubmissionService {
 				res.setDescription(i.getDescription());
 				res.setDeadlinedate(i.getDeadlinedate());
 				res.setId(i.getId());
-			}
+			
 			
 			studentresult.add(res);
 			
