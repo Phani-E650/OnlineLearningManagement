@@ -53,9 +53,9 @@ export class AllCoursesComponent {
   }
 
 
-  updateCourse(courseId : any): void {
+  updateCourse(courseId : any,course:any): void {
     this.dialog.open(UpdateCourseComponent, {
-      data: { courseId: courseId },
+      data: { courseId: courseId ,course:course},
       width: '500px',
       height:'500px'
     });

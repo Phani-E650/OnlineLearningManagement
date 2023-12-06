@@ -19,7 +19,7 @@
     
     
             <a  (click)="visitCourse(course.id)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary custom-btn ">Visit Course</a>
-            <a  (click)="updateCourse(course.id)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary custom-btn">Update Course</a>
+            <a  (click)="updateCourse(course.id,course)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary custom-btn">Update Course</a>
             
         </div>
     </div>
@@ -39,7 +39,7 @@
             <div class="text"><b style="color: darkred; font-size: large;">Course Status :</b> {{course.courseStatus}}</div>
     
 
-            <a  (click)="updateCourse(course.id)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary custom-btn">Update Course</a>
+            <a  (click)="updateCourse(course.id,course)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary custom-btn">Update Course</a>
             
         </div>
     </div>

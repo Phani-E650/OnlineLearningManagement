@@ -22,6 +22,8 @@ export class UpdateCourseComponent {
     
     this.courseId = data.courseId;
     this.course.id = this.courseId;
+    this.course=data.course;
+
   }
   ngOnInit(): void 
   {
