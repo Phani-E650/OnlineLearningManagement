@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Configuration;
@@ -32,17 +33,20 @@ import com.application.demo.repository.ModuleRepository;
 import com.application.demo.service.ModuleService;
 
 
-@SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
-@ExtendWith(MockitoExtension.class)
+
+
+
+@WebMvcTest(controllers = Modulescontroller.class)
+
 class ModulesControllerTests {
 
     @Autowired
-    private static MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @MockBean
-    private static ModuleService moduleService;
+    private ModuleService moduleService;
 
     @MockBean
     private ModuleRepository moduleRepository;
@@ -55,7 +59,7 @@ class ModulesControllerTests {
   
     @Test
     
-    public static void testAddModule() throws Exception {
+    public  void testAddModule() throws Exception {
         // Mocking data
         ModuleEntity moduleEntity = new ModuleEntity();
         moduleEntity.setId(1L);
@@ -71,7 +75,7 @@ class ModulesControllerTests {
         // Perform the request
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/modules/add")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"id\": 1, \"modulename\": \"TestModule\"}")
+                .content("{\"id\": 1, \"modulename\": \"TestModuleeee\"}")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();

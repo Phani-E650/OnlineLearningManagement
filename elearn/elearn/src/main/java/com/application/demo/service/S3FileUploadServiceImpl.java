@@ -109,6 +109,7 @@ public class S3FileUploadServiceImpl implements S3FileUploadService {
 	            response.put("fileName", uniqueFileName);
 	            //courseRepository.save(course);
 	            course.get().getAssignments().add(savedassign);
+	            courseRepository.save(course.get());
 	            file.delete();
 	            response.put("message", "success");
 	            

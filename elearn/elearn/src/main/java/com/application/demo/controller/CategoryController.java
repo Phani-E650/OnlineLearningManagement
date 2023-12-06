@@ -66,6 +66,8 @@ public class CategoryController {
 //        return new ResponseEntity<>(a, HttpStatus.CREATED);
     	return "successfully added";
     }
+    
+    
     @GetMapping("/maincategories")
     public List<CategoryEntity> mainCategories() {
         return categoryRepository.findByParentCategoryIsNull();

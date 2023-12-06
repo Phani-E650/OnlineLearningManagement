@@ -4,6 +4,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,23 +19,37 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.application.demo.repository.AssignmentRepository;
+import com.application.demo.repository.CourseRepository;
 import com.application.demo.service.S3FileUploadService;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = AssignmentController.class)
 @AutoConfigureMockMvc
-
-public class S3FileUploadControllerTest {
+public class AssignmentControllerTest {
 
     @Autowired
-    private static MockMvc mockMvc;
+    private  MockMvc mockMvc;
 
     @MockBean
-    private static S3FileUploadService s3FileUploadService;
+    private  S3FileUploadService s3FileUploadService;
+    
+    @MockBean
+    private AmazonS3 s3Client;
+    
+    @MockBean
+    private AssignmentRepository assignmentRepository;
+    
+    @MockBean
+    private CourseRepository courseRepo;
+    
+    @MockBean
+    private AssignmentController modulesController;
 
     // Test for uploadFile API success scenario
     @Test
-    public static void testUploadFile_Success() throws Exception {
+    public void testUploadFile_Success() throws Exception {
         // Mock the necessary dependencies
         when(s3FileUploadService.uploadFileToS3(any(), any(), any(), any(), any(), any(), any()))
                 .thenReturn(ResponseEntity.status(HttpStatus.OK).build());
@@ -53,7 +68,7 @@ public class S3FileUploadControllerTest {
 
     // Test for uploadFile API failure scenario
     @Test
-    public static void testUploadFile_Failure() throws Exception {
+    public void testUploadFile_Failure() throws Exception {
         // Mock the necessary dependencies to simulate an error during file upload
         when(s3FileUploadService.uploadFileToS3(any(), any(), any(), any(), any(), any(), any()))
                 .thenReturn(null);
