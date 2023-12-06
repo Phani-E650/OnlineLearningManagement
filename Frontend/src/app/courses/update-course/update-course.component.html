@@ -33,7 +33,7 @@
         <small class="text-danger" *ngIf="enddatemsg"><b>{{ enddatemsg }}</b></small>
       </div>
       <div class="mt-4">
-        <button  (click)="closeDialog()" class="btn btn-primary ">Cancel</button>
+        <button  type="button" (click)="closeDialog()" class="btn btn-primary ">Cancel</button>
       <button [disabled]="courseupdateForm.form.invalid" type="submit" class="btn btn-primary ms-2" >Submit</button>
     </div>
     </form>
