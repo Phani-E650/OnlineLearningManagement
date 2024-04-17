@@ -38,7 +38,7 @@ getdownload(fileName: String):Observable<ArrayBuffer> {
     responseType: 'arraybuffer'
   });
 }
-deleteattachment(id:any){
-  return this.http.delete<any>(`${this.baseUrl}/courseattach/deleteattachment/${id}`);
-}
+
+
+
 }
