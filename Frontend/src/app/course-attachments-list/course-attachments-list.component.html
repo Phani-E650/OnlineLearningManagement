@@ -1,0 +1,29 @@
+<app-header></app-header>
+<app-moduleheader [coursename]="courseId"></app-moduleheader>
+<div *ngIf="this.currRole=='teacher'">
+<button class="center-vertically custom-button" (click)="openAssignments()">Add Course Attachment</button>
+</div>
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Course Attachment List</h2>
+      <div class="card mt-4 custom-card" *ngFor="let pdfUrl of fileNames; let i = index">
+        <div class="card-body">
+          <h3 class="card-subtitle mb-2 text-muted">Course Attachment {{ i + 1 }}</h3>
+          <h4 class="card-title">Title: {{ pdfUrl.title }}</h4>
+          <p class="card-text mb-3">Description: {{ pdfUrl.description }}</p>
+          
+          <a href="javascript:void(0)" class="btn btn-sm btn-primary" (click)="download(pdfUrl.fileName)">
+            Download Course Attachment
+          </a>
+          <br>
+          <br>
+          <div *ngIf="this.currRole=='teacher'">  <a href="javascript:void(0)" class="btn btn-sm btn-primary" (click)="deleteattachment(pdfUrl.id)">
+            Delete Attachment
+          </a></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

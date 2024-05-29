@@ -1,0 +1,7 @@
+<div *ngIf="params.data.courseStatus==='active'">
+    <button (click)="enableDisable()" class="btn btn-primary">inactive</button>
+ </div>
+ <div *ngIf="params.data.courseStatus==='inactive'">
+    <button (click)="enableDisable()" class="btn btn-primary">active</button>
+ </div>
+ 

@@ -1,0 +1,41 @@
+
+<app-header></app-header>
+<!-- <app-admin-nav-header></app-admin-nav-header> -->
+<div class="sidebar-container">
+    <ul class="sidebar-navigation">
+      
+        <div class="card" style="width:235px; background-color: #cc4f4f;">
+            <div id="userimg" style="width:150px;">
+            <img [src]="'assets/img/admin.png'" alt="Card image" style="width:100%">
+            </div>
+            <div style="margin-left: auto; margin-right: auto;"  class="card-body">
+              <h4 style="font-weight: bolder;" class="card-title"><b>{{title}}</b></h4>
+            </div>
+          </div>
+      
+      <!-- <li>
+         <i class="fa fa-plus" aria-hidden="true"></i> <label [routerLink]="['/add-course']" style="cursor: pointer;">Add Course</label>
+      </li>
+      <li>
+        <i class="fa fa-plus" aria-hidden="true"></i> <label [routerLink]="['/upload-excel']" style="cursor: pointer;">Add Student to course</label>
+     </li>
+     <li>
+      <i class="fa fa-plus" aria-hidden="true"></i> <label [routerLink]="['/createcategory']" style="cursor: pointer;">Add Students to course</label>
+     </li> -->
+      <li>
+        <i class="fa fa-check-square" aria-hidden="true"></i> <label [routerLink]="['/allenrollcourses']" style="cursor: pointer;">Approved Courses</label>
+      </li>
+      <!-- <li>
+        <i class="fa fa-list" aria-hidden="true"></i> <label [routerLink]="['/courselist']" style="cursor: pointer;">Courses Status</label>
+      </li> -->
+      <!-- <li>
+        <i class="fa fa-user" aria-hidden="true"></i> <label (click)="studentTable()" style="cursor: pointer;">Students</label>
+      </li>
+      <li>
+        <i class="fa fa-user-o" aria-hidden="true"></i> <label (click)="teacherTable()" style="cursor: pointer;">Teachers</label> 
+      </li>
+      <li>
+        <i class="fa fa-user" aria-hidden="true"></i> <label (click)="UsesTable()" style="cursor: pointer;">Users</label>
+      </li> -->
+    </ul>
+  </div>

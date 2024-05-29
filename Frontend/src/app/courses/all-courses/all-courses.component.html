@@ -1,0 +1,52 @@
+<app-header></app-header>
+<br>
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="line-container">
+          <button class="custom-button" [routerLink]="['/add-course']">Add Course</button>
+        </div>
+        
+<div class="row">
+    <div  *ngFor="let course of approvedcourses" class="col-3 card card-item" id="bloodCards">
+        <br>
+        <div class="card-block">
+            <div class="text"><b style="color: darkred; font-size: large;">Course :</b> {{course.courseName}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Course Description :</b> {{course.courseDescription}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Course ID :</b> <small style=" margin-left: 3%; padding: 3px 8px 3px 8px; background-color: rgb(87, 64, 8); border-radius: 10px; font-weight: bold; width: 55%; color: white;">{{course.id}}</small></div>
+            <div class="text"><b style="color: darkred; font-size: large;">Instructor :</b> {{course.professorName}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Course Status :</b> {{course.courseStatus}}</div>
+    
+    
+            <a  (click)="visitCourse(course.id)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary custom-btn ">Visit Course</a>
+            <a  (click)="updateCourse(course.id,course)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary custom-btn">Update Course</a>
+            
+        </div>
+    </div>
+     
+      <!-- Check if unapprovedcourses array is empty -->
+     <div *ngIf="approvedcourses === undefined  && unapprovedcourses === undefined" class="col-12 text-center">
+        <h1 class="empty-course-message">Please create a course.</h1>
+      </div>
+      
+    <div  *ngFor="let course of unapprovedcourses " class="col-3 card card-item" id="bloodCards">
+        <br>
+        <div class="card-block">
+            <div class="text"><b style="color: darkred; font-size: large;">Course :</b> {{course.courseName}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Course Description :</b> {{course.courseDescription}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Course ID :</b> <small style=" margin-left: 3%; padding: 3px 8px 3px 8px; background-color: rgb(87, 64, 8); border-radius: 10px; font-weight: bold; width: 55%; color: white;">{{course.id}}</small></div>
+            <div class="text"><b style="color: darkred; font-size: large;">Instructor :</b> {{course.professorName}}</div>
+            <div class="text"><b style="color: darkred; font-size: large;">Course Status :</b> {{course.courseStatus}}</div>
+    
+
+            <a  (click)="updateCourse(course.id,course)" style="margin-top: 5%; border: none;" id="enrollsuccessbtn" class="btn btn-primary custom-btn">Update Course</a>
+            
+        </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+

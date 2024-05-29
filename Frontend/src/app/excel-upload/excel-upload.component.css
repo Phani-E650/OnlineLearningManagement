@@ -1,0 +1,63 @@
+/* Center the entire container vertically and horizontally */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; 
+  }
+  
+  
+  .container {
+    text-align: center; 
+    
+  }
+  
+  /* Style the file input */
+  input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Style the upload button */
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for the button */
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    input[type="file"] {
+      width: 80%;
+    }
+    button {
+      width: 80%;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    input[type="file"] {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+    }
+  }
+  

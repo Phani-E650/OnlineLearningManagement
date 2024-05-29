@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+    <form (ngSubmit)="submitForm()" #courseupdateForm="ngForm">
+      <div class="form-group">
+        <label>Course Name : <b style="color:red;">*</b></label>
+        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="course.courseName"required>
+      </div>
+      <div class="form-group mt-4">
+        <label for="description">Course Description : <b style="color:red;">*</b></label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="course.courseDescription" required></textarea>
+      </div>
+      <div class="form-group mt-4">
+        <label>department :<b style="color:red;">*</b></label>
+        <select class="form-control" id="sel1" name="language"  [(ngModel)]="course.department" (change)="getsubcategories($event)" #language>
+          <option *ngFor="let option of categories"  [value]="option.id">{{ option.name }}</option>
+        </select>
+      </div>
+      <div class="form-group mt-4">
+        <label>Category : <b style="color:red;">*</b></label>
+        <select class="form-control" id="sel1" name="language" [(ngModel)]="course.category" #language="ngModel">
+          <option *ngFor="let option of subcategories" [value]="option.id">{{ option.name }}</option>
+        </select>
+      </div>
+      <div class="form-group mt-4">
+        <label for="startDate">Start Date </label>
+        <input type="date" class="form-control" id="startDate" name="startDate" (change)="checkstartDateValidity()" required [(ngModel)]="course.startDate" required>
+        <small class="text-danger" *ngIf="startdatemsg"><b>{{ startdatemsg }}</b></small>
+      </div>
+      <div class="form-group mt-4">
+        <label for="endDate">End Date </label>
+        <input type="date" class="form-control" id="endDate" name="endDate" (change)="checkendDateValidity()" required [(ngModel)]="course.endDate" required>
+        <small class="text-danger" *ngIf="enddatemsg"><b>{{ enddatemsg }}</b></small>
+      </div>
+      <div class="mt-4">
+        <button  type="button" (click)="closeDialog()" class="btn btn-primary ">Cancel</button>
+      <button [disabled]="courseupdateForm.form.invalid" type="submit" class="btn btn-primary ms-2" >Submit</button>
+    </div>
+    </form>
+    </div>
+    </div>
+
+  </div>
+  
+
+  

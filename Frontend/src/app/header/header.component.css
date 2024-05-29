@@ -1,0 +1,50 @@
+@import '~font-awesome/css/font-awesome.css';
+.sidebar-text
+  {
+      font-size: medium;
+  }
+  .content-container {
+    padding-top: 20px;
+  }
+  
+  .sidebar-logo {
+    padding: 15px 15px 15px 30px;
+    font-size: 20px;
+    text-align: right;
+    background-color: #324ecb;
+    width: 100%;
+  }
+  .logoutbtn{
+    border: none;
+    background:transparent;
+    color: white;
+    border-radius: 15px;
+    margin-left: 10px;
+    padding: 5px 10px 5px 10px;
+    font-size: medium;
+  }
+  .logoutbtn:hover{
+    cursor: pointer;
+    background-color: #f03e3e;
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+  }
+
+
+
+  .custom-button {
+    background-color: transparent; /* Remove the default button background color */
+    border: none; /* Remove the default button border */
+    color: whitesmoke;
+    cursor: pointer; /* Change the cursor to a pointer on hover to indicate interactivity */
+    font-size: 16px; /* Set your desired font size */
+    padding: 10px 20px; /* Set your desired padding */
+    transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect for hover */
+  }
+  
+  .custom-button:hover {
+    background-color: #f03e3e; /* Change the background color on hover */
+    color: white; /* Change the text color on hover */
+    border-radius: 15px;
+  }
+  

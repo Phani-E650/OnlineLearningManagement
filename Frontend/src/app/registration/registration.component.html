@@ -1,0 +1,66 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+
+  <h2>User Registration</h2>
+  <form [formGroup]="myForm"  (ngSubmit)="submitRegistrationForm()">
+
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control" [disabled]="true" >
+      <!-- <mat-error class="error" *ngIf="myForm.get('email')?.errors?.['required']">Email is required.</mat-error>
+      <mat-error *ngIf="myForm.get('email')?.errors?.['email']">Invalid email format.</mat-error> -->
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" class="form-control">
+      <mat-error class="error" *ngIf="myForm.get('password')?.errors?.['required']">Password is required.</mat-error>
+        <mat-error class="error" *ngIf="myForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</mat-error>
+    </div>
+    <div class="form-group">
+      <label for="email">Name:</label>
+      <input type="name" id="name" formControlName="name" class="form-control">
+      <mat-error class="error" *ngIf="myForm.get('name')?.errors?.['required']">Name is required.</mat-error>
+      <!-- <div *ngIf="myForm.get('name')?.errors?.['name']">Invalid email format.</div> -->
+    </div>
+    <!-- <div class="form-group">
+      <label for="email">Department:</label>
+      <input type="dept" id="dept" formControlName="dept" class="form-control">
+      <mat-error *ngIf="myForm.get('dept')?.errors?.['required']">Dept Name is required.</mat-error>
+    </div> -->
+    <div class="form-group">
+      <label for="dept">Department:</label>
+      <select id="dept" formControlName="dept" class="form-control">
+        <option *ngFor="let department of departmentList" [value]="department.id">{{ department.name }}</option>
+      </select>
+      <mat-error *ngIf="myForm.get('dept')?.errors?.['required']">Dept Name is required.</mat-error>
+    </div>
+    
+    <div class="form-group">
+      <label for="phoneno">Phone Number:</label>
+      <input type="phoneno" id="phoneno" formControlName="phoneno" class="form-control">
+      <mat-error class="error" *ngIf="myForm.get('phoneno')?.errors?.['required']">Phone Number is required.</mat-error>
+      <mat-error class="error" *ngIf="myForm.get('phoneno')?.errors?.['pattern']">Phone Number is not valid.</mat-error>
+      <!-- <div *ngIf="myForm.get('name')?.errors?.['name']">Invalid email format.</div> -->
+    </div>
+    <div class="form-group">
+    <mat-form-field>
+      <label>DOB</label>
+      <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-error *ngIf="myForm.get('dob')?.errors?.['required']">Date is required</mat-error>
+    <mat-error *ngIf="myForm.get('dob')?.errors?.['futureDate']">Date of birth cannot be in the future.</mat-error>
+    </div>
+
+
+    
+   
+
+    <button type="submit" mat-button color="primary">Register</button>
+  </form>
+</div>
+</div>
+</div>

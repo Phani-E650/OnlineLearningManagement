@@ -1,0 +1,52 @@
+
+
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+    <h2>Login</h2>
+    <form [formGroup]="myForm" (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" class="form-control">
+        <div class="error" *ngIf="myForm.get('email')?.errors?.['required']">Email is required.</div>
+        <div *ngIf="myForm.get('email')?.errors?.['email']">Invalid email format.</div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" class="form-control">
+        <div class="error" *ngIf="myForm.get('password')?.errors?.['required']">Password is required.</div>
+        <div class="error" *ngIf="myForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</div>
+      </div>
+      <!-- ... Other form fields and validation messages ... -->
+      <!-- Add this button below the login form -->
+
+
+      <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+      <button  type="button" class="btn btn-link" (click)="goToForgotPassword()">Forgot Password?</button>
+    </form>
+  
+    <!-- Success message -->
+    <div *ngIf="showSuccessMessage" class="alert alert-success">
+      {{ showSuccessMessage }}
+    </div>
+    
+    <!-- Error message -->
+    <div *ngIf="showErrorMessage" >
+      {{ errorMessage }}
+    </div>
+  </div>
+  
+  </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+

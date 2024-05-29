@@ -1,0 +1,11 @@
+<mat-dialog-content>
+    <h1>Add Module</h1>
+    <mat-form-field>
+      <input matInput placeholder="Enter New Module Name" name="content" [(ngModel)]="content">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button (click)="submitInput()">Submit</button>
+  </mat-dialog-actions>
+  

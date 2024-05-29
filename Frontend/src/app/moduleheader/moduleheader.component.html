@@ -1,0 +1,24 @@
+<!-- <div class="sidebar-logo">
+    <div class="welcometxt" ><b style="color: white;">Enrolled Users</b></div>
+    <button class="logoutbtn" style="margin-right: 1%;" > Assignments</button>
+    <b class="sidebar-text" style="color: whitesmoke;"> Modules</b>
+     <button class="logoutbtn" ><i class="fa fa-sign-out"></i> Logout</button> -->
+<!-- </div> --> 
+<div class="sidebar-logo">
+    <div *ngIf="this.currRole=='teacher'" style="display: inline-block;">
+    <button class="logoutbtn" [routerLink]="['/userenroll',coursename]" style="color: whitesmoke;">Enrolled Users</button>
+    <button class="logoutbtn" (click)="openAnnouncements()" style="color: whitesmoke;">Announcements</button>
+    <button class="logoutbtn" (click)="openAssignmentsList()" style="color: whitesmoke;">Assignments</button>
+    <button class="logoutbtn" (click)="openCourseAttachmentsList()" style="color: whitesmoke;">Course Attachments</button>
+    <!-- <button class="logoutbtn" (click)="openAssignmentsList()" style="color: whitesmoke;">AssignmentList</button> -->
+    </div>
+    <button class="logoutbtn"  [routerLink]="['/allcourses', coursename]" style="color: whitesmoke;">Course Home</button>
+    <div *ngIf="this.currRole=='student'" style="display: inline-block;">
+        <button class="logoutbtn" (click)="openassignmentsolution()" style="color: whitesmoke;">Assignments</button>
+        <button class="logoutbtn" (click)="openCourseAttachmentsList()" style="color: whitesmoke;">Course Attachments</button>
+        <!-- <button class="logoutbtn" (click)="openAssignmentsList()" style="color: whitesmoke;">AssignmentList</button> -->
+        </div>
+    <!-- <b class="sidebar-text" style="color: whitesmoke;" > Assignments</b>
+    <b class="sidebar-text"  style="color: whitesmoke;"> Modules</b> -->
+    <!-- <button class="logoutbtn" ><i class="fa fa-sign-out"></i> Logout</button> -->
+</div>

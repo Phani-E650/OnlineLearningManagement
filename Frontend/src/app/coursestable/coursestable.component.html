@@ -1,0 +1,14 @@
+<!-- <div *ngIf="RowDataUser === 'user' || RowDataUser === ''"> -->
+    <!-- <div class="mail"><button class="btn btn-primary" (click)="sentmail()">Sent Mail</button></div> -->
+    <app-header></app-header>
+    <ag-grid-angular
+    style="width: 100%; height: 500px;"
+    class="ag-theme-alpine"
+    [rowData]="courseData"
+    [columnDefs]="columncouseDefs"
+    [pagination]="true"
+    [paginationPageSize]="pageSize"
+    (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+  <!-- </div> -->

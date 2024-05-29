@@ -1,0 +1,34 @@
+<!-- src/app/user-list/user-list.component.html -->
+<app-header></app-header>
+<app-moduleheader [coursename]="courseName"></app-moduleheader>
+<div class="user-list">
+    <!-- <h1>User List</h1> -->
+    <!-- <ul>
+      <li *ngFor="let user of enrollers" style="margin-bottom: 10px;">
+        <span style="margin-right: 10px; color: rgb(90, 145, 47);">{{ user.enrolledusername }}</span>
+        <i class="material-icons"  (click)="deleteuser(user.enrollid)" style="font-size: 24px; cursor: pointer; ">delete</i>
+      </li>
+    </ul> -->
+    <!-- <button (click)="addUser()">Add User</button> -->
+    <div class="center-vertically">
+      <h1>User List</h1>
+      <button (click)="addUser()">Add User</button>
+      <button (click)="uploadData()">Add Users</button>
+    </div>
+    <ag-grid-angular
+    style="width: 55%; height: 500px; "
+    class="ag-theme-alpine"
+    [rowData]="enrollers"
+    [columnDefs]="columnDefs"
+    [pagination]="true"
+    [paginationPageSize]="pageSize"
+    (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+  </div>
+
+  <!-- <div class="container">
+    <input type="file" (change)="onFileChange($event)" accept=".xlsx">
+    <button (click)="uploadData()">Upload Data</button>
+  </div> -->
+  

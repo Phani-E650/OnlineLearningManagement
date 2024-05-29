@@ -1,0 +1,12 @@
+<div *ngIf=" this.params.data.status=='submitted'">
+<input type="number" [(ngModel)]="value" (change)="onInputChange()" class="small-input">
+</div>
+    
+<div *ngIf=" this.params.data.status=='marks assigned'&& !this.update">
+<p>{{this.params.data.assignedmarks}} 
+<i class="fa fa-edit" (click)="updatemarks()" style="font-size: 24px; cursor: pointer;"></i></p>
+    <!-- <input type="number" [(ngModel)]="value" (change)="onInputChange()" class="small-input"> -->
+</div>
+<div *ngIf="this.update">
+    <input type="number" [(ngModel)]="value" (change)="onInputChange()" class="small-input">
+    </div>
