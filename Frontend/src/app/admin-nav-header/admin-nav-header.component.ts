@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LogoutService } from '../logout.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin-nav-header',
@@ -11,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AdminNavHeaderComponent {
   constructor(private router: Router,private logoutService: LogoutService,private http: HttpClient,private toastr: ToastrService) {}
-
+   baseUrl = environment.apiURL;
   showCreateUserForm() {
       this.router.navigate(['/create']);
   }
@@ -21,7 +22,7 @@ export class AdminNavHeaderComponent {
   }
   sentmail(){
       console.log("hi");
-      this.http.post('http://localhost:8080/api/admin/sentmail',null).subscribe(
+      this.http.post(`${this.baseUrl}/api/admin/sentmail`,null).subscribe(
           (response: any) => {
               console.log("hiiiiii");
               if (response.message === 'Mails sent successfully.') {

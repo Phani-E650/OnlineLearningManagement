@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course } from './models/course';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,7 @@ export class CategoryService {
 
   constructor(private router: Router,private http: HttpClient) { }
 
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = environment.apiURL;
 
   addCategory(category: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/category`, category);

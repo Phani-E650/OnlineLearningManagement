@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { data } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-announcements',
@@ -12,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AnnouncementsComponent {
   @Input() coursename: string="";
+  baseUrl = environment.apiURL;
   professorName = '';
   currRole = '';
   courseName= '';
@@ -40,7 +42,7 @@ export class AnnouncementsComponent {
   submitForm() {
     console.log(this.announcement);
     this.dialogRef.close();
-    this.http.post('http://localhost:8080/announcements/add', this.announcement).subscribe(
+    this.http.post(`${this.baseUrl}/announcements/add`, this.announcement).subscribe(
       (response) => {
         console.log('Announcement submitted:', response);
         this.toastr.success("Announcment Sent successfully");

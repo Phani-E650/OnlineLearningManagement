@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { CategoryService } from '../category.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-update-profile',
@@ -20,6 +21,7 @@ export class UpdateProfileComponent {
     private myService: CategoryService,
   ) {}
   datemsg:any;
+  baseUrl = environment.apiURL;
   cardData: any;
   isEditing: boolean = false; // Initially, editing is disabled
   newName: string = '';
@@ -32,7 +34,7 @@ export class UpdateProfileComponent {
     this.route.params.subscribe((data1) => {
       const email = data1['id'];
 
-      this.http.get<any>(`http://localhost:8080/table/getuserdetails/${email}`).subscribe((data) => {
+      this.http.get<any>(`${this.baseUrl}/table/getuserdetails/${email}`).subscribe((data) => {
         this.cardData = data;
         this.newName=this.cardData.name;
         this.newDept=this.cardData.dept;
@@ -60,7 +62,7 @@ export class UpdateProfileComponent {
       // Add other properties as needed
     };
 
-    this.http.post(`http://localhost:8080/table/updateuserdetails/${this.cardData.email}`, updatedUserData)
+    this.http.post(`${this.baseUrl}/table/updateuserdetails/${this.cardData.email}`, updatedUserData)
       .subscribe(
         (response) => {
           // Handle success response

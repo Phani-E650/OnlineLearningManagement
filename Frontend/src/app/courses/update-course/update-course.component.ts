@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/category.service';
 import { Course } from 'src/app/models/course';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-update-course',
@@ -15,6 +16,7 @@ export class UpdateCourseComponent {
   courseId:any;
   course = new Course();
   subcategories: any;
+  baseUrl = environment.apiURL;
   categories:any;
   enddatemsg:any
   startdatemsg:any;
@@ -59,7 +61,7 @@ export class UpdateCourseComponent {
   submitForm() {
     console.log(this.course);
     this.dialogRef.close();
-    this.http.put('http://localhost:8080/updatecourse', this.course).subscribe(
+    this.http.put(`${this.baseUrl}/updatecourse`, this.course).subscribe(
       (response) => {
         console.log('course submitted:', response);
         this.toastr.success("course updated successfull")

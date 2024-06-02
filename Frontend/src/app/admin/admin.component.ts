@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NotificationService } from '../notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ExcelUploadComponent } from '../excel-upload/excel-upload.component';
+import { environment } from 'src/environments/environment';
 @Component({
     selector: 'app-admin',
     templateUrl: './admin.component.html',
@@ -15,6 +16,7 @@ import { ExcelUploadComponent } from '../excel-upload/excel-upload.component';
 export class AdminComponent {
     gridApi: any;
   rowDataUsers: string="";
+  baseapi = environment.apiURL;
     constructor(public dialog: MatDialog,private router: Router,private logoutService: LogoutService,private http: HttpClient,private toastr:ToastrService,private notifyService : NotificationService) {}
     loggedUser = '';
   currRole = '';
@@ -69,7 +71,7 @@ export class AdminComponent {
           positionClass: 'toastr-success', // Apply the custom CSS class
           tapToDismiss: false, // Disable click to dismiss
         });
-        this.http.post('http://localhost:8080/api/admin/sentmail',null).subscribe(
+        this.http.post(`${this.baseapi}/api/admin/sentmail`,null).subscribe(
             (response: any) => {
                 console.log("hiiiiii");
                 if (response.message === 'Mails sent successfully.') {

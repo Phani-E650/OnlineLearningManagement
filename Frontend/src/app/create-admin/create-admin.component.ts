@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateAdminComponent {
   email: string = '';
   role: string = '';
+  baseUrl = environment.apiURL;
 
   constructor(private http: HttpClient,private toastr: ToastrService,private router:Router) {}
   dropdownOptions = [
@@ -25,7 +27,7 @@ export class CreateAdminComponent {
     console.log(this.role);
     const adminData = { email: this.email, role: this.role };
     
-    this.http.post('http://localhost:8080/api/admin/create-student', adminData).subscribe(
+    this.http.post(`${this.baseUrl}/api/admin/create-student`, adminData).subscribe(
       (response: any) => {
         if (response.status === 201) {
           // Send an email to the admin with the registration link

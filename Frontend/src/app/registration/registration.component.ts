@@ -5,6 +5,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from
 
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from '../category.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-registration',
@@ -18,6 +19,7 @@ export class RegistrationComponent implements OnInit {
   // password:any;
   myForm:FormGroup;
   presentemail='';
+  baseUrl = environment.apiURL;
   departmentList : any | undefined;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient,private formBuilder: FormBuilder,private toastr: ToastrService,private myService:CategoryService) { 
@@ -103,7 +105,7 @@ this.myService.getAllCategoriesWithSubcategories().subscribe(data=>{
   
       console.log(formData1);
   
-      this.http.post('http://localhost:8080/api/student/registration', formData1,{ responseType: 'text' }).subscribe(
+      this.http.post(`${this.baseUrl}/api/student/registration`, formData1,{ responseType: 'text' }).subscribe(
         (response: any) => {
           if (response === 'Registration completed successfully.' ) {
             this.toastr.success("User Registration successful");

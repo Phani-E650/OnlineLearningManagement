@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -12,6 +13,7 @@ import * as XLSX from 'xlsx';
 })
 export class ExcelUploadComponent {
   data: any[] = [];
+  baseUrl = environment.apiURL;
   email: any;
   role: any;
   constructor(private http: HttpClient, public dialog: MatDialog, private toastr: ToastrService,private router: Router) {}
@@ -40,7 +42,7 @@ export class ExcelUploadComponent {
         const adminData = { email: row.email, role: row.role };
         
         
-  this.http.post('http://localhost:8080/api/admin/create-student', adminData).subscribe(
+  this.http.post(`${this.baseUrl}/api/admin/create-student`, adminData).subscribe(
     (response: any) => {
       if (response.message === 'Student registration initiated successfully.') {
        

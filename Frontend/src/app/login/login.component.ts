@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthGuardService } from '../auth-guard.service';
 import { ToastrService } from 'ngx-toastr';
 import { NotificationService } from '../notification.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent {
   myForm: FormGroup;
   showErrorMessage: boolean = false;
   errorMessage: string = '';
+  baseUrl = environment.apiURL;
   showSuccessMessage:any
 
   constructor(
@@ -44,7 +46,7 @@ export class LoginComponent {
   }
 
   login() {
-    const authUrl = 'http://localhost:8080/login';
+    const authUrl = `${this.baseUrl}/login`;
   
     if (this.myForm.valid) {
       const formData = this.myForm.value;

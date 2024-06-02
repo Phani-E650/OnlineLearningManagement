@@ -8,6 +8,7 @@ import { ButtonRendererComponent } from '../button-renderer/button-renderer.comp
 import { ActionCellRendererComponent } from '../action-cell-renderer/action-cell-renderer.component';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -17,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-
+  baseUrl = environment.apiURL;
   @Input()
   RowDataUser!: string;
   public columnDefs: ColDef[]= [
@@ -213,7 +214,7 @@ export class TableComponent {
 
   loadData() {
     
-    this.http.get<any[]>('http://localhost:8080/table/getdata').subscribe((data) => {
+    this.http.get<any[]>(`${this.baseUrl}/table/getdata`).subscribe((data) => {
       this.rowData = data;
     });
     this.studentrowData = this.rowData.filter(item => item.role =="student");
@@ -223,7 +224,7 @@ export class TableComponent {
   enableDisableCallback(data: any) {
     
     const id=data.id;
-    const url=`http://localhost:8080/table/update/${id}`;
+    const url=`${this.baseUrl}/table/update/${id}`;
     this.http.put(url,null).subscribe((response)=>{
       console.log('Update:',response);
       this.loadData();
@@ -252,7 +253,7 @@ export class TableComponent {
   sentmail(){
     console.log("hi");
     this.toastr.success("Registration email sent to all unregister users");
-    this.http.post('http://localhost:8080/api/admin/sentmail',null).subscribe(
+    this.http.post(`${this.baseUrl}/api/admin/sentmail`,null).subscribe(
         (response: any) => {
             console.log("hiiiiii");
             if (response.message === 'Mails sent successfully.') {

@@ -3,6 +3,7 @@ import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-details',
@@ -27,13 +28,14 @@ export class UserDetailsComponent {
   newDept: string = '';
   newPhone: string = '';
   newDOB: string = '';
+  baseUrl = environment.apiURL;
 
   ngOnInit() {
     // this.route.params.subscribe((data1) => {
       // console.log(data1);
       // this.email = data1;
 
-      this.http.get<any>(`http://localhost:8080/table/getuserdetails/${this.email}`).subscribe((data) => {
+      this.http.get<any>(`${this.baseUrl}/table/getuserdetails/${this.email}`).subscribe((data) => {
         this.cardData = data;
       });
     // });
@@ -59,7 +61,7 @@ export class UserDetailsComponent {
 
     
 
-    this.http.post(`http://localhost:8080/table/updateuserdetails/${this.cardData.email}`, updatedUserData)
+    this.http.post(`${this.baseUrl}/table/updateuserdetails/${this.cardData.email}`, updatedUserData)
       .subscribe(
         (response) => {
           // Handle success response
