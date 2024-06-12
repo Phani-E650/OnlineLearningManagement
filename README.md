@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Online Learning Management System
 
 Online Learning Management System (LMS) built using Spring Boot for the backend and Angular for the frontend.
@@ -41,3 +42,6 @@ ng serve
 The frontend now be accessible at http://localhost:4200
 
 
+=======
+# OnlineLearningManagement
+>>>>>>> a2ade258c4cb601c808b2c795f61e93d86f9192d
