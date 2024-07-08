@@ -40,4 +40,7 @@ ng serve
 
 The frontend now be accessible at http://localhost:4200
 
+<H2> Teacher Dashboard</H2>
+![alt text](image.png)
+
 
