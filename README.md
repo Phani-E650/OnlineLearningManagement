@@ -42,10 +42,14 @@ The frontend now be accessible at http://localhost:4200
 
 <H2> Teacher Dashboard</H2>
 
-![Teacher home page where teacher can add courses.](./Project_Images/Teacherhome.jpg)
-![Couse page where all the details of course can accessed](./Project_Images/Coursehome.jpg)
+<h4>-> Teacher home page where admin can add courses.</h4>
+<img src="./Project_Images/Teacherhome.jpg" alt="Teacher home page where admin can add courses.">
+<h4>->Couse page where all the details of course can accessed by respective teacher added by admin</h4>
+<img src="./Project_Images/Coursehome.jpg" alt="Couse page where all the details of course can accessed by respective teacher added by admin">
 <h4>-> Attachements related to course can uploaded which can be access by the enrolled users</h4>
 <img src="./Project_Images/CourseAttachments.jpg" alt="Attachements related to course can uploaded which can be access by the enrolled users">
 <h4>-> The page where teacher can add the students to the course who can access it.</h4>
 <img src="./Project_Images/enrolledUsersInCourse.jpg" alt="The page where teacher can add the students to the course who can access it." >
+<h4>-> Assignments Page where teacher can add the assignments that need to be done by the student part of a course and set the deadline where after student cannot submit assignment.</h4>
+<img src="./Project_Images/AssignmentList.jpg" alt="Teacher home page where admin can add courses.">
 
