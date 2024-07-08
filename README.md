@@ -42,4 +42,7 @@ The frontend now be accessible at http://localhost:4200
 
 <H2> Teacher Dashboard</H2>
 
+![Teacher home page where teacher can add courses.](./Project_Images/Teacherhome.jpg)
+![Couse page where all the details of course can accessed](./Project_Images/Coursehome.jpg)
+
 
