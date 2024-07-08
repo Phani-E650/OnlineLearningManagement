@@ -44,8 +44,8 @@ The frontend now be accessible at http://localhost:4200
 
 ![Teacher home page where teacher can add courses.](./Project_Images/Teacherhome.jpg)
 ![Couse page where all the details of course can accessed](./Project_Images/Coursehome.jpg)
-<h4>Attachements related to course can uploaded which can be access by the enrolled users</h4>
-<img src="./Project_Images/CourseAttachments.jpg" alt="Attachements related to course can uploaded which can be access by the enrolled users" width="300">
-<h4>The page where teacher can add the students to the course who can access it.</h4>
-<img src="./Project_Images/enrolledUsersInCourse.jpg" alt="The page where teacher can add the students to the course who can access it." width="300">
+<h4>-> Attachements related to course can uploaded which can be access by the enrolled users</h4>
+<img src="./Project_Images/CourseAttachments.jpg" alt="Attachements related to course can uploaded which can be access by the enrolled users" width="500" height="400">
+<h4>-> The page where teacher can add the students to the course who can access it.</h4>
+<img src="./Project_Images/enrolledUsersInCourse.jpg" alt="The page where teacher can add the students to the course who can access it." width="500" height="400">
 
