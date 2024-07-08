@@ -44,7 +44,7 @@ The frontend now be accessible at http://localhost:4200
 
 <h4>-> Teacher home page where admin can add courses.</h4>
 <img src="./Project_Images/Teacherhome.jpg" alt="Teacher home page where admin can add courses.">
-<h4>->Couse page where all the details of course can accessed by respective teacher added by admin</h4>
+<h4>->Couse page where all the details of course can accessed and the teacher can add the modules in course by respective teacher added by admin</h4>
 <img src="./Project_Images/Coursehome.jpg" alt="Couse page where all the details of course can accessed by respective teacher added by admin">
 <h4>-> Attachements related to course can uploaded which can be access by the enrolled users</h4>
 <img src="./Project_Images/CourseAttachments.jpg" alt="Attachements related to course can uploaded which can be access by the enrolled users">
@@ -52,4 +52,13 @@ The frontend now be accessible at http://localhost:4200
 <img src="./Project_Images/enrolledUsersInCourse.jpg" alt="The page where teacher can add the students to the course who can access it." >
 <h4>-> Assignments Page where teacher can add the assignments that need to be done by the student part of a course and set the deadline where after student cannot submit assignment.</h4>
 <img src="./Project_Images/AssignmentList.jpg" alt="Teacher home page where admin can add courses.">
+<h4>-> Teacher can view all the submission done by students to a given assignment and allote marks for the individual student submission</h4>
+<img src="./Project_Images/TeacherAssignmentSubmissionAccess.jpg" alt="Teacher can view all the submission done by students to a given assignment and allote marks for the individual student submission">
+<h4>-> Teacher or admin can add the course</h4>
+<img src="./Project_Images/addCourse.jpg" alt="Teacher or admin can add the course.">
+
+<H2> Student Dashboard</H2>
+
+<h4>-> Student home page where student can access the courses for which he had an access.</h4>
+<img src="./Project_Images/StudentHomePage.jpg" alt="Student home page where student can access the courses for which he had an access.">
 
