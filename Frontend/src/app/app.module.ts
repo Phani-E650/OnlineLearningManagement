@@ -67,7 +67,6 @@ import { CourseListComponent } from './courses/course-list/course-list.component
 import { AllCoursesComponent } from './courses/all-courses/all-courses.component';
 import { CourseContentComponent } from './courses/course-content/course-content.component';
 import { UpdateCourseComponent } from './courses/update-course/update-course.component';
-import { AssignmentfilesubmissionComponent } from './assignmentfilesubmission/assignmentfilesubmission.component';
 import { CourseAttachmentsComponent } from './course-attachments/course-attachments.component';
 import { CourseAttachmentsListComponent } from './course-attachments-list/course-attachments-list.component';
 
@@ -127,7 +126,6 @@ import { CourseAttachmentsListComponent } from './course-attachments-list/course
     MarkssubmitComponent,
     SubmissiondownloadComponent,
     DeadlinedatevalueComponent,
-    AssignmentfilesubmissionComponent,
     CourseAttachmentsComponent,
     CourseAttachmentsListComponent
   

@@ -50,7 +50,6 @@ export class CourseAttachmentsComponent {
              this.resetForm();
              console.log('Successful:', result);
              this.toastr.success(this.successMessage);
-             location.reload();
            } 
            else {
              this.resetForm();
